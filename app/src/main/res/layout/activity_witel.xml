@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGreyLight"
+    tools:context=".Activity.ManagerActivity.WitelActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout13"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/txtManagerWitel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/witel"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textSize="@dimen/_21ssp" />
+
+        <TextView
+            android:id="@+id/tglLaporan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_14ssp"
+            android:text="@string/tanggal"
+            android:textAlignment="center"/>
+
+    </LinearLayout>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swlayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout14"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout13">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/contentWrap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/but_border"
+                    android:orientation="vertical"
+                    android:paddingBottom="10dp"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        tools:targetApi="o">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/_5sdp"
+                            android:text="@string/report"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/_12ssp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        tools:targetApi="o">
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/rvSTO"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:nestedScrollingEnabled="false"
+                            tools:itemCount="25"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutSuhuMalam"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/but_border"
+                    android:baselineAligned="false"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="10dp"
+                    tools:targetApi="o">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        tools:targetApi="o">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/suhu_ruangan"
+                            android:textAlignment="center"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/_12ssp" />
+
+                        <Button
+                            android:id="@+id/btnStatusSuhu"
+                            android:layout_width="@dimen/_44sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/border_rectangle"
+                            android:backgroundTint="@color/colorPrimary"
+                            android:text="@string/hint_number"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="@dimen/_12ssp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        tools:targetApi="o">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/bbm"
+                            android:textAlignment="center"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/_12ssp" />
+
+                        <Button
+                            android:id="@+id/btnStatusBBM"
+                            android:layout_width="@dimen/_44sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/border_rectangle"
+                            android:backgroundTint="@color/colorPrimary"
+                            android:text="@string/hint_number"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="@dimen/_12ssp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        tools:targetApi="o">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/catuan"
+                            android:textAlignment="center"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/_12ssp" />
+
+                        <Button
+                            android:id="@+id/btnStatusCatuan"
+                            android:layout_width="@dimen/_44sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/border_rectangle"
+                            android:backgroundTint="@color/colorPrimary"
+                            android:text="@string/hint_number"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="@dimen/_12ssp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="@dimen/_33sdp"
+                android:layout_height="@dimen/_33sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_gravity="start"
+                android:background="@drawable/ic_arrow_back"
+                android:contentDescription="@string/back" />
+
+            <TextView
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="wrap_content"
+                android:text="@string/back"
+                android:textAlignment="center"
+                android:textSize="@dimen/_12ssp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btnOut"
+                android:layout_width="@dimen/_33sdp"
+                android:layout_height="@dimen/_33sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:layout_gravity="end"
+                android:background="@drawable/ic_exit"
+                android:contentDescription="@string/home" />
+
+            <TextView
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/keluar"
+                android:textAlignment="center"
+                android:textSize="@dimen/_12ssp" />
+
+        </LinearLayout>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

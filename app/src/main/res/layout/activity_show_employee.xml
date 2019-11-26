@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGreyLight"
+    tools:context=".Activity.ManagerActivity.ShowEmployeeActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout13"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/info_petugas"
+            android:textAlignment="center"
+            android:textSize="@dimen/_21ssp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llWrap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="24dp"
+        android:visibility="invisible"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout13">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:text="@string/nama_petugas"
+                android:textSize="@dimen/_13ssp" />
+
+            <TextView
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:text="@string/value"
+                android:textSize="@dimen/_13ssp" />
+
+            <TextView
+                android:id="@+id/txtNamaPetugas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/petugas_sto"
+                android:textSize="@dimen/_13ssp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:text="@string/no_handphone"
+                android:textSize="@dimen/_13ssp" />
+
+            <TextView
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:text="@string/value"
+                android:textSize="@dimen/_13ssp" />
+
+            <TextView
+                android:id="@+id/txtHandphone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/handphone_petugas"
+                android:textSize="@dimen/_13ssp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:text="@string/witel"
+                android:textSize="@dimen/_13ssp" />
+
+            <TextView
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:text="@string/value"
+                android:textSize="@dimen/_13ssp" />
+
+            <TextView
+                android:id="@+id/txtWitel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/nama_witel"
+                android:textSize="@dimen/_13ssp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:text="@string/sto"
+                android:textSize="@dimen/_13ssp" />
+
+            <TextView
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:text="@string/value"
+                android:textSize="@dimen/_13ssp" />
+
+            <TextView
+                android:id="@+id/txtNamaSTO"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/petugas_sto"
+                android:textSize="@dimen/_13ssp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:text="@string/foto"
+                android:textSize="@dimen/_13ssp" />
+
+            <TextView
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:text="@string/value"
+                android:textSize="@dimen/_13ssp" />
+
+            <ImageView
+                android:id="@+id/imgPetugas"
+                android:layout_width="wrap_content"
+                android:layout_height="130dp"
+                android:contentDescription="@string/foto_petugas"
+                app:srcCompat="@drawable/ic_no_image" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llDial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llWrap">
+
+        <ImageButton
+            android:id="@+id/btnCall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorGreyLight"
+            android:contentDescription="@string/whatsapp_icon"
+            app:srcCompat="@drawable/ic_phone_icon" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="@dimen/_33sdp"
+                android:layout_height="@dimen/_33sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:background="@drawable/ic_arrow_back"
+                android:contentDescription="@string/back" />
+
+            <TextView
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="wrap_content"
+                android:text="@string/back"
+                android:textAlignment="center"
+                android:textSize="@dimen/_12ssp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btnHome"
+                android:layout_width="@dimen/_33sdp"
+                android:layout_height="@dimen/_33sdp"
+                android:layout_gravity="start"
+                android:layout_marginStart="@dimen/_13sdp"
+                android:background="@drawable/ic_home"
+                android:contentDescription="@string/home" />
+
+            <TextView
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:text="@string/home"
+                android:textAlignment="center"
+                android:textSize="@dimen/_12ssp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btnOut"
+                android:layout_width="@dimen/_33sdp"
+                android:layout_height="@dimen/_33sdp"
+                android:layout_gravity="end"
+                android:background="@drawable/ic_exit"
+                android:contentDescription="@string/keluar" />
+
+            <TextView
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/keluar"
+                android:textAlignment="center"
+                android:textSize="@dimen/_12sdp" />
+        </LinearLayout>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

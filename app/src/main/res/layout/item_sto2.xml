@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/selectSTO"
+    android:layout_width="@dimen/_50sdp"
+    android:layout_height="@dimen/_37sdp"
+    android:background="?android:attr/selectableItemBackground">
+
+    <LinearLayout
+        android:id="@+id/llListManager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/rectangle3"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvListManager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:gravity="center"
+            android:text="@string/smg"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_12ssp" />
+
+    </LinearLayout>
+
+
+</android.support.v7.widget.CardView>

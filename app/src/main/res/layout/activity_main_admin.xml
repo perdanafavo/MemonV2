@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGreyLight"
+    tools:context=".Activity.AdminActivity.MainAdminActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout40"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/menu_admin"
+            android:textAlignment="center"
+            android:textSize="@dimen/_23ssp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout18"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_17sdp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout40">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_27sdp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnCreateUser"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@drawable/custom_button"
+                android:text="@string/create_user"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_15ssp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_27sdp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnUpdateUser"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@drawable/custom_button"
+                android:text="@string/update_user"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_15ssp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_27sdp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnResetUser"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@drawable/custom_button"
+                android:text="@string/reset_password"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_15ssp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_27sdp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnUpdateContact"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@drawable/custom_button"
+                android:text="@string/update_kontak"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_15ssp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageButton
+            android:id="@+id/btnOut"
+            android:layout_width="@dimen/_43sdp"
+            android:layout_height="@dimen/_43sdp"
+            android:background="@drawable/ic_exit"
+            android:contentDescription="@string/keluar" />
+
+        <TextView
+            android:layout_width="@dimen/_43sdp"
+            android:layout_height="wrap_content"
+            android:text="@string/keluar"
+            android:textAlignment="center"
+            android:textSize="@dimen/_12ssp" />
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

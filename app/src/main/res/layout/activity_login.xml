@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ConstraintLayout9"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGreyLight"
+    android:orientation="vertical"
+    tools:context=".Activity.LoginActivity"
+    tools:layout_editor_absoluteY="25dp">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_210sdp"
+        android:contentDescription="@string/telkomsemarang"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout19"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/telkomsemarang" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout19"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="4dp"
+        android:background="@color/colorWhite"
+        android:elevation="3dp"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/_15sdp"
+        android:paddingTop="@dimen/_5sdp"
+        android:paddingEnd="@dimen/_15sdp"
+        android:paddingBottom="@dimen/_5sdp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout23"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black"
+                android:text="@string/memon"
+                android:textAlignment="center"
+                android:textSize="@dimen/_21sdp" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/mechanical_electronical_monitoring"
+                android:textAlignment="center"
+                android:textSize="@dimen/_13sdp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_4sdp"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/editUsername"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/username"
+                android:inputType="textPersonName"
+                android:textColor="@color/blacket"
+                android:textSize="@dimen/_15ssp"
+                tools:targetApi="o" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/editPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:textColor="@color/blacket"
+                android:textSize="@dimen/_15ssp"
+                tools:targetApi="o" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/custom_button"
+                android:text="@string/login"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_15ssp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pendaftaran"
+                android:textSize="@dimen/_12ssp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout23"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/powered_by_telkom"
+            android:textAlignment="center"
+            android:textSize="@dimen/_12ssp" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

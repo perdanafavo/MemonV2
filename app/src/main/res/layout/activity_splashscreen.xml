@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".Activity.Splashscreen">
+
+    <LinearLayout
+        android:id="@+id/linearLayout47"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="@dimen/_180sdp"
+            android:layout_height="@dimen/_180sdp"
+            android:padding="@dimen/_30sdp"
+            android:contentDescription="@string/sto_monitor"
+            app:srcCompat="@drawable/ic_launcher"
+            android:elevation="@dimen/_2sdp"
+            android:background="@drawable/background_white"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout47">
+
+        <ImageView
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:contentDescription="@string/powered_by_telkom"
+            app:srcCompat="@drawable/ic_powered" />
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

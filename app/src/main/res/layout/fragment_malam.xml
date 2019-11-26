@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGreyLight"
+    tools:context=".Fragment.MalamFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/but_border"
+                android:orientation="vertical"
+                android:paddingBottom="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    tools:targetApi="o">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:padding="@dimen/_5sdp"
+                        android:text="@string/report"
+                        android:textSize="@dimen/_12ssp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    tools:targetApi="o">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rvWitel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"
+                        tools:itemCount="25" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutSuhuMalam"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/but_border"
+                android:baselineAligned="false"
+                android:gravity="center_vertical"
+                android:paddingBottom="10dp"
+                tools:targetApi="o">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    tools:targetApi="o">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/suhu_ruangan"
+                        android:textAlignment="center"
+                        android:textSize="@dimen/_12ssp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btnStatusSuhu"
+                        android:layout_width="@dimen/_44sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/border_rectangle"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:text="@string/hint_number"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/_12ssp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    tools:targetApi="o">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/bbm"
+                        android:textAlignment="center"
+                        android:textSize="@dimen/_12ssp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btnStatusBBM"
+                        android:layout_width="@dimen/_44sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/border_rectangle"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:text="@string/hint_number"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/_12ssp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    tools:targetApi="o">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/catuan"
+                        android:textAlignment="center"
+                        android:textSize="@dimen/_12ssp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btnStatusCatuan"
+                        android:layout_width="@dimen/_44sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/border_rectangle"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:text="@string/hint_number"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/_12ssp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

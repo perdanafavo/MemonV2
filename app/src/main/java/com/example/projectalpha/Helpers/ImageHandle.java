@@ -30,7 +30,7 @@ public class ImageHandle {
 
     public Bitmap bipmapCompress(Bitmap bitmap){
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 80, out);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
         return BitmapFactory.decodeStream(new ByteArrayInputStream(out.toByteArray()));
     }
 

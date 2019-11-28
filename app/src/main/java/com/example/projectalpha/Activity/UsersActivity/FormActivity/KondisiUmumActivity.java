@@ -70,9 +70,9 @@ public class KondisiUmumActivity extends CustomCompatActivity
             Bundle extras = data.getExtras();
             if (extras != null) {
                 Bitmap imageBitmap = (Bitmap) extras.get("data");
-                Bitmap compress = imageHandle.bipmapCompress(imageBitmap);
-                file = imageHandle.fileCreate(compress);
-                btnFoto.setImageBitmap(compress);
+           //     Bitmap compress = imageHandle.bipmapCompress(imageBitmap);
+                file = imageHandle.fileCreate(imageBitmap);
+                btnFoto.setImageBitmap(imageBitmap);
                 btnFoto.setBackgroundResource(R.color.colorGreyLight);
             }
         }

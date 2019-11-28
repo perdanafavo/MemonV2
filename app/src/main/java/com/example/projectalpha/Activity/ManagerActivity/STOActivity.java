@@ -1,9 +1,19 @@
 package com.example.projectalpha.Activity.ManagerActivity;
 
+import android.Manifest;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -13,6 +23,7 @@ import android.widget.Toast;
 import com.example.projectalpha.Config.ENVIRONMENT;
 import com.example.projectalpha.Helpers.CekKoneksi;
 import com.example.projectalpha.Helpers.CustomCompatActivity;
+import com.example.projectalpha.Helpers.SaveImageHelper;
 import com.example.projectalpha.Helpers.Time;
 import com.example.projectalpha.Models.SubModels.BIRData;
 import com.example.projectalpha.Models.SubModels.FuelData;
@@ -25,14 +36,19 @@ import com.example.projectalpha.Presenter.TimePresenter;
 import com.example.projectalpha.R;
 import com.example.projectalpha.Views.ApplicationViews;
 import com.example.projectalpha.Views.TimeView;
+import com.github.chrisbanes.photoview.PhotoView;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+import java.util.UUID;
+
+import dmax.dialog.SpotsDialog;
 
 public class STOActivity extends CustomCompatActivity
         implements TimeView, ApplicationViews, ApplicationViews.ReportViews, ApplicationViews.ReportViews.GetFuelRequest,
             ApplicationViews.ReportViews.GetGeneralRequest, ApplicationViews.ReportViews.GetPowerRequest, ApplicationViews.ReportViews.GetRoomRequest, ApplicationViews.ReportViews.GetOthersRequest {
 
+    private static final int PERMISSION_REQUEST_CODE = 1000;
     private ProgressDialog mDialog;
 
     private ApplicationPresenter applicationPresenter;
@@ -45,6 +61,7 @@ public class STOActivity extends CustomCompatActivity
     private TextView [] tvKondisiUmum, tvCatuan, tvBBM, tvSentral, tvTransmisi, tvRectifier, tvBatere, tvAkses, tvGenset;
     private TextView tvSTO, tvTanggal, tvNote;
     private Button btnContact;
+    private PhotoView imagephoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +71,71 @@ public class STOActivity extends CustomCompatActivity
         setVariable();
         createView();
         setBtnFooter();
+        checkPermission();
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch(requestCode)
+        {
+            case PERMISSION_REQUEST_CODE:
+            {
+                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                    Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private void checkPermission(){
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED)
+
+            ActivityCompat.requestPermissions(this, new String[]{
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+            }, PERMISSION_REQUEST_CODE);
+
+
+    }
+    private void downloadPicture(final String addurl, final String jenis){
+        imageViews[0].setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if(ActivityCompat.checkSelfPermission(STOActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED)
+                {
+                    Toast.makeText(STOActivity.this, "You should grant permission", Toast.LENGTH_SHORT).show();
+                    ActivityCompat.requestPermissions(STOActivity.this, new String[]{}, PERMISSION_REQUEST_CODE);
+
+                }
+                else
+                {
+                    AlertDialog dialog = new SpotsDialog(STOActivity.this);
+                    dialog.show();
+                    dialog.setMessage("Downloading...");
+
+                    String filename = tvSTO.getText()+"_"+tvTanggal.getText()+"_"+jenis+".jpg";
+                    Picasso.get().load(ENVIRONMENT.FOTO_URL+addurl).into(new SaveImageHelper(STOActivity.this, dialog, getApplicationContext().getContentResolver(),filename));
+
+                }
+                return true;
+            }
+        });
+    }
+    private void zoomPicture(final KondisiUmumData data){
+        imageViews[0].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(STOActivity.this);
+                View mView = getLayoutInflater().inflate(R.layout.photo_layout, null);
+                PhotoView photoView = mView.findViewById(R.id.photo_zoom);
+                Picasso.get().load(ENVIRONMENT.FOTO_URL+data.getFoto()).into(photoView);
+                mBuilder.setView(mView);
+                AlertDialog mDialog = mBuilder.create();
+                mDialog.show();
+            }
+        });
+    }
     private void setVariable() {
         mDialog = new ProgressDialog(STOActivity.this);
         mDialog.setMessage(ENVIRONMENT.NO_WAITING_MESSAGE);
@@ -178,6 +258,8 @@ public class STOActivity extends CustomCompatActivity
         if (data.getPompa_air() != null)tvKondisiUmum[1].setText(data.getPompa_air());
         if (data.getGenangan_air() != null)tvKondisiUmum[2].setText(data.getGenangan_air());
         if (data.getFoto() != null) Picasso.get().load(ENVIRONMENT.FOTO_URL+data.getFoto()).into(imageViews[0]);
+        zoomPicture(data);
+        downloadPicture(data.getFoto(), "KondisiUmum");
     }
 
     @Override

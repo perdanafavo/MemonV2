@@ -77,15 +77,11 @@ public class STOActivity extends CustomCompatActivity
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch(requestCode)
-        {
-            case PERMISSION_REQUEST_CODE:
-            {
-                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-                    Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show();
-                else
-                    Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
-            }
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show();
+            else
+                Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -98,7 +94,7 @@ public class STOActivity extends CustomCompatActivity
 
 
     }
-    private void downloadPicture(final String addurl, final String jenis){
+    private void downloadImage(final String addurl, final String jenis){
         imageViews[0].setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -114,7 +110,7 @@ public class STOActivity extends CustomCompatActivity
                     dialog.show();
                     dialog.setMessage("Downloading...");
 
-                    String filename = tvSTO.getText()+"_"+tvTanggal.getText()+"_"+jenis+".jpg";
+                    String filename = tvSTO.getText().toString()+"_"+tvTanggal.getText().toString()+"_"+jenis+".jpg";
                     Picasso.get().load(ENVIRONMENT.FOTO_URL+addurl).into(new SaveImageHelper(STOActivity.this, dialog, getApplicationContext().getContentResolver(),filename));
 
                 }
@@ -122,20 +118,202 @@ public class STOActivity extends CustomCompatActivity
             }
         });
     }
-    private void zoomPicture(final KondisiUmumData data){
+    private void zoomImageKondisiUmum(final KondisiUmumData data){
         imageViews[0].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(STOActivity.this);
                 View mView = getLayoutInflater().inflate(R.layout.photo_layout, null);
-                PhotoView photoView = mView.findViewById(R.id.photo_zoom);
-                Picasso.get().load(ENVIRONMENT.FOTO_URL+data.getFoto()).into(photoView);
+                imagephoto = mView.findViewById(R.id.photo_zoom);
+                Picasso.get().load(ENVIRONMENT.FOTO_URL+data.getFoto()).into(imagephoto);
                 mBuilder.setView(mView);
                 AlertDialog mDialog = mBuilder.create();
                 mDialog.show();
             }
         });
     }
+
+    private void zoomImageFuel(final FuelData data){
+        imageViews[1].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(STOActivity.this);
+                View mView = getLayoutInflater().inflate(R.layout.photo_layout, null);
+                imagephoto = mView.findViewById(R.id.photo_zoom);
+                Picasso.get().load(ENVIRONMENT.FOTO_URL+data.getFoto()).into(imagephoto);
+                mBuilder.setView(mView);
+                AlertDialog mDialog = mBuilder.create();
+                mDialog.show();
+            }
+        });
+    }
+
+    private void zoomImageRoom(final List<BIRData> data) {
+        for (int i=0; i<data.size(); i++){
+            final int finalI = i;
+            switch (data.get(i).getRuangan()){
+                case 1:
+                    imageViews[2].setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            AlertDialog.Builder mBuilder = new AlertDialog.Builder(STOActivity.this);
+                            View mView = getLayoutInflater().inflate(R.layout.photo_layout, null);
+                            imagephoto = mView.findViewById(R.id.photo_zoom);
+                            Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(finalI).getFoto_ruangan()).into(imagephoto);
+                            mBuilder.setView(mView);
+                            AlertDialog mDialog = mBuilder.create();
+                            mDialog.show();
+                        }
+                    });
+                    imageViews[3].setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            AlertDialog.Builder mBuilder = new AlertDialog.Builder(STOActivity.this);
+                            View mView = getLayoutInflater().inflate(R.layout.photo_layout, null);
+                            imagephoto = mView.findViewById(R.id.photo_zoom);
+                            Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(finalI).getFoto_ruangan()).into(imagephoto);
+                            mBuilder.setView(mView);
+                            AlertDialog mDialog = mBuilder.create();
+                            mDialog.show();
+                        }
+                    });
+                    break;
+                case 2:
+                    imageViews[4].setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            AlertDialog.Builder mBuilder = new AlertDialog.Builder(STOActivity.this);
+                            View mView = getLayoutInflater().inflate(R.layout.photo_layout, null);
+                            imagephoto = mView.findViewById(R.id.photo_zoom);
+                            Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(finalI).getFoto_ruangan()).into(imagephoto);
+                            mBuilder.setView(mView);
+                            AlertDialog mDialog = mBuilder.create();
+                            mDialog.show();
+                        }
+                    });
+                    imageViews[5].setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            AlertDialog.Builder mBuilder = new AlertDialog.Builder(STOActivity.this);
+                            View mView = getLayoutInflater().inflate(R.layout.photo_layout, null);
+                            imagephoto = mView.findViewById(R.id.photo_zoom);
+                            Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(finalI).getFoto_ruangan()).into(imagephoto);
+                            mBuilder.setView(mView);
+                            AlertDialog mDialog = mBuilder.create();
+                            mDialog.show();
+                        }
+                    });
+                    break;
+                case 3:
+                    imageViews[6].setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            AlertDialog.Builder mBuilder = new AlertDialog.Builder(STOActivity.this);
+                            View mView = getLayoutInflater().inflate(R.layout.photo_layout, null);
+                            imagephoto = mView.findViewById(R.id.photo_zoom);
+                            Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(finalI).getFoto_ruangan()).into(imagephoto);
+                            mBuilder.setView(mView);
+                            AlertDialog mDialog = mBuilder.create();
+                            mDialog.show();
+                        }
+                    });
+                    imageViews[7].setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            AlertDialog.Builder mBuilder = new AlertDialog.Builder(STOActivity.this);
+                            View mView = getLayoutInflater().inflate(R.layout.photo_layout, null);
+                            imagephoto = mView.findViewById(R.id.photo_zoom);
+                            Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(finalI).getFoto_ruangan()).into(imagephoto);
+                            mBuilder.setView(mView);
+                            AlertDialog mDialog = mBuilder.create();
+                            mDialog.show();
+                        }
+                    });
+                    break;
+                case 4:
+                    imageViews[8].setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            AlertDialog.Builder mBuilder = new AlertDialog.Builder(STOActivity.this);
+                            View mView = getLayoutInflater().inflate(R.layout.photo_layout, null);
+                            imagephoto = mView.findViewById(R.id.photo_zoom);
+                            Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(finalI).getFoto_ruangan()).into(imagephoto);
+                            mBuilder.setView(mView);
+                            AlertDialog mDialog = mBuilder.create();
+                            mDialog.show();
+                        }
+                    });
+                    imageViews[9].setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            AlertDialog.Builder mBuilder = new AlertDialog.Builder(STOActivity.this);
+                            View mView = getLayoutInflater().inflate(R.layout.photo_layout, null);
+                            imagephoto = mView.findViewById(R.id.photo_zoom);
+                            Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(finalI).getFoto_ruangan()).into(imagephoto);
+                            mBuilder.setView(mView);
+                            AlertDialog mDialog = mBuilder.create();
+                            mDialog.show();
+                        }
+                    });
+                    break;
+                case 5:
+                    imageViews[10].setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            AlertDialog.Builder mBuilder = new AlertDialog.Builder(STOActivity.this);
+                            View mView = getLayoutInflater().inflate(R.layout.photo_layout, null);
+                            imagephoto = mView.findViewById(R.id.photo_zoom);
+                            Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(finalI).getFoto_ruangan()).into(imagephoto);
+                            mBuilder.setView(mView);
+                            AlertDialog mDialog = mBuilder.create();
+                            mDialog.show();
+                        }
+                    });
+                    imageViews[11].setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            AlertDialog.Builder mBuilder = new AlertDialog.Builder(STOActivity.this);
+                            View mView = getLayoutInflater().inflate(R.layout.photo_layout, null);
+                            imagephoto = mView.findViewById(R.id.photo_zoom);
+                            Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(finalI).getFoto_ruangan()).into(imagephoto);
+                            mBuilder.setView(mView);
+                            AlertDialog mDialog = mBuilder.create();
+                            mDialog.show();
+                        }
+                    });
+                    break;
+                case 6:
+                    imageViews[12].setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            AlertDialog.Builder mBuilder = new AlertDialog.Builder(STOActivity.this);
+                            View mView = getLayoutInflater().inflate(R.layout.photo_layout, null);
+                            imagephoto = mView.findViewById(R.id.photo_zoom);
+                            Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(finalI).getFoto_ruangan()).into(imagephoto);
+                            mBuilder.setView(mView);
+                            AlertDialog mDialog = mBuilder.create();
+                            mDialog.show();
+                        }
+                    });
+                    imageViews[13].setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            AlertDialog.Builder mBuilder = new AlertDialog.Builder(STOActivity.this);
+                            View mView = getLayoutInflater().inflate(R.layout.photo_layout, null);
+                            imagephoto = mView.findViewById(R.id.photo_zoom);
+                            Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(finalI).getFoto_ruangan()).into(imagephoto);
+                            mBuilder.setView(mView);
+                            AlertDialog mDialog = mBuilder.create();
+                            mDialog.show();
+                        }
+                    });
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
     private void setVariable() {
         mDialog = new ProgressDialog(STOActivity.this);
         mDialog.setMessage(ENVIRONMENT.NO_WAITING_MESSAGE);
@@ -257,9 +435,10 @@ public class STOActivity extends CustomCompatActivity
         if (data.getCuaca() != null)tvKondisiUmum[0].setText(data.getCuaca());
         if (data.getPompa_air() != null)tvKondisiUmum[1].setText(data.getPompa_air());
         if (data.getGenangan_air() != null)tvKondisiUmum[2].setText(data.getGenangan_air());
-        if (data.getFoto() != null) Picasso.get().load(ENVIRONMENT.FOTO_URL+data.getFoto()).into(imageViews[0]);
-        zoomPicture(data);
-        downloadPicture(data.getFoto(), "KondisiUmum");
+        if (data.getFoto() != null)
+            Picasso.get().load(ENVIRONMENT.FOTO_URL+data.getFoto()).into(imageViews[0]);
+            zoomImageKondisiUmum(data);
+            downloadImage(data.getFoto(), "KondisiUmum");
     }
 
     @Override
@@ -275,8 +454,10 @@ public class STOActivity extends CustomCompatActivity
         tvBBM[0].setText(kapasitas);
         tvBBM[1].setText(tanki);
         tvBBM[2].setText(sisa);
-        tvBBM[3].setText(peringatan );
-        if (data.getFoto() != null) Picasso.get().load(ENVIRONMENT.FOTO_URL+data.getFoto()).into(imageViews[1]);
+        tvBBM[3].setText(peringatan);
+        if (data.getFoto() != null)
+            Picasso.get().load(ENVIRONMENT.FOTO_URL+data.getFoto()).into(imageViews[1]);
+            zoomImageFuel(data);
     }
 
     @Override
@@ -290,6 +471,8 @@ public class STOActivity extends CustomCompatActivity
                     if (data.get(i).getSteker_bertumpuk() != null) tvSentral[2].setText(data.get(i).getSteker_bertumpuk());
                     if (data.get(i).getFoto_ruangan() != null) Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(i).getFoto_ruangan()).into(imageViews[2]);
                     if (data.get(i).getFoto_suhu() != null) Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(i).getFoto_suhu()).into(imageViews[3]);
+                    if (data.get(i).getFoto_ruangan() != null && data.get(i).getFoto_suhu() != null)
+                        zoomImageRoom(data);
                     break;
                 case 2:
                     String suhuTransmisi = data.get(i).getSuhu()+" °C";
@@ -298,6 +481,8 @@ public class STOActivity extends CustomCompatActivity
                     if (data.get(i).getSteker_bertumpuk() != null) tvTransmisi[2].setText(data.get(i).getSteker_bertumpuk());
                     if (data.get(i).getFoto_ruangan() != null) Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(i).getFoto_ruangan()).into(imageViews[4]);
                     if (data.get(i).getFoto_suhu() != null) Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(i).getFoto_suhu()).into(imageViews[5]);
+                    if (data.get(i).getFoto_ruangan() != null && data.get(i).getFoto_suhu() != null)
+                        zoomImageRoom(data);
                     break;
                 case 3:
                     String suhuRectifier = data.get(i).getSuhu()+" °C";
@@ -306,6 +491,8 @@ public class STOActivity extends CustomCompatActivity
                     if (data.get(i).getSteker_bertumpuk() != null) tvRectifier[2].setText(data.get(i).getSteker_bertumpuk());
                     if (data.get(i).getFoto_ruangan() != null) Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(i).getFoto_ruangan()).into(imageViews[6]);
                     if (data.get(i).getFoto_suhu() != null) Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(i).getFoto_suhu()).into(imageViews[7]);
+                    if (data.get(i).getFoto_ruangan() != null && data.get(i).getFoto_suhu() != null)
+                        zoomImageRoom(data);
                     break;
                 case 4:
                     String suhuBatere = data.get(i).getSuhu()+" °C";
@@ -314,6 +501,8 @@ public class STOActivity extends CustomCompatActivity
                     if (data.get(i).getSteker_bertumpuk() != null) tvBatere[2].setText(data.get(i).getSteker_bertumpuk());
                     if (data.get(i).getFoto_ruangan() != null) Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(i).getFoto_ruangan()).into(imageViews[8]);
                     if (data.get(i).getFoto_suhu() != null) Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(i).getFoto_suhu()).into(imageViews[9]);
+                    if (data.get(i).getFoto_ruangan() != null && data.get(i).getFoto_suhu() != null)
+                        zoomImageRoom(data);
                     break;
                 case 5:
                     String suhuAkses = data.get(i).getSuhu()+" °C";
@@ -322,6 +511,8 @@ public class STOActivity extends CustomCompatActivity
                     if (data.get(i).getSteker_bertumpuk() != null) tvAkses[2].setText(data.get(i).getSteker_bertumpuk());
                     if (data.get(i).getFoto_ruangan() != null) Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(i).getFoto_ruangan()).into(imageViews[10]);
                     if (data.get(i).getFoto_suhu() != null) Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(i).getFoto_suhu()).into(imageViews[11]);
+                    if (data.get(i).getFoto_ruangan() != null && data.get(i).getFoto_suhu() != null)
+                        zoomImageRoom(data);
                     break;
                 case 6:
                     String suhuGenset = data.get(i).getSuhu()+" °C";
@@ -331,6 +522,8 @@ public class STOActivity extends CustomCompatActivity
                     if (data.get(i).getCeceran_oli() != null) tvGenset[3].setText(data.get(i).getCeceran_oli());
                     if (data.get(i).getFoto_ruangan() != null) Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(i).getFoto_ruangan()).into(imageViews[12]);
                     if (data.get(i).getFoto_suhu() != null) Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(i).getFoto_suhu()).into(imageViews[13]);
+                    if (data.get(i).getFoto_ruangan() != null && data.get(i).getFoto_suhu() != null)
+                        zoomImageRoom(data);
                     break;
                 default:
                     break;

@@ -77,7 +77,7 @@ public class ImageHandle {
     }
 
     public MultipartBody.Part convertMultiparFile(File file) {
-        RequestBody reqFile = RequestBody.create(MediaType.parse("image/*"), file);
+        RequestBody reqFile = RequestBody.create(file, MediaType.parse("image/*"));
         return MultipartBody.Part.createFormData("photo", file.getName(), reqFile);
     }
 

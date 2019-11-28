@@ -2,12 +2,12 @@ package com.example.projectalpha.Activity.ManagerActivity;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import com.google.android.material.tabs.TabLayout;
-import androidx.viewpager.widget.ViewPager;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.projectalpha.Adapter.ManagerFragmentAdapter;
 import com.example.projectalpha.Config.ENVIRONMENT;
@@ -27,6 +27,7 @@ import com.example.projectalpha.R;
 import com.example.projectalpha.Views.ApplicationViews;
 import com.example.projectalpha.Views.MainManagerViews;
 import com.example.projectalpha.Views.TimeView;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.HashMap;
 import java.util.List;

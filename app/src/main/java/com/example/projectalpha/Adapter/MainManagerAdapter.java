@@ -1,12 +1,13 @@
 package com.example.projectalpha.Adapter;
 
 import android.content.Intent;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projectalpha.Activity.ManagerActivity.MainManagerActivity;
 import com.example.projectalpha.Activity.ManagerActivity.WitelActivity;
@@ -14,6 +15,8 @@ import com.example.projectalpha.Config.ENVIRONMENT;
 import com.example.projectalpha.Models.SubModels.LaporanData;
 import com.example.projectalpha.Models.SubModels.WitelData;
 import com.example.projectalpha.R;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.List;
@@ -33,6 +36,7 @@ public class MainManagerAdapter extends RecyclerView.Adapter<MainManagerAdapter.
         this.fragmentTitle = fragmentTitle;
     }
 
+    @NotNull
     @Override
     public MainManagerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         mainManagerActivity = (MainManagerActivity) parent.getContext();
@@ -40,7 +44,7 @@ public class MainManagerAdapter extends RecyclerView.Adapter<MainManagerAdapter.
     }
 
     @Override
-    public void onBindViewHolder(MainManagerAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NotNull MainManagerAdapter.ViewHolder holder, int position) {
         List<LaporanData> dataStatus = null;
 
         if (fragmentTitle.equals(ENVIRONMENT.MORNING_STATUS)) dataStatus = placeStatus.get(ENVIRONMENT.MORNING_STATUS);

@@ -23,8 +23,8 @@ public class SaveImageHelper implements Target {
 
     public SaveImageHelper(Context context, AlertDialog alertDialog, ContentResolver contentResolver, String name) {
         this.context=context;
-        this.alertDialogWeakReference = new WeakReference<AlertDialog>(alertDialog);
-        this.contentResolverWeakReference = new WeakReference<ContentResolver>(contentResolver);
+        this.alertDialogWeakReference = new WeakReference<>(alertDialog);
+        this.contentResolverWeakReference = new WeakReference<>(contentResolver);
         this.name = name;
     }
 

@@ -1,12 +1,13 @@
 package com.example.projectalpha.Adapter;
 
 import android.content.Intent;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projectalpha.Activity.ManagerActivity.STOSelectedActivity;
 import com.example.projectalpha.Activity.ManagerActivity.WitelSelectedActivity;

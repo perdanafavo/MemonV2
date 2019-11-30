@@ -123,10 +123,10 @@ public class STOActivity extends CustomCompatActivity
             @Override
             public void onClick(View view){
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(STOActivity.this);
-                View mView = getLayoutInflater().inflate(R.layout.photo_layout, null);
+                View mView = View.inflate(STOActivity.this,R.layout.photo_layout, null);
+                mBuilder.setView(mView);
                 imagephoto = mView.findViewById(R.id.photo_zoom);
                 Picasso.get().load(ENVIRONMENT.FOTO_URL+data.getFoto()).into(imagephoto);
-                mBuilder.setView(mView);
                 AlertDialog mDialog = mBuilder.create();
                 mDialog.show();
             }
@@ -138,10 +138,10 @@ public class STOActivity extends CustomCompatActivity
             @Override
             public void onClick(View view){
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(STOActivity.this);
-                View mView = getLayoutInflater().inflate(R.layout.photo_layout, null);
+                View mView = View.inflate(STOActivity.this,R.layout.photo_layout, null);
+                mBuilder.setView(mView);
                 imagephoto = mView.findViewById(R.id.photo_zoom);
                 Picasso.get().load(ENVIRONMENT.FOTO_URL+data.getFoto()).into(imagephoto);
-                mBuilder.setView(mView);
                 AlertDialog mDialog = mBuilder.create();
                 mDialog.show();
             }
@@ -157,10 +157,10 @@ public class STOActivity extends CustomCompatActivity
                         @Override
                         public void onClick(View v) {
                             AlertDialog.Builder mBuilder = new AlertDialog.Builder(STOActivity.this);
-                            View mView = getLayoutInflater().inflate(R.layout.photo_layout, null);
+                            View mView = View.inflate(STOActivity.this,R.layout.photo_layout, null);
+                            mBuilder.setView(mView);
                             imagephoto = mView.findViewById(R.id.photo_zoom);
                             Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(finalI).getFoto_ruangan()).into(imagephoto);
-                            mBuilder.setView(mView);
                             AlertDialog mDialog = mBuilder.create();
                             mDialog.show();
                         }
@@ -169,10 +169,10 @@ public class STOActivity extends CustomCompatActivity
                         @Override
                         public void onClick(View v) {
                             AlertDialog.Builder mBuilder = new AlertDialog.Builder(STOActivity.this);
-                            View mView = getLayoutInflater().inflate(R.layout.photo_layout, null);
+                            View mView = View.inflate(STOActivity.this,R.layout.photo_layout, null);
+                            mBuilder.setView(mView);
                             imagephoto = mView.findViewById(R.id.photo_zoom);
                             Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(finalI).getFoto_ruangan()).into(imagephoto);
-                            mBuilder.setView(mView);
                             AlertDialog mDialog = mBuilder.create();
                             mDialog.show();
                         }
@@ -183,10 +183,10 @@ public class STOActivity extends CustomCompatActivity
                         @Override
                         public void onClick(View v) {
                             AlertDialog.Builder mBuilder = new AlertDialog.Builder(STOActivity.this);
-                            View mView = getLayoutInflater().inflate(R.layout.photo_layout, null);
+                            View mView = View.inflate(STOActivity.this,R.layout.photo_layout, null);
+                            mBuilder.setView(mView);
                             imagephoto = mView.findViewById(R.id.photo_zoom);
                             Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(finalI).getFoto_ruangan()).into(imagephoto);
-                            mBuilder.setView(mView);
                             AlertDialog mDialog = mBuilder.create();
                             mDialog.show();
                         }
@@ -195,10 +195,10 @@ public class STOActivity extends CustomCompatActivity
                         @Override
                         public void onClick(View v) {
                             AlertDialog.Builder mBuilder = new AlertDialog.Builder(STOActivity.this);
-                            View mView = getLayoutInflater().inflate(R.layout.photo_layout, null);
+                            View mView = View.inflate(STOActivity.this,R.layout.photo_layout, null);
+                            mBuilder.setView(mView);
                             imagephoto = mView.findViewById(R.id.photo_zoom);
                             Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(finalI).getFoto_ruangan()).into(imagephoto);
-                            mBuilder.setView(mView);
                             AlertDialog mDialog = mBuilder.create();
                             mDialog.show();
                         }
@@ -209,10 +209,10 @@ public class STOActivity extends CustomCompatActivity
                         @Override
                         public void onClick(View v) {
                             AlertDialog.Builder mBuilder = new AlertDialog.Builder(STOActivity.this);
-                            View mView = getLayoutInflater().inflate(R.layout.photo_layout, null);
+                            View mView = View.inflate(STOActivity.this,R.layout.photo_layout, null);
+                            mBuilder.setView(mView);
                             imagephoto = mView.findViewById(R.id.photo_zoom);
                             Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(finalI).getFoto_ruangan()).into(imagephoto);
-                            mBuilder.setView(mView);
                             AlertDialog mDialog = mBuilder.create();
                             mDialog.show();
                         }
@@ -221,10 +221,10 @@ public class STOActivity extends CustomCompatActivity
                         @Override
                         public void onClick(View v) {
                             AlertDialog.Builder mBuilder = new AlertDialog.Builder(STOActivity.this);
-                            View mView = getLayoutInflater().inflate(R.layout.photo_layout, null);
+                            View mView = View.inflate(STOActivity.this,R.layout.photo_layout, null);
+                            mBuilder.setView(mView);
                             imagephoto = mView.findViewById(R.id.photo_zoom);
                             Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(finalI).getFoto_ruangan()).into(imagephoto);
-                            mBuilder.setView(mView);
                             AlertDialog mDialog = mBuilder.create();
                             mDialog.show();
                         }
@@ -235,10 +235,10 @@ public class STOActivity extends CustomCompatActivity
                         @Override
                         public void onClick(View v) {
                             AlertDialog.Builder mBuilder = new AlertDialog.Builder(STOActivity.this);
-                            View mView = getLayoutInflater().inflate(R.layout.photo_layout, null);
+                            View mView = View.inflate(STOActivity.this,R.layout.photo_layout, null);
+                            mBuilder.setView(mView);
                             imagephoto = mView.findViewById(R.id.photo_zoom);
                             Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(finalI).getFoto_ruangan()).into(imagephoto);
-                            mBuilder.setView(mView);
                             AlertDialog mDialog = mBuilder.create();
                             mDialog.show();
                         }
@@ -247,10 +247,10 @@ public class STOActivity extends CustomCompatActivity
                         @Override
                         public void onClick(View v) {
                             AlertDialog.Builder mBuilder = new AlertDialog.Builder(STOActivity.this);
-                            View mView = getLayoutInflater().inflate(R.layout.photo_layout, null);
+                            View mView = View.inflate(STOActivity.this,R.layout.photo_layout, null);
+                            mBuilder.setView(mView);
                             imagephoto = mView.findViewById(R.id.photo_zoom);
                             Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(finalI).getFoto_ruangan()).into(imagephoto);
-                            mBuilder.setView(mView);
                             AlertDialog mDialog = mBuilder.create();
                             mDialog.show();
                         }
@@ -261,10 +261,10 @@ public class STOActivity extends CustomCompatActivity
                         @Override
                         public void onClick(View v) {
                             AlertDialog.Builder mBuilder = new AlertDialog.Builder(STOActivity.this);
-                            View mView = getLayoutInflater().inflate(R.layout.photo_layout, null);
+                            View mView = View.inflate(STOActivity.this,R.layout.photo_layout, null);
+                            mBuilder.setView(mView);
                             imagephoto = mView.findViewById(R.id.photo_zoom);
                             Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(finalI).getFoto_ruangan()).into(imagephoto);
-                            mBuilder.setView(mView);
                             AlertDialog mDialog = mBuilder.create();
                             mDialog.show();
                         }
@@ -273,10 +273,10 @@ public class STOActivity extends CustomCompatActivity
                         @Override
                         public void onClick(View v) {
                             AlertDialog.Builder mBuilder = new AlertDialog.Builder(STOActivity.this);
-                            View mView = getLayoutInflater().inflate(R.layout.photo_layout, null);
+                            View mView = View.inflate(STOActivity.this,R.layout.photo_layout, null);
+                            mBuilder.setView(mView);
                             imagephoto = mView.findViewById(R.id.photo_zoom);
                             Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(finalI).getFoto_ruangan()).into(imagephoto);
-                            mBuilder.setView(mView);
                             AlertDialog mDialog = mBuilder.create();
                             mDialog.show();
                         }
@@ -287,10 +287,10 @@ public class STOActivity extends CustomCompatActivity
                         @Override
                         public void onClick(View v) {
                             AlertDialog.Builder mBuilder = new AlertDialog.Builder(STOActivity.this);
-                            View mView = getLayoutInflater().inflate(R.layout.photo_layout, null);
+                            View mView = View.inflate(STOActivity.this,R.layout.photo_layout, null);
+                            mBuilder.setView(mView);
                             imagephoto = mView.findViewById(R.id.photo_zoom);
                             Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(finalI).getFoto_ruangan()).into(imagephoto);
-                            mBuilder.setView(mView);
                             AlertDialog mDialog = mBuilder.create();
                             mDialog.show();
                         }
@@ -299,10 +299,10 @@ public class STOActivity extends CustomCompatActivity
                         @Override
                         public void onClick(View v) {
                             AlertDialog.Builder mBuilder = new AlertDialog.Builder(STOActivity.this);
-                            View mView = getLayoutInflater().inflate(R.layout.photo_layout, null);
+                            View mView = View.inflate(STOActivity.this,R.layout.photo_layout, null);
+                            mBuilder.setView(mView);
                             imagephoto = mView.findViewById(R.id.photo_zoom);
                             Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(finalI).getFoto_ruangan()).into(imagephoto);
-                            mBuilder.setView(mView);
                             AlertDialog mDialog = mBuilder.create();
                             mDialog.show();
                         }

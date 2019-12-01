@@ -36,17 +36,18 @@ public class ImageHandle {
     public Bitmap bipmapCompress(Bitmap bitmap){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String dateTime = sdf.format(Calendar.getInstance().getTime());
-        Canvas cs = new Canvas(bitmap);
+        Bitmap mutableBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
+        Canvas cs = new Canvas(mutableBitmap);
         Paint tPaint = new Paint();
         tPaint.setTextSize(10);
         tPaint.setColor(Color.RED);
         tPaint.setStyle(Paint.Style.FILL);
-        cs.drawBitmap(bitmap, 0f, 0f, null);
+        cs.drawBitmap(mutableBitmap, 0f, 0f, null);
         float height = tPaint.measureText("yY");
         cs.drawText(dateTime, 85f, height, tPaint);
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
+        mutableBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
         return BitmapFactory.decodeStream(new ByteArrayInputStream(out.toByteArray()));
     }
 

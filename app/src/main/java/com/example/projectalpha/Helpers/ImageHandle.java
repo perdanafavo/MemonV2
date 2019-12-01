@@ -57,9 +57,7 @@ public class ImageHandle {
     }
 
     public File fileCreate(Bitmap bitmap){
-
         try {
-
             File file = new File(activity.getApplicationContext().getCacheDir(), FILE_NAME_IMAGE);
             file.createNewFile();
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -77,18 +75,7 @@ public class ImageHandle {
     }
 
     public File fileCreate(Bitmap bitmap, String name){
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//        String dateTime = sdf.format(Calendar.getInstance().getTime());
-//        Canvas cs = new Canvas(bitmap);
-//        Paint tPaint = new Paint();
-//        tPaint.setTextSize(35);
-//        tPaint.setColor(Color.BLUE);
-//        tPaint.setStyle(Paint.Style.FILL);
-//        cs.drawBitmap(bitmap, 0f, 0f, null);
-//        float height = tPaint.measureText("yY");
-//        cs.drawText(dateTime, 20f, height+15f, tPaint);
         try {
-
             File file = new File(activity.getApplicationContext().getCacheDir(), name);
             file.createNewFile();
             ByteArrayOutputStream bos = new ByteArrayOutputStream();

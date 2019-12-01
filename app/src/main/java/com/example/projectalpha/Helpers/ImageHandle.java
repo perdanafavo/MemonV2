@@ -61,7 +61,7 @@ public class ImageHandle {
             File file = new File(activity.getApplicationContext().getCacheDir(), FILE_NAME_IMAGE);
             file.createNewFile();
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 80, bos);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
             byte[] bitmapdata = bos.toByteArray();
             FileOutputStream fos = new FileOutputStream(file);
             fos.write(bitmapdata);

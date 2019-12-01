@@ -138,4 +138,5 @@
     <string name="peringatan_tanki">Peringatan Tanki</string>
     <string name="memon">MEMON</string>
     <string name="mechanical_electronical_monitoring">Mechanical Electronical Monitoring</string>
+    <string name="editpetugas">Edit Profile</string>
 </resources>

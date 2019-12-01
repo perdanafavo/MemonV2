@@ -2,6 +2,8 @@ package com.example.projectalpha.Models.SubModels;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.jetbrains.annotations.NotNull;
+
 public class WitelData {
     @SerializedName("id")
     private int id;
@@ -36,6 +38,7 @@ public class WitelData {
         this.singkatan = singkatan;
     }
 
+    @NotNull
     @Override
     public String toString() {
         return "WitelData{" +

@@ -16,6 +16,8 @@ import com.example.projectalpha.Models.SubModels.LaporanData;
 import com.example.projectalpha.Models.SubModels.STOData;
 import com.example.projectalpha.R;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 public class WitelManagerAdapter extends RecyclerView.Adapter<WitelManagerAdapter.ViewHolder> {
@@ -39,6 +41,7 @@ public class WitelManagerAdapter extends RecyclerView.Adapter<WitelManagerAdapte
         this.tanggal = tanggal;
     }
 
+    @NotNull
     @Override
     public WitelManagerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         context = parent.getContext();
@@ -56,7 +59,7 @@ public class WitelManagerAdapter extends RecyclerView.Adapter<WitelManagerAdapte
     }
 
     @Override
-    public void onBindViewHolder(WitelManagerAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NotNull WitelManagerAdapter.ViewHolder holder, int position) {
         int index = 0;
         if (dataStatus != null){
             for (LaporanData data:dataStatus){

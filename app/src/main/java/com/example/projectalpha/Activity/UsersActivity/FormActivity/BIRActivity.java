@@ -129,9 +129,6 @@ public class BIRActivity extends CustomCompatActivity
         String title;
 
         switch (RUANGAN){
-            case 1:
-                title = "Ruang Sentral";
-                break;
             case 2:
                 title = "Ruang Transmisi";
                 break;
@@ -294,40 +291,22 @@ public class BIRActivity extends CustomCompatActivity
             btnRuangan.setBackgroundResource(R.color.colorGreyLight);
         }
 
-        switch (terbakar){
-            case "Ada":
-                radioBakar.check(R.id.radioBMAda);
-                break;
-            case "Tidak Ada":
-                radioBakar.check(R.id.radioBMTidak);
-                break;
-            default:
-                radioBakar.check(R.id.radioBMAda);
-                break;
+        if ("Tidak Ada".equals(terbakar)) {
+            radioBakar.check(R.id.radioBMTidak);
+        } else {
+            radioBakar.check(R.id.radioBMAda);
         }
 
-        switch (steker){
-            case "Ada":
-                radioSteker.check(R.id.radioStekerAda);
-                break;
-            case "Tidak Ada":
-                radioSteker.check(R.id.radioStekerTidak);
-                break;
-            default:
-                radioSteker.check(R.id.radioStekerAda);
-                break;
+        if ("Tidak Ada".equals(steker)) {
+            radioSteker.check(R.id.radioStekerTidak);
+        } else {
+            radioSteker.check(R.id.radioStekerAda);
         }
 
-        switch (oli){
-            case "Ada":
-                radioOli.check(R.id.radioCeceranAda);
-                break;
-            case "Tidak Ada":
-                radioOli.check(R.id.radioCeceranTidak);
-                break;
-            default:
-                radioOli.check(R.id.radioCeceranAda);
-                break;
+        if ("Tidak Ada".equals(oli)) {
+            radioOli.check(R.id.radioCeceranTidak);
+        } else {
+            radioOli.check(R.id.radioCeceranAda);
         }
         mDialog.dismiss();
     }
@@ -365,8 +344,8 @@ public class BIRActivity extends CustomCompatActivity
     @Override
     public Map<String, RequestBody> GetRequestBody() {
         Map<String, RequestBody> MapRequestBody = new HashMap<>();
-        MapRequestBody.put("id", RequestBody.create(okhttp3.MultipartBody.FORM, sessionManager.getSpIduser()));
-        MapRequestBody.put("sto", RequestBody.create(okhttp3.MultipartBody.FORM, sessionManager.getSpNamaSTO()));
+        MapRequestBody.put("id", RequestBody.create(sessionManager.getSpIduser(),okhttp3.MultipartBody.FORM));
+        MapRequestBody.put("sto", RequestBody.create(sessionManager.getSpNamaSTO(),okhttp3.MultipartBody.FORM));
         return MapRequestBody;
     }
 

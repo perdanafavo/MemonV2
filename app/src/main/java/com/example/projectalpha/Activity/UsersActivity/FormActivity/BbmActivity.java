@@ -179,8 +179,8 @@ public class BbmActivity extends CustomCompatActivity
     @Override
     public Map<String, RequestBody> GetRequestBody() {
         Map<String, RequestBody> MapRequestBody = new HashMap<>();
-        MapRequestBody.put("id", RequestBody.create(MultipartBody.FORM, sessionManager.getSpIduser()));
-        MapRequestBody.put("sto", RequestBody.create(MultipartBody.FORM, sessionManager.getSpNamaSTO()));
+        MapRequestBody.put("id", RequestBody.create(sessionManager.getSpIduser(),MultipartBody.FORM));
+        MapRequestBody.put("sto", RequestBody.create(sessionManager.getSpNamaSTO(),MultipartBody.FORM));
         return MapRequestBody;
     }
 

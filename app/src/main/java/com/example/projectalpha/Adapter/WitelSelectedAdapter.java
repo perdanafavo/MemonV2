@@ -18,6 +18,8 @@ import com.example.projectalpha.Models.SubModels.PowerData;
 import com.example.projectalpha.Models.SubModels.WitelData;
 import com.example.projectalpha.R;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 public class WitelSelectedAdapter extends RecyclerView.Adapter<WitelSelectedAdapter.ViewHolder> {
@@ -36,6 +38,7 @@ public class WitelSelectedAdapter extends RecyclerView.Adapter<WitelSelectedAdap
         this.dataFuel = dataFuel;
     }
 
+    @NotNull
     @Override
     public WitelSelectedAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         witelSelectedActivity = (WitelSelectedActivity) parent.getContext();
@@ -43,7 +46,7 @@ public class WitelSelectedAdapter extends RecyclerView.Adapter<WitelSelectedAdap
     }
 
     @Override
-    public void onBindViewHolder(WitelSelectedAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NotNull WitelSelectedAdapter.ViewHolder holder, int position) {
         String TITLE = null;
 
         int count = 0;

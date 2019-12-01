@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitConnect {
 
-    public static Retrofit setInit(){
+    private static Retrofit setInit(){
 
         final OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .connectTimeout(15, TimeUnit.SECONDS)

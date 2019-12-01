@@ -8,7 +8,7 @@ import java.util.Locale;
 
 public class Time {
 
-    public static String hari(String time){
+    private static String hari(String time){
         String hari = null;
 
         Calendar c = Calendar.getInstance();
@@ -19,7 +19,7 @@ public class Time {
         SimpleDateFormat inputFormat = new SimpleDateFormat(inputPattern, new Locale("in", "ID"));
         SimpleDateFormat outputFormat = new SimpleDateFormat(outputPattern, new Locale("in", "ID"));
 
-        Date date = null;
+        Date date;
 
         try {
             date = inputFormat.parse(time);
@@ -33,7 +33,7 @@ public class Time {
     }
 
     public static String tanggal(String time){
-        String tanggal = null, strH = null, strB = null, strT = null;
+        String tanggal, strH = null, strB = null, strT = null;
 
         String inputPattern = "yyyy-MM-dd";
         String hariPattern = "dd";
@@ -45,7 +45,7 @@ public class Time {
         SimpleDateFormat bulanFormat = new SimpleDateFormat(bulanPattern, new Locale("in", "ID"));
         SimpleDateFormat tahunFormat = new SimpleDateFormat(tahunPattern, new Locale("in", "ID"));
 
-        Date date = null;
+        Date date;
 
         try {
             date = inputFormat.parse(time);
@@ -56,10 +56,8 @@ public class Time {
             e.printStackTrace();
         }
 
+        assert strB != null;
         switch (strB){
-            case "01":
-                tanggal = hari(time)+", "+strH+" Januari "+strT;
-                break;
             case "02":
                 tanggal = hari(time)+", "+strH+" Februari "+strT;
                 break;

@@ -15,6 +15,8 @@ import com.example.projectalpha.Config.ENVIRONMENT;
 import com.example.projectalpha.Models.SubModels.UsersData;
 import com.example.projectalpha.R;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 public class ResetUserAdapter extends RecyclerView.Adapter<ResetUserAdapter.ResetUserHolder> {
@@ -30,6 +32,7 @@ public class ResetUserAdapter extends RecyclerView.Adapter<ResetUserAdapter.Rese
         this.dataUsers = filteredList;
     }
 
+    @NotNull
     @Override
     public ResetUserHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         context = parent.getContext();

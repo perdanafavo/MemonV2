@@ -18,6 +18,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -34,7 +35,7 @@ public class ImageHandle {
     }
 
     public Bitmap bipmapCompress(Bitmap bitmap){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
         String dateTime = sdf.format(Calendar.getInstance().getTime());
         Bitmap mutableBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
         Canvas cs = new Canvas(mutableBitmap);

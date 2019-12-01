@@ -129,7 +129,7 @@ public class CreateUserActivity extends CustomCompatActivity
     @Override
     @NotNull
     public RequestBody createPartFromString(String descriptionString) {
-        return RequestBody.create(okhttp3.MultipartBody.FORM, descriptionString);
+        return RequestBody.create(descriptionString, okhttp3.MultipartBody.FORM);
     }
 
     @Override

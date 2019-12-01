@@ -198,46 +198,26 @@ public class KondisiUmumActivity extends CustomCompatActivity
             btnFoto.setBackgroundResource(R.color.colorGreyLight);
         }
 
-        switch (cuaca){
-            case "Cerah":
-                radioCuaca.check(R.id.radioCerah);
-                break;
-            case "Mendung":
-                radioCuaca.check(R.id.radioMendung);
-                break;
-            case "Hujan":
-                radioCuaca.check(R.id.radioHujan);
-                break;
-            default:
-                radioCuaca.check(R.id.radioCerah);
-                break;
+        if ("Mendung".equals(cuaca)) {
+            radioCuaca.check(R.id.radioMendung);
+        } else if ("Hujan".equals(cuaca)) {
+            radioCuaca.check(R.id.radioHujan);
+        } else {
+            radioCuaca.check(R.id.radioCerah);
         }
 
-        switch (pompa){
-            case "Baik":
-                radioPompa.check(R.id.radioPompaBaik);
-                break;
-            case "Tidak Baik":
-                radioPompa.check(R.id.radioPompaTidakBaik);
-                break;
-            case "Tidak Ada":
-                radioPompa.check(R.id.radioPompaTidakAda);
-                break;
-            default:
-                radioPompa.check(R.id.radioPompaBaik);
-                break;
+        if ("Tidak Baik".equals(pompa)) {
+            radioPompa.check(R.id.radioPompaTidakBaik);
+        } else if ("Tidak Ada".equals(pompa)) {
+            radioPompa.check(R.id.radioPompaTidakAda);
+        } else {
+            radioPompa.check(R.id.radioPompaBaik);
         }
 
-        switch (genangan){
-            case "Ada":
-                radioGenangan.check(R.id.radioGenanganAda);
-                break;
-            case "Tidak Ada":
-                radioGenangan.check(R.id.radioGenanganTidak);
-                break;
-            default:
-                radioGenangan.check(R.id.radioGenanganAda);
-                break;
+        if ("Tidak Ada".equals(genangan)) {
+            radioGenangan.check(R.id.radioGenanganTidak);
+        } else {
+            radioGenangan.check(R.id.radioGenanganAda);
         }
         mDialog.dismiss();
     }
@@ -261,8 +241,8 @@ public class KondisiUmumActivity extends CustomCompatActivity
     @Override
     public Map<String, RequestBody> GetRequestBody() {
         Map<String, RequestBody> MapRequestBody = new HashMap<>();
-        MapRequestBody.put("id", RequestBody.create(okhttp3.MultipartBody.FORM, sessionManager.getSpIduser()));
-        MapRequestBody.put("sto", RequestBody.create(okhttp3.MultipartBody.FORM, sessionManager.getSpNamaSTO()));
+        MapRequestBody.put("id", RequestBody.create(sessionManager.getSpIduser(), okhttp3.MultipartBody.FORM));
+        MapRequestBody.put("sto", RequestBody.create(sessionManager.getSpNamaSTO(),okhttp3.MultipartBody.FORM));
         return MapRequestBody;
     }
 

@@ -25,6 +25,8 @@ import com.example.projectalpha.Models.SubModels.WitelData;
 import com.example.projectalpha.R;
 import com.example.projectalpha.Views.CreateUserViews;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -52,7 +54,7 @@ public class CreateUser1Fragment extends Fragment{
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NotNull Context context) {
         super.onAttach(context);
         createUserViews = (CreateUserViews) context;
         dataWitel = createUserViews.getDataWitel();
@@ -65,7 +67,7 @@ public class CreateUser1Fragment extends Fragment{
         return inflater.inflate(R.layout.fragment_create_user1, container, false);
     }
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NotNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         btnSelanjutnya = view.findViewById(R.id.btnSelanjutnya);
         spinnerWitel  = view.findViewById(R.id.spinnerWitel);

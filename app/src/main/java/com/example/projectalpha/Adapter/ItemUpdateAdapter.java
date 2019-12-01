@@ -19,6 +19,8 @@ import com.example.projectalpha.Models.SubModels.UsersData;
 import com.example.projectalpha.R;
 import com.example.projectalpha.Views.UpdateMenuUserViews;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 public class ItemUpdateAdapter extends RecyclerView.Adapter<ItemUpdateAdapter.ItemUpdateHolder> {
@@ -35,6 +37,7 @@ public class ItemUpdateAdapter extends RecyclerView.Adapter<ItemUpdateAdapter.It
         itemUpdate = list;
     }
 
+    @NotNull
     @Override
     public ItemUpdateHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         context = parent.getContext();

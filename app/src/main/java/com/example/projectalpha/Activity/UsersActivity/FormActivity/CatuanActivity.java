@@ -133,28 +133,16 @@ public class CatuanActivity extends CustomCompatActivity
         if (data.getGenset()==null) genset="Laporan Kosong";
         else genset=data.getGenset();
 
-        switch (pln){
-            case "ON":
-                radioPLN.check(R.id.radioPLNON);
-                break;
-            case "OFF":
-                radioPLN.check(R.id.radioPLNOFF);
-                break;
-            default:
-                radioPLN.check(R.id.radioPLNON);
-                break;
+        if ("OFF".equals(pln)) {
+            radioPLN.check(R.id.radioPLNOFF);
+        } else {
+            radioPLN.check(R.id.radioPLNON);
         }
 
-        switch (genset){
-            case "ON":
-                radioGenset.check(R.id.radioGensetON);
-                break;
-            case "OFF":
-                radioGenset.check(R.id.radioGensetOFF);
-                break;
-            default:
-                radioGenset.check(R.id.radioGensetON);
-                break;
+        if ("OFF".equals(genset)) {
+            radioGenset.check(R.id.radioGensetOFF);
+        } else {
+            radioGenset.check(R.id.radioGensetON);
         }
         mDialog.dismiss();
     }

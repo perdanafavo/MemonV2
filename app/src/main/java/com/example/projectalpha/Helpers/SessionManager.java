@@ -31,6 +31,7 @@ public class SessionManager {
     public SessionManager(@NotNull Context mContext){
         sp = mContext.getSharedPreferences(SP_STO_APP, Context.MODE_PRIVATE);
         spEditor = sp.edit();
+        spEditor.apply();
     }
 
     void clearSP(){

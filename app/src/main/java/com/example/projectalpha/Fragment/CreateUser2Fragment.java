@@ -18,6 +18,8 @@ import androidx.fragment.app.Fragment;
 import com.example.projectalpha.R;
 import com.example.projectalpha.Views.CreateUserViews;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Map;
 
 import okhttp3.RequestBody;
@@ -37,7 +39,7 @@ public class CreateUser2Fragment extends Fragment{
 
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NotNull Context context) {
         super.onAttach(context);
         createUserViews = (CreateUserViews) context;
     }
@@ -49,7 +51,7 @@ public class CreateUser2Fragment extends Fragment{
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NotNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         editUsername = view.findViewById(R.id.editUsernameNew);
         editPassword = view.findViewById(R.id.editPasswordNew);

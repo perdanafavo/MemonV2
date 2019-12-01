@@ -318,7 +318,7 @@ public class UpdateUserActivity extends CustomCompatActivity
     @Override
     public Map<String, RequestBody> GetRequestBody() {
         Map<String, RequestBody> MapRequstBody = new HashMap<>();
-        MapRequstBody.put("id", RequestBody.create(okhttp3.MultipartBody.FORM, IDPETUGAS));
+        MapRequstBody.put("id", RequestBody.create(IDPETUGAS, okhttp3.MultipartBody.FORM));
         return MapRequstBody;
     }
 

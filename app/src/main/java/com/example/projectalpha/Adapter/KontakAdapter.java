@@ -24,6 +24,8 @@ import com.example.projectalpha.Config.ENVIRONMENT;
 import com.example.projectalpha.Models.SubModels.UsersData;
 import com.example.projectalpha.R;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 public class KontakAdapter extends RecyclerView.Adapter<KontakAdapter.ViewHolder> {
@@ -41,6 +43,7 @@ public class KontakAdapter extends RecyclerView.Adapter<KontakAdapter.ViewHolder
         this.itemKontak = itemKontak;
     }
 
+    @NotNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         context = parent.getContext();

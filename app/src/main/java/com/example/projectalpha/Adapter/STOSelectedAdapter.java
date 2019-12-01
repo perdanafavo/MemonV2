@@ -19,6 +19,8 @@ import com.example.projectalpha.Models.SubModels.PowerData;
 import com.example.projectalpha.Models.SubModels.STOData;
 import com.example.projectalpha.R;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +41,7 @@ public class STOSelectedAdapter extends RecyclerView.Adapter<STOSelectedAdapter.
         this.dataFuel = dataFuel;
     }
 
+    @NotNull
     @Override
     public STOSelectedAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         stoSelectedActivity = (STOSelectedActivity) parent.getContext();

@@ -23,6 +23,8 @@ import com.example.projectalpha.Models.SubModels.PowerData;
 import com.example.projectalpha.R;
 import com.example.projectalpha.Views.MainManagerViews;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 public class MalamFragment extends Fragment {
@@ -50,7 +52,7 @@ public class MalamFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NotNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         RecyclerView rvWitel = view.findViewById(R.id.rvWitel);
@@ -71,7 +73,7 @@ public class MalamFragment extends Fragment {
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NotNull Context context) {
         super.onAttach(context);
         mainManagerViews = (MainManagerActivity) context;
        this.context = context;

@@ -94,7 +94,6 @@ public class LaporanData{
     }
 
     public boolean isStatus(){
-        if (this.status==1) return true;
-        else return false;
+        return this.status == 1;
     }
 }

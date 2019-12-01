@@ -22,6 +22,8 @@ import com.example.projectalpha.Models.SubModels.PowerData;
 import com.example.projectalpha.R;
 import com.example.projectalpha.Views.MainManagerViews;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 public class PagiFragment extends Fragment{
@@ -38,7 +40,7 @@ public class PagiFragment extends Fragment{
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NotNull Context context) {
         super.onAttach(context);
         this.context = context;
         mainManagerViews= (MainManagerViews) context;
@@ -53,7 +55,7 @@ public class PagiFragment extends Fragment{
         return inflater.inflate(R.layout.fragment_pagi, container, false);
     }
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NotNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         btnBBM      = view.findViewById(R.id.btnStatusBBM);

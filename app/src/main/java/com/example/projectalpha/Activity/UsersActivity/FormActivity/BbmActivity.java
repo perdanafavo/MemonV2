@@ -73,7 +73,7 @@ public class BbmActivity extends CustomCompatActivity
                 Bitmap imageBitmap = (Bitmap) extras.get("data");
                 Bitmap compress = imageHandle.bipmapCompress(imageBitmap);
                 file = imageHandle.fileCreate(compress);
-                btnFoto.setImageBitmap(imageBitmap);
+                btnFoto.setImageBitmap(compress);
                 btnFoto.setBackgroundResource(R.color.colorGreyLight);
             }
         }

@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.provider.MediaStore;
 
 import com.example.projectalpha.Config.ENVIRONMENT;
@@ -13,6 +16,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -29,6 +34,17 @@ public class ImageHandle {
     }
 
     public Bitmap bipmapCompress(Bitmap bitmap){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String dateTime = sdf.format(Calendar.getInstance().getTime());
+        Canvas cs = new Canvas(bitmap);
+        Paint tPaint = new Paint();
+        tPaint.setTextSize(10);
+        tPaint.setColor(Color.RED);
+        tPaint.setStyle(Paint.Style.FILL);
+        cs.drawBitmap(bitmap, 0f, 0f, null);
+        float height = tPaint.measureText("yY");
+        cs.drawText(dateTime, 85f, height, tPaint);
+
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
         return BitmapFactory.decodeStream(new ByteArrayInputStream(out.toByteArray()));
@@ -41,7 +57,9 @@ public class ImageHandle {
     }
 
     public File fileCreate(Bitmap bitmap){
+
         try {
+
             File file = new File(activity.getApplicationContext().getCacheDir(), FILE_NAME_IMAGE);
             file.createNewFile();
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -59,7 +77,18 @@ public class ImageHandle {
     }
 
     public File fileCreate(Bitmap bitmap, String name){
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        String dateTime = sdf.format(Calendar.getInstance().getTime());
+//        Canvas cs = new Canvas(bitmap);
+//        Paint tPaint = new Paint();
+//        tPaint.setTextSize(35);
+//        tPaint.setColor(Color.BLUE);
+//        tPaint.setStyle(Paint.Style.FILL);
+//        cs.drawBitmap(bitmap, 0f, 0f, null);
+//        float height = tPaint.measureText("yY");
+//        cs.drawText(dateTime, 20f, height+15f, tPaint);
         try {
+
             File file = new File(activity.getApplicationContext().getCacheDir(), name);
             file.createNewFile();
             ByteArrayOutputStream bos = new ByteArrayOutputStream();

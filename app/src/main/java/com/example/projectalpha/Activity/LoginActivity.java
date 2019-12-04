@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.projectalpha.Activity.AdminActivity.MainAdminActivity;
 import com.example.projectalpha.Activity.ManagerActivity.MainManagerActivity;
 import com.example.projectalpha.Activity.UsersActivity.MainUserActivity;
+import com.example.projectalpha.Activity.ValidatorActivity.MainValidatorActivity;
 import com.example.projectalpha.Config.ENVIRONMENT;
 import com.example.projectalpha.Helpers.CekKoneksi;
 import com.example.projectalpha.Helpers.LoginDialog;
@@ -132,6 +133,7 @@ public class LoginActivity extends AppCompatActivity implements LoginViews {
                 sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINADMIN, true);
                 sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINMANAGER, false);
                 sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINPETUGAS, false);
+                sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINVALIDATOR, false);
                 startActivity(new Intent(getApplicationContext(), MainAdminActivity.class)
                         .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
                 break;
@@ -141,6 +143,7 @@ public class LoginActivity extends AppCompatActivity implements LoginViews {
                 sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINADMIN, false);
                 sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINMANAGER, true);
                 sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINPETUGAS, false);
+                sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINVALIDATOR, false);
                 startActivity(new Intent(getApplicationContext(), MainManagerActivity.class)
                         .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
                 break;
@@ -157,7 +160,25 @@ public class LoginActivity extends AppCompatActivity implements LoginViews {
                 sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINADMIN, false);
                 sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINMANAGER, false);
                 sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINPETUGAS, true);
-                startActivity(new Intent(getApplicationContext(), MainUserActivity.class)
+                sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINVALIDATOR, false);
+                startActivity(new Intent(getApplicationContext(), MainValidatorActivity.class)
+                        .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                break;
+            case 4:
+                sessionManager.saveSPString(SessionManager.SP_IDUSER, getResponse.getId());
+                sessionManager.saveSPString(SessionManager.SP_FULLNAME, getResponse.getNama());
+                sessionManager.saveSPInt(SessionManager.SP_WITEL, getResponse.getWitel());
+                sessionManager.saveSPInt(SessionManager.SP_STO, getResponse.getSto());
+                sessionManager.saveSPString(SessionManager.SP_NAMASTO, getResponse.getNama_sto());
+                sessionManager.saveSPString(SessionManager.SP_ALAMAT, getResponse.getAlamat());
+                sessionManager.saveSPLong(SessionManager.SP_HANDPHONE, getResponse.getHandphone());
+                sessionManager.saveSPString(SessionManager.SP_FOTO, getResponse.getFoto());
+                sessionManager.saveSPInt(SessionManager.SP_PRIVILEGES, getResponse.getPrivileges());
+                sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINADMIN, false);
+                sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINMANAGER, false);
+                sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINPETUGAS, false);
+                sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINVALIDATOR, true);
+                startActivity(new Intent(getApplicationContext(), MainManagerActivity.class)
                         .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
                 break;
             default:

@@ -24,6 +24,7 @@ public class SessionManager {
     public static final String SP_ALREADY_LOGINADMIN = "spAlreadyLoginAdmins";
     public static final String SP_ALREADY_LOGINPETUGAS = "spAlreadyLoginPetugas";
     public static final String SP_ALREADY_LOGINMANAGER = "spAlreadyLoginManager";
+    public static final String SP_ALREADY_LOGINVALIDATOR = "spAlreadyLoginValidator";
 
     private SharedPreferences sp;
     private SharedPreferences.Editor spEditor;
@@ -103,6 +104,8 @@ public class SessionManager {
     public Boolean getSpAlreadyLoginPetugas() { return sp.getBoolean(SP_ALREADY_LOGINPETUGAS, false);}
 
     public Boolean getSpAlreadyLoginManager() { return sp.getBoolean(SP_ALREADY_LOGINMANAGER, false);}
+
+    public Boolean getSpAlreadyLoginValidator() { return sp.getBoolean(SP_ALREADY_LOGINVALIDATOR, false);}
 
     public int getSpPrivileges() {
         return sp.getInt(SP_PRIVILEGES, 0);

@@ -86,15 +86,23 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:orientation="vertical"
                 android:layout_marginTop="10dp">
 
                 <Button
                     android:id="@+id/btnContact"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:background="#00C414"
                     android:text="@string/hubungi_petugas"
+                    android:textColor="@color/colorWhite" />
+
+                <Button
+                    android:id="@+id/btnApprove"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#03A9F4"
+                    android:text="@string/approve_laporan"
                     android:textColor="@color/colorWhite" />
             </LinearLayout>
         </LinearLayout>

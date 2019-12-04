@@ -139,4 +139,6 @@
     <string name="memon">MEMON</string>
     <string name="mechanical_electronical_monitoring">Mechanical Electronical Monitoring</string>
     <string name="editpetugas">Edit Profile</string>
+    <string name="approve_laporan">Approve Laporan</string>
+    <string name="verifikasi_laporan">Verifikasi Laporan</string>
 </resources>

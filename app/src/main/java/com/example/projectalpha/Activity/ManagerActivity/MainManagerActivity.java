@@ -15,6 +15,7 @@ import com.example.projectalpha.Fragment.MalamFragment;
 import com.example.projectalpha.Fragment.PagiFragment;
 import com.example.projectalpha.Helpers.CekKoneksi;
 import com.example.projectalpha.Helpers.CustomCompatActivity;
+import com.example.projectalpha.Helpers.SessionManager;
 import com.example.projectalpha.Models.SubModels.BIRData;
 import com.example.projectalpha.Models.SubModels.FuelData;
 import com.example.projectalpha.Models.SubModels.LaporanData;
@@ -35,7 +36,7 @@ import java.util.List;
 public class MainManagerActivity extends CustomCompatActivity
         implements TimeView, MainManagerViews,ApplicationViews, ApplicationViews.WitelViews.GetRequest,
             ApplicationViews.StatusReport.GetAreaStatusRequest, ApplicationViews.StatusReport.GetTemperatureRequest, ApplicationViews.StatusReport.GetFuelRequest, ApplicationViews.StatusReport.GetPowerRequest{
-
+    private SessionManager sessionManager;
     private ApplicationPresenter applicationPresenter;
     private ProgressDialog mDialog;
 
@@ -97,7 +98,7 @@ public class MainManagerActivity extends CustomCompatActivity
     private void setVariable(){
         ENVIRONMENT.POWER_SELECTED_ON = getString(R.string.on);
         ENVIRONMENT.POWER_SELECTED_OFF = getString(R.string.off);
-
+        sessionManager = new SessionManager(getApplicationContext());
         tvTanggal = findViewById(R.id.txtTanggal);
         swipeRefreshLayout = findViewById(R.id.swlayout);
         tabLayout = findViewById(R.id.tabShift);

@@ -2,12 +2,14 @@ package com.example.projectalpha.Activity.ManagerActivity;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.MediaRouteButton;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,10 +18,12 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.example.projectalpha.Activity.ValidatorActivity.MainValidatorActivity;
 import com.example.projectalpha.Config.ENVIRONMENT;
 import com.example.projectalpha.Helpers.CekKoneksi;
 import com.example.projectalpha.Helpers.CustomCompatActivity;
 import com.example.projectalpha.Helpers.SaveImageHelper;
+import com.example.projectalpha.Helpers.SessionManager;
 import com.example.projectalpha.Helpers.Time;
 import com.example.projectalpha.Models.SubModels.BIRData;
 import com.example.projectalpha.Models.SubModels.FuelData;
@@ -54,9 +58,12 @@ public class STOActivity extends CustomCompatActivity
     private SwipeRefreshLayout swipeRefreshLayout;
     private ImageView[] imageViews;
     private TextView [] tvKondisiUmum, tvCatuan, tvBBM, tvSentral, tvTransmisi, tvRectifier, tvBatere, tvAkses, tvGenset;
-    private TextView tvSTO, tvTanggal, tvNote;
-    private Button btnContact;
+    private TextView tvSTO, tvTanggal, tvNote, txHome;
+    private Button btnContact, btnApprove;
     private PhotoView imagephoto;
+    private SessionManager sessionManager;
+    private ImageButton btnHome;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,7 +125,8 @@ public class STOActivity extends CustomCompatActivity
                     dialog.setMessage("Downloading...");
 
                     String filename = tvSTO.toString() + "_" + tvTanggal.toString() + ".jpg";
-                    Picasso.get().load(ENVIRONMENT.FOTO_URL + data)
+                    Picasso.get()
+                            .load(ENVIRONMENT.FOTO_URL + data)
                             .into(new SaveImageHelper(getBaseContext(), dialog, getApplicationContext().getContentResolver(), filename));
                 }
                 return true;
@@ -131,7 +139,7 @@ public class STOActivity extends CustomCompatActivity
         mDialog.setMessage(ENVIRONMENT.NO_WAITING_MESSAGE);
         mDialog.setCancelable(false);
         mDialog.setIndeterminate(true);
-
+        sessionManager = new SessionManager(getApplicationContext());
         LAPORAN = getIntent().getIntExtra(ENVIRONMENT.ID_LAPORAN, 0);
         STO = getIntent().getIntExtra(ENVIRONMENT.ID_STO, 0);
         Tanggal = getIntent().getStringExtra(ENVIRONMENT.TANGGAL_LAPORAN);
@@ -141,6 +149,9 @@ public class STOActivity extends CustomCompatActivity
         tvSTO           = findViewById(R.id.txtNamaSTO);
         tvTanggal       = findViewById(R.id.txtTanggal);
         btnContact      = findViewById(R.id.btnContact);
+        btnApprove      = findViewById(R.id.btnApprove);
+        btnHome         = findViewById(R.id.btnHome);
+        txHome          = findViewById(R.id.txHome);
 
         imageViews = new ImageView[]{
                 findViewById(R.id.imgKondisi),
@@ -210,10 +221,22 @@ public class STOActivity extends CustomCompatActivity
                 applicationPresenter.getOthersReport();
             }
             btnContact.setOnClickListener(moveToUsersContact);
+            btnApprove.setOnClickListener(validasiLaporan);
         }
         mDialog.dismiss();
+        if (sessionManager.getSpPrivileges()==2){
+            btnApprove.setVisibility(View.GONE);
+        }
+        else{
+            btnContact.setVisibility(View.GONE);
+        }
     }
+    View.OnClickListener validasiLaporan= new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
 
+        }
+    };
     View.OnClickListener moveToUsersContact= new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -229,7 +252,13 @@ public class STOActivity extends CustomCompatActivity
 
     private void setBtnFooter() {
         backClick();
-        homeClick(MainManagerActivity.class);
+        if (sessionManager.getSpPrivileges()==2){
+            homeClick(MainManagerActivity.class);
+        }
+        else{
+            txHome.setVisibility(View.GONE);
+            btnHome.setVisibility(View.GONE);
+        }
         outClick();
     }
 

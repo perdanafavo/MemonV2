@@ -146,6 +146,12 @@ public interface ApiConnection {
             @Query("shift") int shift
     );
 
+    //Mengambil laporan STO untuk validator / hari ini
+    @Headers("TELKOM-API-KEY: Nu2xhCePUtRoZWiJAWtS2WkInIptC2IKN5XzYIZT")
+    @GET("Report")
+    Call<LaporanModels> getLaporanValidator(
+            @Query("sto") int sto
+    );
 
     //Membuat Users
     @Headers("TELKOM-API-KEY: Nu2xhCePUtRoZWiJAWtS2WkInIptC2IKN5XzYIZT")

@@ -159,6 +159,7 @@
                 android:contentDescription="@string/home" />
 
             <TextView
+                android:id="@+id/txHome"
                 android:layout_width="@dimen/_50sdp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_5sdp"

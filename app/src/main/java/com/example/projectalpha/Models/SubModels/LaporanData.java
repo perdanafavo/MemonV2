@@ -1,5 +1,7 @@
 package com.example.projectalpha.Models.SubModels;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.annotations.SerializedName;
 
 public class LaporanData{
@@ -29,6 +31,20 @@ public class LaporanData{
 
     @SerializedName("status")
     private byte status;
+
+    @SerializedName("status_approved")
+    private byte status_approved;
+
+    public byte getStatus_approved() {
+        return this.status_approved;
+    }
+
+    public void setStatus_approved(byte status_approved) {
+        this.status_approved = status_approved;
+    }
+    public boolean isStatusApproved(){
+        return this.status == 0;
+    }
 
     public void setId(int id){
         this.id= id;
@@ -95,5 +111,11 @@ public class LaporanData{
 
     public boolean isStatus(){
         return this.status == 1;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return tanggal_shift+" "+jam_upload;
     }
 }

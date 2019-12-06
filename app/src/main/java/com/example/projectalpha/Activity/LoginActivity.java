@@ -74,6 +74,9 @@ public class LoginActivity extends AppCompatActivity implements LoginViews {
         } else if (sessionManager.getSpAlreadyLoginAdmin()) {
             startActivity(new Intent(getApplicationContext(), MainAdminActivity.class)
                     .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+        } else if (sessionManager.getSpAlreadyLoginValidator()) {
+            startActivity(new Intent(getApplicationContext(), MainValidatorActivity.class)
+                    .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
         }  else {
             Login();
         }
@@ -161,7 +164,7 @@ public class LoginActivity extends AppCompatActivity implements LoginViews {
                 sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINMANAGER, false);
                 sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINPETUGAS, true);
                 sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINVALIDATOR, false);
-                startActivity(new Intent(getApplicationContext(), MainValidatorActivity.class)
+                startActivity(new Intent(getApplicationContext(), MainUserActivity.class)
                         .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
                 break;
             case 4:
@@ -178,7 +181,7 @@ public class LoginActivity extends AppCompatActivity implements LoginViews {
                 sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINMANAGER, false);
                 sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINPETUGAS, false);
                 sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINVALIDATOR, true);
-                startActivity(new Intent(getApplicationContext(), MainManagerActivity.class)
+                startActivity(new Intent(getApplicationContext(), MainValidatorActivity.class)
                         .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
                 break;
             default:

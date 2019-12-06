@@ -44,7 +44,8 @@ public class ApplicationPresenter {
     private ApplicationViews.ReportViews.GetOthersRequest getOthersRequest;
     private ApplicationViews.ReportViews.GetReportStatusRequest getReportStatusRequest;
     private ApplicationViews.ReportViews.GetReportParam getReportParam;
-
+    private ApplicationViews.ReportViews.GetReportValidator getReportValidator;
+    private ApplicationViews.ReportViews.GetRequestValidator getRequestValidator;
     private ApplicationViews.StatusReport statusReport;
     private ApplicationViews.StatusReport.GetAreaStatusRequest getAreaStatusRequest;
     private ApplicationViews.StatusReport.GetTemperatureRequest getTemperatureStatusRequest;
@@ -86,6 +87,10 @@ public class ApplicationPresenter {
         if (context instanceof ApplicationViews.StoViews.GetRequest) getRequestSto = (ApplicationViews.StoViews.GetRequest) context;
 
         if (context instanceof ApplicationViews.UploadWithImage)uploadWithImage = (ApplicationViews.UploadWithImage) context;
+
+        if (context instanceof ApplicationViews.ReportViews.GetReportValidator) getReportValidator = (ApplicationViews.ReportViews.GetReportValidator) context;
+
+        if (context instanceof ApplicationViews.ReportViews.GetRequestValidator) getRequestValidator = (ApplicationViews.ReportViews.GetRequestValidator) context;
     }
 
     public void deleteReportMonth(){
@@ -180,6 +185,24 @@ public class ApplicationPresenter {
                         applicationViews.requestFailled(ENVIRONMENT.ON_FAILURE_REQUEST);
                 }
         });
+    }
+    public void updateValidator() {
+        RetrofitConnect.getInstance()
+                .updateUsers(usersViews.getEmployee(), updateRequest.getRequestMapBody())
+                .enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(@NotNull Call<ResponseBody> call, @NotNull Response<ResponseBody> response) {
+                        if (response.isSuccessful()){
+                            applicationViews.successRequest();
+                        } else {
+                            applicationViews.requestFailled(ENVIRONMENT.ON_BAD_REQUEST_PUT);
+                        }
+                    }
+                    @Override
+                    public void onFailure(@NotNull Call<ResponseBody> call, @NotNull Throwable t) {
+                        applicationViews.requestFailled(ENVIRONMENT.ON_FAILURE_REQUEST);
+                    }
+                });
     }
 
     public void postUser(){
@@ -278,6 +301,24 @@ public class ApplicationPresenter {
                         applicationViews.requestFailled(ENVIRONMENT.ON_FAILURE_REQUEST);
                 }
         });
+    }
+    public void requestLaporanBySTO(){
+        RetrofitConnect.getInstance()
+                .getLaporanValidator(getReportValidator.getIndexSto())
+                .enqueue(new Callback<LaporanModels>() {
+                    @Override
+                    public void onResponse(@NotNull Call<LaporanModels> call, @NotNull Response<LaporanModels> response) {
+                        if (response.isSuccessful()){
+                            getRequestValidator.SuccessRequestGetValidator(response.body() != null ? response.body().getData() : null);
+                        } else {
+                            applicationViews.requestFailled(ENVIRONMENT.ON_BAD_REQUEST_GET);
+                        }
+                    }
+                    @Override
+                    public void onFailure(@NotNull Call<LaporanModels> call, @NotNull Throwable t) {
+                        applicationViews.requestFailled(ENVIRONMENT.ON_FAILURE_REQUEST);
+                    }
+                });
     }
 
     public void postLaporan(){

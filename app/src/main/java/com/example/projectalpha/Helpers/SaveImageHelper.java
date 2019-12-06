@@ -36,10 +36,14 @@ public class SaveImageHelper implements Target {
             MediaStore.Images.Media.insertImage(r, bitmap, name, desc);
         dialog.dismiss();
 
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        context.startActivity(Intent.createChooser(intent, "SELECT PICTURE"));
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent
+                .setType("image/*")
+                .setAction(Intent.ACTION_GET_CONTENT)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Intent chooserIntent = Intent.createChooser(intent, "SELECT PICTURE");
+        chooserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.getApplicationContext().startActivity(chooserIntent);
     }
 
     @Override

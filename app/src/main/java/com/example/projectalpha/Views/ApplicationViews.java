@@ -47,8 +47,18 @@ public interface ApplicationViews {
         }
     }
 
+
+
     interface ReportViews{
         int getIndexReport();
+
+        interface GetReportValidator{
+            int getIndexSto();
+        }
+
+        interface GetRequestValidator {
+            void SuccessRequestGetValidator(List<LaporanData> dataValidator);
+        }
 
         interface GetReportParam{
             int getIndexWitel();

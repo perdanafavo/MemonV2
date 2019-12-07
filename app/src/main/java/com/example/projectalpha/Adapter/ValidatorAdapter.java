@@ -76,7 +76,6 @@ public class ValidatorAdapter extends RecyclerView.Adapter<ValidatorAdapter.Vali
                         .putExtra(ENVIRONMENT.TANGGAL_LAPORAN, itemLaporan.get(position).getTanggal_shift())
                         .putExtra(ENVIRONMENT.NAMA_STO, namaSTO)
                         .putExtra(ENVIRONMENT.ID_STO, itemLaporan.get(position).getSto())
-//                                .putExtra(ENVIRONMENT.DATA_PETUGAS, info)
                 );
             }
         });

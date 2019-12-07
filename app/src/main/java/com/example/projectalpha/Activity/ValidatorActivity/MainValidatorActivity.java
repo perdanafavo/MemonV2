@@ -75,7 +75,6 @@ public class MainValidatorActivity extends CustomCompatActivity implements Appli
         txtNama = findViewById(R.id.txtNama);
         txtHandphone = findViewById(R.id.txtHandphone);
         txtSTO = findViewById(R.id.txtSTO);
-
         txtNama.setText(sessionManager.getSpFullname());
         txtHandphone.setText("0"+sessionManager.getSpHandphone());
         txtSTO.setText(sessionManager.getSpNamaSTO());
@@ -129,10 +128,10 @@ public class MainValidatorActivity extends CustomCompatActivity implements Appli
         itemLaporan = new ArrayList<>();
         if (dataValidator != null){
             for (LaporanData data:dataValidator){
-//             if (data.getStatus_approved() == 0){
-//                 System.out.println(dataValidator.toString());
+             if (data.getStatus_approved() == 0){
+                 System.out.println(dataValidator.toString());
                 itemLaporan.add(data);
- //            }
+             }
             }
         }
         mAdapter.isiValidator(itemLaporan, sessionManager.getSpNamaSTO());

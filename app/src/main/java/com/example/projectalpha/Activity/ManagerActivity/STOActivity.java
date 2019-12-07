@@ -2,6 +2,7 @@ package com.example.projectalpha.Activity.ManagerActivity;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.Application;
 import android.app.MediaRouteButton;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -45,14 +46,14 @@ import dmax.dialog.SpotsDialog;
 
 public class STOActivity extends CustomCompatActivity
         implements TimeView, ApplicationViews, ApplicationViews.ReportViews, ApplicationViews.ReportViews.GetFuelRequest,
-            ApplicationViews.ReportViews.GetGeneralRequest, ApplicationViews.ReportViews.GetPowerRequest, ApplicationViews.ReportViews.GetRoomRequest, ApplicationViews.ReportViews.GetOthersRequest, ApplicationViews.ReportViews.PutValidator {
+            ApplicationViews.ReportViews.GetGeneralRequest, ApplicationViews.ReportViews.GetPowerRequest, ApplicationViews.ReportViews.GetRoomRequest, ApplicationViews.ReportViews.GetOthersRequest, ApplicationViews.ReportViews.PutValidator, ApplicationViews.ReportViews.GetReportValidator {
 
     private static final int PERMISSION_REQUEST_CODE = 1000;
     private ProgressDialog mDialog;
 
     private ApplicationPresenter applicationPresenter;
 
-    private int LAPORAN, STO;
+    private int LAPORAN, STO, STATUS;
     private String Tanggal;
 
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -143,7 +144,7 @@ public class STOActivity extends CustomCompatActivity
         LAPORAN = getIntent().getIntExtra(ENVIRONMENT.ID_LAPORAN, 0);
         STO = getIntent().getIntExtra(ENVIRONMENT.ID_STO, 0);
         Tanggal = getIntent().getStringExtra(ENVIRONMENT.TANGGAL_LAPORAN);
-
+        STATUS = getIntent().getIntExtra(ENVIRONMENT.STATUS,1);
         applicationPresenter    = new ApplicationPresenter(STOActivity.this);
 
         tvSTO           = findViewById(R.id.txtNamaSTO);
@@ -236,7 +237,7 @@ public class STOActivity extends CustomCompatActivity
         public void onClick(View v) {
             applicationPresenter.updateValidator();
             System.out.println(LAPORAN);
-
+            System.out.println(STATUS);
         }
     };
     View.OnClickListener moveToUsersContact= new View.OnClickListener() {
@@ -434,4 +435,11 @@ public class STOActivity extends CustomCompatActivity
     public int getValidator() {
         return 1;
     }
+
+    @Override
+    public int getIndexSto() {
+        return sessionManager.getSpSTO();
+    }
+
+
 }

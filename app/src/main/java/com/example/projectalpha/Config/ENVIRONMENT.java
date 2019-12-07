@@ -21,6 +21,7 @@ public class ENVIRONMENT {
     public static final String RUANGAN = "RUANGAN.jpeg";
     public static final String SUHU = "SUHU.jpeg";
     public static final String TANGGAL_LAPORAN = "TANGGAL LAPORAN";
+    public static final String STATUS = "STATUS";
 
     //SHIFT SELECTED MESSAGE
     public static final String SHIFT_MALAM_MESSAGE = "Shift malam mulai dari jam 20:00:00 sampai jam 07:59:59";

@@ -125,7 +125,7 @@ public class STOActivity extends CustomCompatActivity
     }
 
     private void setVariable() {
-        myDialog = new Dialog(STOActivity.this);
+
         mDialog = new ProgressDialog(STOActivity.this);
         mDialog.setMessage(ENVIRONMENT.NO_WAITING_MESSAGE);
         mDialog.setCancelable(false);
@@ -143,8 +143,6 @@ public class STOActivity extends CustomCompatActivity
         btnApprove      = findViewById(R.id.btnApprove);
         btnHome         = findViewById(R.id.btnHome);
         txHome          = findViewById(R.id.txHome);
-        tvClose         = myDialog.findViewById(R.id.tvClose);
-        btnPIC          = myDialog.findViewById(R.id.btnPIC);
 
         imageViews = new ImageView[]{
                 findViewById(R.id.imgKondisi),
@@ -226,8 +224,12 @@ public class STOActivity extends CustomCompatActivity
     }
 
     private void showPopup(){
+        myDialog = new Dialog(STOActivity.this);
         myDialog.setContentView(R.layout.custom_popup_validasi);
-        myDialog.setCancelable(false);
+
+        tvClose = myDialog.findViewById(R.id.tvClose);
+        btnPIC = myDialog.findViewById(R.id.btnPIC);
+
         myDialog.setCanceledOnTouchOutside(false);
 
         tvClose.setOnClickListener(new View.OnClickListener() {

@@ -25,6 +25,7 @@ import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class MainValidatorActivity extends CustomCompatActivity implements ApplicationViews, ApplicationViews.ReportViews, ApplicationViews.ReportViews.GetReportValidator, ApplicationViews.ReportViews.GetRequestValidator {
@@ -170,6 +171,7 @@ public class MainValidatorActivity extends CustomCompatActivity implements Appli
              }
             }
         }
+        Collections.reverse(itemLaporan);
         mAdapter.isiValidator(itemLaporan, sessionManager.getSpNamaSTO());
         mAdapter.notifyDataSetChanged();
         mDialog.dismiss();

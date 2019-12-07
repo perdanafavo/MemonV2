@@ -160,7 +160,8 @@ public interface ApiConnection {
     @Headers("TELKOM-API-KEY: Nu2xhCePUtRoZWiJAWtS2WkInIptC2IKN5XzYIZT")
     @GET("Report")
     Call<LaporanModels> getLaporanValidator(
-            @Query("sto") int sto
+            @Query("sto") int sto,
+            @Query("date") String date
     );
 
     //Membuat Users

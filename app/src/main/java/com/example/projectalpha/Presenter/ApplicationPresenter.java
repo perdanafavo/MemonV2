@@ -310,7 +310,7 @@ public class ApplicationPresenter {
     }
     public void requestLaporanBySTO(){
         RetrofitConnect.getInstance()
-                .getLaporanValidator(getReportValidator.getIndexSto())
+                .getLaporanValidator(getReportValidator.getIndexSto(), "all")
                 .enqueue(new Callback<LaporanModels>() {
                     @Override
                     public void onResponse(@NotNull Call<LaporanModels> call, @NotNull Response<LaporanModels> response) {

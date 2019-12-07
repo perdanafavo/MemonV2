@@ -13,6 +13,7 @@
     <color name="colorBlue">#71ACDF</color>
     <color name="colorOrange">#FFC107</color>
     <color name="colorGreyLight">#F5F5F5</color>
+    <color name="colorGrey">#E2E2E2</color>
     <color name="colorGreyDark">#424242</color>
     <color name="colorBlue2">#005FB1</color>
 </resources>

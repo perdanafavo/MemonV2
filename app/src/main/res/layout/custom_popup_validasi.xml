@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="210dp"
+    android:layout_height="210dp"
+    android:layout_gravity="center"
+    android:padding="5dp"
+    android:background="@drawable/border">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:contentDescription="@string/perhatian"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/ic_warning" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textSize="@dimen/_17ssp"
+            android:text="@string/perhatian" />
+
+        <TextView
+            android:id="@+id/tvClose"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:textColor="@color/blacket"
+            android:text="@string/xmark"
+            android:textSize="@dimen/_16ssp"
+            android:textStyle="bold"
+            android:layout_gravity="end"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:text="@string/kondisi_anomali_text" />
+
+        <Button
+            android:id="@+id/btnPIC"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_12ssp"
+            android:layout_gravity="center"
+            android:background="#00C414"
+            android:text="@string/hubungi_pic" />
+    </LinearLayout>
+</LinearLayout>

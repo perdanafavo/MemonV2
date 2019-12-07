@@ -2,9 +2,12 @@ package com.example.projectalpha.Activity.ManagerActivity;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -47,6 +50,7 @@ public class STOActivity extends CustomCompatActivity
 
     private static final int PERMISSION_REQUEST_CODE = 1000;
     private ProgressDialog mDialog;
+    private Dialog myDialog;
 
     private ApplicationPresenter applicationPresenter;
 
@@ -56,8 +60,8 @@ public class STOActivity extends CustomCompatActivity
     private SwipeRefreshLayout swipeRefreshLayout;
     private ImageView[] imageViews;
     private TextView [] tvKondisiUmum, tvCatuan, tvBBM, tvSentral, tvTransmisi, tvRectifier, tvBatere, tvAkses, tvGenset;
-    private TextView tvSTO, tvTanggal, tvNote, txHome;
-    private Button btnContact, btnApprove;
+    private TextView tvSTO, tvTanggal, tvNote, txHome, tvClose;
+    private Button btnContact, btnApprove, btnPIC;
     private PhotoView imagephoto;
     private SessionManager sessionManager;
     private ImageButton btnHome;
@@ -121,6 +125,7 @@ public class STOActivity extends CustomCompatActivity
     }
 
     private void setVariable() {
+        myDialog = new Dialog(STOActivity.this);
         mDialog = new ProgressDialog(STOActivity.this);
         mDialog.setMessage(ENVIRONMENT.NO_WAITING_MESSAGE);
         mDialog.setCancelable(false);
@@ -130,7 +135,7 @@ public class STOActivity extends CustomCompatActivity
         STO = getIntent().getIntExtra(ENVIRONMENT.ID_STO, 0);
         Tanggal = getIntent().getStringExtra(ENVIRONMENT.TANGGAL_LAPORAN);
         STATUS = getIntent().getIntExtra(ENVIRONMENT.STATUS,1);
-        applicationPresenter    = new ApplicationPresenter(STOActivity.this);
+        applicationPresenter = new ApplicationPresenter(STOActivity.this);
 
         tvSTO           = findViewById(R.id.txtNamaSTO);
         tvTanggal       = findViewById(R.id.txtTanggal);
@@ -138,6 +143,8 @@ public class STOActivity extends CustomCompatActivity
         btnApprove      = findViewById(R.id.btnApprove);
         btnHome         = findViewById(R.id.btnHome);
         txHome          = findViewById(R.id.txHome);
+        tvClose         = myDialog.findViewById(R.id.tvClose);
+        btnPIC          = myDialog.findViewById(R.id.btnPIC);
 
         imageViews = new ImageView[]{
                 findViewById(R.id.imgKondisi),
@@ -218,10 +225,26 @@ public class STOActivity extends CustomCompatActivity
         }
     }
 
+    private void showPopup(){
+        myDialog.setContentView(R.layout.custom_popup_validasi);
+        myDialog.setCancelable(false);
+        myDialog.setCanceledOnTouchOutside(false);
+
+        tvClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        myDialog.show();
+    }
+
     View.OnClickListener validasiLaporan= new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            applicationPresenter.updateValidator();
+            showPopup();
+            //applicationPresenter.updateValidator();
         }
     };
 
@@ -409,7 +432,7 @@ public class STOActivity extends CustomCompatActivity
         String txtWaktu, txtHari, txtTanggal;
         txtHari = dataResponse.getHari();
         txtTanggal = dataResponse.getBulan();
-        txtWaktu                = txtHari+", "+ txtTanggal;
+        txtWaktu = txtHari+", "+ txtTanggal;
 
         tvTanggal.setText(txtWaktu);
         tvSTO.setText(getIntent().getStringExtra(ENVIRONMENT.NAMA_STO));

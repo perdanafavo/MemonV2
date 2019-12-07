@@ -21,7 +21,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.ValidatorActivity.MainValidatorActivity" />
         <activity
             android:name=".Activity.Splashscreen"
             android:screenOrientation="portrait">
@@ -31,6 +30,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Activity.ValidatorActivity.MainValidatorActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Activity.AdminActivity.UpdateContactActivity"
             android:screenOrientation="portrait" />

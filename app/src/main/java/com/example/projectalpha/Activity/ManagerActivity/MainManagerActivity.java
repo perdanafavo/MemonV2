@@ -123,7 +123,7 @@ public class MainManagerActivity extends CustomCompatActivity
         String txtWaktu, txtHari, txtTanggal;
         txtHari = dataResponse.getHari();
         txtTanggal = dataResponse.getBulan();
-        txtWaktu                = txtHari+", "+ txtTanggal;
+        txtWaktu = txtHari+", "+ txtTanggal;
 
         tvTanggal.setText(txtWaktu);
         applicationPresenter.getWitel();

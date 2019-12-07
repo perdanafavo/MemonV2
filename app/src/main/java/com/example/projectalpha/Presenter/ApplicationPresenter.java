@@ -190,6 +190,7 @@ public class ApplicationPresenter {
                 }
         });
     }
+
     public void updateValidator() {
         RetrofitConnect.getInstance()
                 .updateValidator(putValidatorInput.getIndexId(), putValidatorInput.getValidator())
@@ -197,11 +198,9 @@ public class ApplicationPresenter {
                     @Override
                     public void onResponse(@NotNull Call<ResponseBody> call, @NotNull Response<ResponseBody> response) {
                         if (response.isSuccessful()){
-                            System.out.println("berhasil");
                             applicationViews.successRequest();
                         } else {
                             applicationViews.requestFailled(ENVIRONMENT.ON_BAD_REQUEST_PUT);
-                            System.out.println("gagal");
                         }
                     }
 

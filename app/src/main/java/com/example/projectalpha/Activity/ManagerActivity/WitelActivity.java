@@ -98,7 +98,7 @@ public class WitelActivity extends CustomCompatActivity
 
         applicationPresenter    = new ApplicationPresenter(WitelActivity.this);
 
-        WITEL = getIntent().getIntExtra(ENVIRONMENT.ID_WITEL, 0);
+        WITEL                   = getIntent().getIntExtra(ENVIRONMENT.ID_WITEL, 0);
         shiftSelect             = getIntent().getStringExtra(ENVIRONMENT.SHIFT_SELECTED);
 
         if (shiftSelect.equals(ENVIRONMENT.MORNING_STATUS))IDSHIFT= 1;

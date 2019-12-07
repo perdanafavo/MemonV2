@@ -36,7 +36,6 @@ import java.util.List;
 public class MainManagerActivity extends CustomCompatActivity
         implements TimeView, MainManagerViews,ApplicationViews, ApplicationViews.WitelViews.GetRequest,
             ApplicationViews.StatusReport.GetAreaStatusRequest, ApplicationViews.StatusReport.GetTemperatureRequest, ApplicationViews.StatusReport.GetFuelRequest, ApplicationViews.StatusReport.GetPowerRequest{
-    private SessionManager sessionManager;
     private ApplicationPresenter applicationPresenter;
     private ProgressDialog mDialog;
 
@@ -69,7 +68,7 @@ public class MainManagerActivity extends CustomCompatActivity
     protected void onResume() {
         super.onResume();
         pageIndex = tabLayout.getSelectedTabPosition();
-        System.out.println(pageIndex);
+
         if (!CekKoneksi.isConnectedToInternet(getBaseContext())) {
             simpleToast(ENVIRONMENT.NO_INTERNET_CONNECTION, Toast.LENGTH_LONG);
         } else {
@@ -98,7 +97,7 @@ public class MainManagerActivity extends CustomCompatActivity
     private void setVariable(){
         ENVIRONMENT.POWER_SELECTED_ON = getString(R.string.on);
         ENVIRONMENT.POWER_SELECTED_OFF = getString(R.string.off);
-        sessionManager = new SessionManager(getApplicationContext());
+
         tvTanggal = findViewById(R.id.txtTanggal);
         swipeRefreshLayout = findViewById(R.id.swlayout);
         tabLayout = findViewById(R.id.tabShift);
@@ -130,18 +129,22 @@ public class MainManagerActivity extends CustomCompatActivity
         tvTanggal.setText(txtWaktu);
         applicationPresenter.getWitel();
     }
+
     @Override
     public HashMap<String, List<LaporanData>> getMapWitelStatus() {
         return mapWitelStatus;
     }
+
     @Override
     public HashMap<String, List<BIRData>> getMapTemperatureStatus() {
         return this.mapTemperatureStatus;
     }
+
     @Override
     public HashMap<String, List<FuelData>> getMapFuelStatus() {
         return this.mapFuelStatus;
     }
+
     @Override
     public HashMap<String, List<PowerData>> getMapPowerStatus() {
         return this.mapPowerStatus;
@@ -151,6 +154,7 @@ public class MainManagerActivity extends CustomCompatActivity
     public List<WitelData> getDataWitel() {
         return this.witelData;
     }
+
     @Override
     public void requestFailled(String massage) {
         mDialog.dismiss();

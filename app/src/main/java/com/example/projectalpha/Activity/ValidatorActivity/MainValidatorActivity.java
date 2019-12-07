@@ -1,30 +1,27 @@
 package com.example.projectalpha.Activity.ValidatorActivity;
 
-import android.app.DialogFragment;
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.example.projectalpha.Activity.AdminActivity.UpdateMenuUserActivity;
-import com.example.projectalpha.Adapter.ItemUpdateAdapter;
 import com.example.projectalpha.Adapter.ValidatorAdapter;
 import com.example.projectalpha.Config.ENVIRONMENT;
 import com.example.projectalpha.Helpers.CekKoneksi;
 import com.example.projectalpha.Helpers.CustomCompatActivity;
 import com.example.projectalpha.Helpers.SessionManager;
 import com.example.projectalpha.Models.SubModels.LaporanData;
-import com.example.projectalpha.Models.SubModels.UsersData;
 import com.example.projectalpha.Presenter.ApplicationPresenter;
 import com.example.projectalpha.R;
 import com.example.projectalpha.Views.ApplicationViews;
-import com.example.projectalpha.Views.UpdateMenuUserViews;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,16 +34,75 @@ public class MainValidatorActivity extends CustomCompatActivity implements Appli
     private ValidatorAdapter mAdapter;
     private List<LaporanData> itemLaporan = null;
     private ProgressDialog mDialog = null;
-    private TextView txtNama, txtHandphone, txtSTO;
+    private ImageView ivUser;
+    private TextView tvNama, tvHandphone, tvSTO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_validator);
+
         setVariable();
         createView();
         setBtnFooter();
     }
+
+    private void setBtnFooter() {
+        super.outClick();
+    }
+
+    private void setVariable(){
+        mDialog = new ProgressDialog(MainValidatorActivity.this);
+        mDialog.setMessage(ENVIRONMENT.NO_WAITING_MESSAGE);
+        mDialog.setCancelable(false);
+        mDialog.setIndeterminate(true);
+        sessionManager = new SessionManager(getApplicationContext());
+        applicationPresenter = new ApplicationPresenter(MainValidatorActivity.this);
+
+        mRecyclerview = findViewById(R.id.listValidator);
+        swipeRefreshLayout = findViewById(R.id.swipeValidator);
+        tvNama = findViewById(R.id.txtNama);
+        tvHandphone = findViewById(R.id.txtHandphone);
+        tvSTO = findViewById(R.id.txtSTO);
+        ivUser = findViewById(R.id.ivUser);
+
+        Picasso.get().setLoggingEnabled(false);
+        Picasso.get().setIndicatorsEnabled(false);
+    }
+
+    private void createView(){
+        String Handphone = "0" + sessionManager.getSpHandphone();
+        tvNama.setText(sessionManager.getSpFullname());
+        tvHandphone.setText(Handphone);
+        tvSTO.setText(sessionManager.getSpNamaSTO());
+
+        Picasso.get().load(ENVIRONMENT.PROFILE_IMAGE + sessionManager.getSpFoto())
+                .resize(380, 510)
+                .networkPolicy(NetworkPolicy.NO_CACHE, NetworkPolicy.NO_STORE)
+                .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
+                .into(ivUser);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefreshLayout.setRefreshing(false);
+                onResume();
+            }
+        });
+
+        mDialog.show();
+        if (!CekKoneksi.isConnectedToInternet(getBaseContext())) {
+            mDialog.dismiss();
+            simpleToast(ENVIRONMENT.NO_INTERNET_CONNECTION, Toast.LENGTH_LONG);
+        } else {
+            getRequest();
+        }
+
+    }
+    private void getRequest(){
+        applicationPresenter.requestLaporanBySTO();
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -59,46 +115,6 @@ public class MainValidatorActivity extends CustomCompatActivity implements Appli
         mAdapter = new ValidatorAdapter(itemLaporan);
         mRecyclerview.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerview.setAdapter(mAdapter);
-    }
-    private void setBtnFooter() {
-        super.outClick();
-    }
-    private void setVariable(){
-        mDialog = new ProgressDialog(MainValidatorActivity.this);
-        mDialog.setMessage(ENVIRONMENT.NO_WAITING_MESSAGE);
-        mDialog.setCancelable(false);
-        mDialog.setIndeterminate(true);
-        sessionManager = new SessionManager(getApplicationContext());
-        applicationPresenter = new ApplicationPresenter(MainValidatorActivity.this);
-        mRecyclerview = findViewById(R.id.listValidator);
-        swipeRefreshLayout = findViewById(R.id.swipeValidator);
-        txtNama = findViewById(R.id.txtNama);
-        txtHandphone = findViewById(R.id.txtHandphone);
-        txtSTO = findViewById(R.id.txtSTO);
-        txtNama.setText(sessionManager.getSpFullname());
-        txtHandphone.setText("0"+sessionManager.getSpHandphone());
-        txtSTO.setText(sessionManager.getSpNamaSTO());
-
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                swipeRefreshLayout.setRefreshing(false);
-                onResume();
-            }
-        });
-    }
-    private void createView(){
-        mDialog.show();
-        if (!CekKoneksi.isConnectedToInternet(getBaseContext())) {
-            mDialog.dismiss();
-            simpleToast(ENVIRONMENT.NO_INTERNET_CONNECTION, Toast.LENGTH_LONG);
-        } else {
-            getRequest();
-        }
-
-    }
-    private void getRequest(){
-        applicationPresenter.requestLaporanBySTO();
     }
 
     @Override
@@ -129,7 +145,6 @@ public class MainValidatorActivity extends CustomCompatActivity implements Appli
         if (dataValidator != null){
             for (LaporanData data:dataValidator){
              if (data.getStatus_approved() == 0){
-                 System.out.println(dataValidator.toString());
                 itemLaporan.add(data);
              }
             }

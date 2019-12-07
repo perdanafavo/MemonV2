@@ -2,8 +2,6 @@ package com.example.projectalpha.Activity.ManagerActivity;
 
 import android.Manifest;
 import android.app.AlertDialog;
-import android.app.Application;
-import android.app.MediaRouteButton;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -19,7 +17,6 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.example.projectalpha.Activity.ValidatorActivity.MainValidatorActivity;
 import com.example.projectalpha.Config.ENVIRONMENT;
 import com.example.projectalpha.Helpers.CekKoneksi;
 import com.example.projectalpha.Helpers.CustomCompatActivity;
@@ -77,17 +74,6 @@ public class STOActivity extends CustomCompatActivity
         checkPermission();
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == PERMISSION_REQUEST_CODE) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-                Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show();
-            else
-                Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
-        }
-    }
-
     private void checkPermission(){
         if(ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED)
 
@@ -110,7 +96,6 @@ public class STOActivity extends CustomCompatActivity
             }
         });
     }
-
 
     private void downloadImage(final ImageView img, final String data) {
         img.setOnLongClickListener(new View.OnLongClickListener() {
@@ -232,14 +217,14 @@ public class STOActivity extends CustomCompatActivity
             btnContact.setVisibility(View.GONE);
         }
     }
+
     View.OnClickListener validasiLaporan= new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             applicationPresenter.updateValidator();
-            System.out.println(LAPORAN);
-            System.out.println(STATUS);
         }
     };
+
     View.OnClickListener moveToUsersContact= new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -250,8 +235,6 @@ public class STOActivity extends CustomCompatActivity
             startActivity(intent);
         }
     };
-
-
 
     private void setBtnFooter() {
         backClick();
@@ -397,6 +380,17 @@ public class STOActivity extends CustomCompatActivity
     }
 
     @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show();
+            else
+                Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
     public void SuccessRequestOthers(OthersData data) {
         if (data.getCatatan() != null) tvNote.setText(data.getCatatan());
     }
@@ -440,6 +434,5 @@ public class STOActivity extends CustomCompatActivity
     public int getIndexSto() {
         return sessionManager.getSpSTO();
     }
-
 
 }

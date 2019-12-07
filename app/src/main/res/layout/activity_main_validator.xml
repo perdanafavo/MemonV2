@@ -46,7 +46,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imgUser"
+                android:id="@+id/ivUser"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/profile_image"

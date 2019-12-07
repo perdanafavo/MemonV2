@@ -1,28 +1,20 @@
 package com.example.projectalpha.Adapter;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.projectalpha.Activity.AdminActivity.InfoUserActivity;
-import com.example.projectalpha.Activity.AdminActivity.UpdateUserActivity;
 import com.example.projectalpha.Activity.ManagerActivity.STOActivity;
 import com.example.projectalpha.Config.ENVIRONMENT;
 import com.example.projectalpha.Models.SubModels.LaporanData;
-import com.example.projectalpha.Models.SubModels.UsersData;
 import com.example.projectalpha.R;
-import com.example.projectalpha.Views.UpdateMenuUserViews;
-import com.example.projectalpha.Views.ValidatorViews;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -45,7 +37,6 @@ public class ValidatorAdapter extends RecyclerView.Adapter<ValidatorAdapter.Vali
     @Override
     public ValidatorAdapter.ValidatorHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         context = parent.getContext();
-       // validatorViews = (ValidatorViews) parent.getContext();
         return new ValidatorAdapter.ValidatorHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_verifikasi_laporan, parent, false));
     }
 
@@ -65,8 +56,8 @@ public class ValidatorAdapter extends RecyclerView.Adapter<ValidatorAdapter.Vali
 
         };
 
-        holder.tv_item_name.setText(itemLaporan.get(position).getTanggal_upload()+" "+itemLaporan.get(position).getJam_upload());
-
+        String waktuUpload = itemLaporan.get(position).getTanggal_upload()+" - "+itemLaporan.get(position).getJam_upload();
+        holder.tvItemName.setText(waktuUpload);
         holder.linear_verifikasi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,12 +82,12 @@ public class ValidatorAdapter extends RecyclerView.Adapter<ValidatorAdapter.Vali
     }
 
     public static class ValidatorHolder extends RecyclerView.ViewHolder {
-        private TextView tv_item_name;
+        private TextView tvItemName;
         private LinearLayout linear_verifikasi;
 
-        public ValidatorHolder(View itemView) {
+        private ValidatorHolder(View itemView) {
             super(itemView);
-            tv_item_name = itemView.findViewById(R.id.tv_item_name);
+            tvItemName = itemView.findViewById(R.id.tvItemName);
             linear_verifikasi = itemView.findViewById(R.id.linear_verifikasi);
         }
     }

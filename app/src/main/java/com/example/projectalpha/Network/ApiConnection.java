@@ -86,6 +86,16 @@ public interface ApiConnection {
             @FieldMap Map<String, String> data
     );
 
+    //Update Validator
+    @Headers("TELKOM-API-KEY: Nu2xhCePUtRoZWiJAWtS2WkInIptC2IKN5XzYIZT")
+    @PUT("Report")
+    @FormUrlEncoded
+    Call<ResponseBody> updateValidator(
+            @Field("id") int id,
+            @Field("status_approved") boolean status_approved
+
+    );
+
     @Multipart
     @Headers("TELKOM-API-KEY: Nu2xhCePUtRoZWiJAWtS2WkInIptC2IKN5XzYIZT")
     @POST("Upload")

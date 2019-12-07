@@ -31,6 +31,7 @@ public class ApplicationPresenter {
     private ApplicationViews applicationViews;
 
     private ApplicationViews.UsersViews usersViews;
+
     private ApplicationViews.UsersViews.GetRequest getRequest;
     private ApplicationViews.UsersViews.UpdateRequest updateRequest;
 
@@ -51,6 +52,7 @@ public class ApplicationPresenter {
     private ApplicationViews.StatusReport.GetTemperatureRequest getTemperatureStatusRequest;
     private ApplicationViews.StatusReport.GetFuelRequest getFuelStatusRequest;
     private ApplicationViews.StatusReport.GetPowerRequest getPowerStatusRequest;
+    private ApplicationViews.ReportViews.PutValidator putValidatorInput;
 
     private ApplicationViews.WitelViews.GetRequest getRequestWitel;
 
@@ -91,6 +93,8 @@ public class ApplicationPresenter {
         if (context instanceof ApplicationViews.ReportViews.GetReportValidator) getReportValidator = (ApplicationViews.ReportViews.GetReportValidator) context;
 
         if (context instanceof ApplicationViews.ReportViews.GetRequestValidator) getRequestValidator = (ApplicationViews.ReportViews.GetRequestValidator) context;
+
+        if (context instanceof ApplicationViews.ReportViews.PutValidator) putValidatorInput = (ApplicationViews.ReportViews.PutValidator) context;
     }
 
     public void deleteReportMonth(){
@@ -188,16 +192,19 @@ public class ApplicationPresenter {
     }
     public void updateValidator() {
         RetrofitConnect.getInstance()
-                .updateUsers(usersViews.getEmployee(), updateRequest.getRequestMapBody())
+                .updateValidator(putValidatorInput.getIndexId(), putValidatorInput.getValidator())
                 .enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(@NotNull Call<ResponseBody> call, @NotNull Response<ResponseBody> response) {
                         if (response.isSuccessful()){
+                            System.out.println("berhasil");
                             applicationViews.successRequest();
                         } else {
                             applicationViews.requestFailled(ENVIRONMENT.ON_BAD_REQUEST_PUT);
+                            System.out.println("gagal");
                         }
                     }
+
                     @Override
                     public void onFailure(@NotNull Call<ResponseBody> call, @NotNull Throwable t) {
                         applicationViews.requestFailled(ENVIRONMENT.ON_FAILURE_REQUEST);

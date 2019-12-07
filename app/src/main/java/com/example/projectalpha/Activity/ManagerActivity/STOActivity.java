@@ -45,7 +45,7 @@ import dmax.dialog.SpotsDialog;
 
 public class STOActivity extends CustomCompatActivity
         implements TimeView, ApplicationViews, ApplicationViews.ReportViews, ApplicationViews.ReportViews.GetFuelRequest,
-            ApplicationViews.ReportViews.GetGeneralRequest, ApplicationViews.ReportViews.GetPowerRequest, ApplicationViews.ReportViews.GetRoomRequest, ApplicationViews.ReportViews.GetOthersRequest {
+            ApplicationViews.ReportViews.GetGeneralRequest, ApplicationViews.ReportViews.GetPowerRequest, ApplicationViews.ReportViews.GetRoomRequest, ApplicationViews.ReportViews.GetOthersRequest, ApplicationViews.ReportViews.PutValidator {
 
     private static final int PERMISSION_REQUEST_CODE = 1000;
     private ProgressDialog mDialog;
@@ -234,6 +234,8 @@ public class STOActivity extends CustomCompatActivity
     View.OnClickListener validasiLaporan= new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            applicationPresenter.updateValidator();
+            System.out.println(LAPORAN);
 
         }
     };
@@ -423,4 +425,13 @@ public class STOActivity extends CustomCompatActivity
 
     }
 
+    @Override
+    public int getIndexId() {
+        return LAPORAN;
+    }
+
+    @Override
+    public boolean getValidator() {
+        return true;
+    }
 }

@@ -33,6 +33,7 @@ public interface ApplicationViews {
         interface UpdateRequest{
             Map<String, String> getRequestMapBody();
         }
+
     }
 
     interface WitelViews{
@@ -58,6 +59,11 @@ public interface ApplicationViews {
 
         interface GetRequestValidator {
             void SuccessRequestGetValidator(List<LaporanData> dataValidator);
+        }
+
+        interface PutValidator {
+            int getIndexId();
+            boolean getValidator();
         }
 
         interface GetReportParam{

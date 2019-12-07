@@ -431,7 +431,7 @@ public class STOActivity extends CustomCompatActivity
     }
 
     @Override
-    public boolean getValidator() {
-        return true;
+    public int getValidator() {
+        return 1;
     }
 }

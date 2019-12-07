@@ -92,7 +92,7 @@ public interface ApiConnection {
     @FormUrlEncoded
     Call<ResponseBody> updateValidator(
             @Field("id") int id,
-            @Field("status_approved") boolean status_approved
+            @Field("status_approved") int status_approved
 
     );
 

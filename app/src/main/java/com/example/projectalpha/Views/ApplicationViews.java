@@ -63,7 +63,7 @@ public interface ApplicationViews {
 
         interface PutValidator {
             int getIndexId();
-            boolean getValidator();
+            int getValidator();
         }
 
         interface GetReportParam{

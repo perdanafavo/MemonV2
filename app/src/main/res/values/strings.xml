@@ -141,4 +141,5 @@
     <string name="editpetugas">Edit Profile</string>
     <string name="approve_laporan">Approve Laporan</string>
     <string name="verifikasi_laporan">Verifikasi Laporan</string>
+    <string name="tidak_ada_laporan_terbaru">TIDAK ADA LAPORAN TERBARU!</string>
 </resources>

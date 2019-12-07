@@ -2,6 +2,7 @@ package com.example.projectalpha.Activity.ValidatorActivity;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,12 +31,12 @@ public class MainValidatorActivity extends CustomCompatActivity implements Appli
     private SessionManager sessionManager;
     private ApplicationPresenter applicationPresenter;
     private RecyclerView mRecyclerview;
-    private SwipeRefreshLayout swipeRefreshLayout;
+    private SwipeRefreshLayout swipeRefreshLayout, emptyRefreshLayout;
     private ValidatorAdapter mAdapter;
     private List<LaporanData> itemLaporan = null;
     private ProgressDialog mDialog = null;
     private ImageView ivUser;
-    private TextView tvNama, tvHandphone, tvSTO;
+    private TextView tvNama, tvHandphone, tvSTO, emptyView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,8 @@ public class MainValidatorActivity extends CustomCompatActivity implements Appli
         tvHandphone = findViewById(R.id.txtHandphone);
         tvSTO = findViewById(R.id.txtSTO);
         ivUser = findViewById(R.id.ivUser);
+        emptyView = findViewById(R.id.emptyView);
+        emptyRefreshLayout = findViewById(R.id.emptyswipeValidator);
 
         Picasso.get().setLoggingEnabled(false);
         Picasso.get().setIndicatorsEnabled(false);
@@ -86,6 +89,14 @@ public class MainValidatorActivity extends CustomCompatActivity implements Appli
             @Override
             public void onRefresh() {
                 swipeRefreshLayout.setRefreshing(false);
+                onResume();
+            }
+        });
+
+        emptyRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                emptyRefreshLayout.setRefreshing(false);
                 onResume();
             }
         });
@@ -140,12 +151,22 @@ public class MainValidatorActivity extends CustomCompatActivity implements Appli
 
     @Override
     public void SuccessRequestGetValidator(List<LaporanData> dataValidator) {
-
         itemLaporan = new ArrayList<>();
         if (dataValidator != null){
             for (LaporanData data:dataValidator){
              if (data.getStatus_approved() == 0){
                 itemLaporan.add(data);
+             }
+             if (itemLaporan.isEmpty()) {
+                 mRecyclerview.setVisibility(View.GONE);
+                 swipeRefreshLayout.setVisibility(View.GONE);
+                 emptyView.setVisibility(View.VISIBLE);
+                 emptyRefreshLayout.setVisibility(View.VISIBLE);
+             } else {
+                 mRecyclerview.setVisibility(View.VISIBLE);
+                 swipeRefreshLayout.setVisibility(View.VISIBLE);
+                 emptyView.setVisibility(View.GONE);
+                 emptyRefreshLayout.setVisibility(View.GONE);
              }
             }
         }

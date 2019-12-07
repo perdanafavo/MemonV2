@@ -15,7 +15,6 @@ import com.example.projectalpha.Fragment.MalamFragment;
 import com.example.projectalpha.Fragment.PagiFragment;
 import com.example.projectalpha.Helpers.CekKoneksi;
 import com.example.projectalpha.Helpers.CustomCompatActivity;
-import com.example.projectalpha.Helpers.SessionManager;
 import com.example.projectalpha.Models.SubModels.BIRData;
 import com.example.projectalpha.Models.SubModels.FuelData;
 import com.example.projectalpha.Models.SubModels.LaporanData;

@@ -56,7 +56,7 @@ public class ValidatorAdapter extends RecyclerView.Adapter<ValidatorAdapter.Vali
 
         };
 
-        String waktuUpload = itemLaporan.get(position).getTanggal_upload()+" - "+itemLaporan.get(position).getJam_upload();
+        String waktuUpload = itemLaporan.get(position).getTanggal_upload()+" | "+itemLaporan.get(position).getJam_upload();
         holder.tvItemName.setText(waktuUpload);
         holder.linear_verifikasi.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -182,7 +182,7 @@ public class STOActivity extends CustomCompatActivity
             }
         });
     }
-
+//
     private void createView() {
         mDialog.show();
 

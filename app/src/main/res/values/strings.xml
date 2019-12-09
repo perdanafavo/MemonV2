@@ -145,5 +145,6 @@
     <string name="perhatian">Perhatian!</string>
     <string name="xmark">X</string>
     <string name="hubungi_pic">Hubungi PIC</string>
+    <string name="validasi_langsung">Validasi Langsung</string>
     <string name="kondisi_anomali_text">Masih terdapat kondisi anomali! Segera hubungi rekan PIC terkait</string>
 </resources>

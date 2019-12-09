@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="210dp"
-    android:layout_height="210dp"
+    android:layout_height="250dp"
     android:layout_gravity="center"
     android:padding="5dp"
     android:background="@drawable/border">
@@ -67,5 +67,15 @@
             android:layout_gravity="center"
             android:background="#00C414"
             android:text="@string/hubungi_pic" />
+        <Button
+            android:id="@+id/btnValidasi"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_12ssp"
+            android:layout_gravity="center"
+            android:background="#03A9F4"
+            android:text="@string/validasi_langsung" />
     </LinearLayout>
 </LinearLayout>

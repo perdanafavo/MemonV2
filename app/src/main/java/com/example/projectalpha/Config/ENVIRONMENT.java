@@ -80,6 +80,8 @@ public class ENVIRONMENT {
     public static final String ON_BAD_REQUEST_IMAGE = "Dimensi atau ukuran bermasalah";
     public static final String ON_BAD_REQUEST_DELETE = "Gagal menghapus petugas, coba lagi";
     public static final String ON_BAD_REQUEST_POST = "Terjadi kesalahan masukan pada form";
+    public static final String ON_BAD_REQUEST_VALIDASI = "Masih terdapat kondisi anomali! Segera hubungi rekan PIC terkait";
+    public static final String ON_BAD_NULL_VALIDASI = "Masih terdapat data kosong! Segera hubungi rekan PIC terkait";
 
     //MESSAGE WARNING
     public static final String NO_WAITING_MESSAGE = "Mohon Tunggu";

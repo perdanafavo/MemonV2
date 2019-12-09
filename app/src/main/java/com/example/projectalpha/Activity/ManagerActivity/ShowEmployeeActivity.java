@@ -17,9 +17,11 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.example.projectalpha.Activity.ValidatorActivity.MainValidatorActivity;
 import com.example.projectalpha.Config.ENVIRONMENT;
 import com.example.projectalpha.Helpers.CekKoneksi;
 import com.example.projectalpha.Helpers.CustomCompatActivity;
+import com.example.projectalpha.Helpers.SessionManager;
 import com.example.projectalpha.Models.SubModels.LaporanData;
 import com.example.projectalpha.Models.SubModels.UsersData;
 import com.example.projectalpha.Presenter.ApplicationPresenter;
@@ -38,6 +40,7 @@ public class ShowEmployeeActivity extends CustomCompatActivity
     private final int REQUEST_CALL = 1;
 
     private ApplicationPresenter applicationPresenter;
+    private SessionManager sessionManager;
 
     private ProgressDialog mDialog;
 
@@ -61,7 +64,7 @@ public class ShowEmployeeActivity extends CustomCompatActivity
 
     private void setVariable() {
         applicationPresenter = new ApplicationPresenter(ShowEmployeeActivity.this);
-
+        sessionManager = new SessionManager(getApplicationContext());
         LAPORAN = getIntent().getIntExtra(ENVIRONMENT.ID_LAPORAN, 0);
         STO = getIntent().getIntExtra(ENVIRONMENT.ID_STO, 0);
         Tanggal = getIntent().getStringExtra(ENVIRONMENT.TANGGAL_LAPORAN);
@@ -100,7 +103,11 @@ public class ShowEmployeeActivity extends CustomCompatActivity
 
     private void setBtnFooter() {
         backClick();
-        homeClick(MainManagerActivity.class);
+        if (sessionManager.getSpPrivileges()==2){
+        homeClick(MainManagerActivity.class);}
+        else{
+            homeClick(MainValidatorActivity.class);
+        }
         outClick();
     }
 

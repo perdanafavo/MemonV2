@@ -5,7 +5,6 @@
     android:background="@color/colorGreyLight"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="2dp"
-    app:cardBackgroundColor="@color/colorGreyLight"
     app:cardCornerRadius="8dp"
     app:cardElevation="10dp"
     app:cardPreventCornerOverlap="false"

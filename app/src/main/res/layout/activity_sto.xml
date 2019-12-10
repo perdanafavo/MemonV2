@@ -93,7 +93,7 @@
                     android:id="@+id/btnContact"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#00C414"
+                    android:background="@drawable/button_green_rounded"
                     android:text="@string/hubungi_petugas"
                     android:textColor="@color/colorWhite" />
 
@@ -101,8 +101,8 @@
                     android:id="@+id/btnApprove"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#03A9F4"
-                    android:text="@string/approve_laporan"
+                    android:background="@drawable/button_blue_rounded"
+                    android:text="@string/validasi_laporan"
                     android:textColor="@color/colorWhite" />
             </LinearLayout>
         </LinearLayout>

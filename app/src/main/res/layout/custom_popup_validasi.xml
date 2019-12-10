@@ -65,7 +65,7 @@
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/_12ssp"
             android:layout_gravity="center"
-            android:background="#00C414"
+            android:background="@drawable/button_green_rounded"
             android:text="@string/hubungi_pic" />
         <Button
             android:id="@+id/btnValidasi"
@@ -75,7 +75,7 @@
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/_12ssp"
             android:layout_gravity="center"
-            android:background="#03A9F4"
+            android:background="@drawable/button_blue_rounded"
             android:text="@string/validasi_langsung" />
     </LinearLayout>
 </LinearLayout>

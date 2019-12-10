@@ -65,7 +65,8 @@
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/_8sdp"
             android:nestedScrollingEnabled="false"
-            android:background="@drawable/border_rectangle"/>
+            android:background="@drawable/border_rectangle"
+            tools:listitem="@layout/item_reset_user"/>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="@color/colorGreyLight"
     app:cardCornerRadius="8dp"
     app:cardElevation="10dp"
     android:layout_margin="4dp">
@@ -12,7 +13,6 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorGreyLight"
         android:padding="10dp">
 
         <LinearLayout

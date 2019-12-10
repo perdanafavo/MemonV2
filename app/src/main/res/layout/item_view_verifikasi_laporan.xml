@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorGreyLight"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="2dp"
+    app:cardBackgroundColor="@color/colorGreyLight"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="10dp"
+    app:cardPreventCornerOverlap="false"
+    app:contentPadding="0dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_8sdp">
+
+        <TextView
+            android:id="@+id/txtTanggal"
+            android:layout_width="@dimen/_160sdp"
+            android:layout_height="@dimen/_21sdp"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:text="@string/tanggal"
+            android:textStyle="bold"
+            android:textColor="@color/blacket"
+            android:textSize="@dimen/_13ssp"
+            android:maxLines="1"
+            android:ellipsize="end"/>
+
+        <TextView
+            android:id="@+id/txtWaktu"
+            android:layout_width="@dimen/_160sdp"
+            android:layout_height="@dimen/_21sdp"
+            android:layout_below="@id/txtTanggal"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:text="@string/waktu"
+            android:textSize="@dimen/_12ssp" />
+
+        <TextView
+            android:id="@+id/txtSTO"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_42sdp"
+            android:layout_centerInParent="true"
+            android:layout_toEndOf="@id/txtTanggal"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textColor="@color/blacket"
+            android:textStyle="italic"
+            android:background="@drawable/border_grey"
+            android:textSize="@dimen/_11ssp"
+            android:text="@string/sto_simpang" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

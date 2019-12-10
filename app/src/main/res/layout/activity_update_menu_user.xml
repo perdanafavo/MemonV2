@@ -63,7 +63,8 @@
             android:nestedScrollingEnabled="false"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/border_rectangle" />
+            android:background="@drawable/border_rectangle"
+            tools:listitem="@layout/item_update_user"/>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <LinearLayout

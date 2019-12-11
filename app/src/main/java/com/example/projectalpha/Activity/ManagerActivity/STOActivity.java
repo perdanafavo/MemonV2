@@ -127,6 +127,9 @@ public class STOActivity extends CustomCompatActivity
     }
 
     private void setVariable() {
+        myDialog = new Dialog(STOActivity.this);
+        myDialog.setContentView(R.layout.custom_popup_validasi);
+
         mDialog = new ProgressDialog(STOActivity.this);
         mDialog.setMessage(ENVIRONMENT.NO_WAITING_MESSAGE);
         mDialog.setCancelable(false);
@@ -229,9 +232,6 @@ public class STOActivity extends CustomCompatActivity
     }
 
     private void showPopup(String message){
-        myDialog = new Dialog(STOActivity.this);
-        myDialog.setContentView(R.layout.custom_popup_validasi);
-
         tvPeringatan = myDialog.findViewById(R.id.tvPeringatan);
         tvClose = myDialog.findViewById(R.id.tvClose);
         btnPIC = myDialog.findViewById(R.id.btnPIC);

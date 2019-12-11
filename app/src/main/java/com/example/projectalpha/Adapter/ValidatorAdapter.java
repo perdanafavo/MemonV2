@@ -58,7 +58,7 @@ public class ValidatorAdapter extends RecyclerView.Adapter<ValidatorAdapter.Vali
 
         String waktuUpload = itemLaporan.get(position).getTanggal_upload()+" | "+itemLaporan.get(position).getJam_upload();
         holder.tvItemName.setText(waktuUpload);
-        holder.linear_verifikasi.setOnClickListener(new View.OnClickListener() {
+        holder.relativeVerifikasiLaporan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 context.startActivity(
@@ -83,12 +83,12 @@ public class ValidatorAdapter extends RecyclerView.Adapter<ValidatorAdapter.Vali
 
     public static class ValidatorHolder extends RecyclerView.ViewHolder {
         private TextView tvItemName;
-        private LinearLayout linear_verifikasi;
+        private LinearLayout relativeVerifikasiLaporan;
 
         private ValidatorHolder(View itemView) {
             super(itemView);
             tvItemName = itemView.findViewById(R.id.tvItemName);
-            linear_verifikasi = itemView.findViewById(R.id.linear_verifikasi);
+            relativeVerifikasiLaporan = itemView.findViewById(R.id.relativeVerifikasiLaporan);
         }
     }
 }

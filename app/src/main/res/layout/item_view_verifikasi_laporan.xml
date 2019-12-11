@@ -11,10 +11,11 @@
     app:contentPadding="0dp">
 
     <RelativeLayout
+        android:id="@+id/relativeViewVerifikasiLaporan"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/_8sdp"
-        android:id="@+id/relative_verifikasi">
+        android:layout_marginTop="@dimen/_8sdp">
+
         <TextView
             android:id="@+id/txtTanggal"
             android:layout_width="@dimen/_160sdp"

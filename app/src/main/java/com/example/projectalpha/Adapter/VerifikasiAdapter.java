@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -20,7 +19,6 @@ import com.example.projectalpha.R;
 import java.util.List;
 
 public class VerifikasiAdapter extends RecyclerView.Adapter<VerifikasiAdapter.VerifikasiHolder> {
-
 
     private Context context;
     private List<LaporanData> itemVerifikasi;
@@ -64,7 +62,7 @@ public class VerifikasiAdapter extends RecyclerView.Adapter<VerifikasiAdapter.Ve
         holder.txtTanggal.setText(tanggalUpload);
       //  holder.txtSTO.setText(stoUpload);
         holder.txtWaktu.setText(waktuUpload);
-        holder.relative_verifikasi.setOnClickListener(new View.OnClickListener() {
+        holder.rlViewVerifikasi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 context.startActivity(
@@ -86,14 +84,14 @@ public class VerifikasiAdapter extends RecyclerView.Adapter<VerifikasiAdapter.Ve
 
     public static class VerifikasiHolder extends RecyclerView.ViewHolder {
         private TextView txtTanggal, txtWaktu, txtSTO;
-        private RelativeLayout relative_verifikasi;
+        private RelativeLayout rlViewVerifikasi;
 
         private VerifikasiHolder(View itemView) {
             super(itemView);
             txtTanggal = itemView.findViewById(R.id.txtTanggal);
             txtWaktu = itemView.findViewById(R.id.txtWaktu);
             txtSTO = itemView.findViewById(R.id.txtSTO);
-            relative_verifikasi = itemView.findViewById(R.id.relative_verifikasi);
+            rlViewVerifikasi = itemView.findViewById(R.id.relativeVerifikasiLaporan);
         }
     }
 }

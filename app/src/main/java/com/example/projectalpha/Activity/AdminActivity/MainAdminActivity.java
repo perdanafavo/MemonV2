@@ -10,7 +10,7 @@ import com.example.projectalpha.R;
 
 public class MainAdminActivity extends CustomCompatActivity {
 
-    private Button btnCreateUser, btnUpdateUser, btnResetUser, btnUpdateContact;
+    private Button btnCreateUser, btnUpdateUser, btnResetUser, btnUpdateContact, btnVerifikasi;
 
     private static final int TIME_INTERVAL = 2000;
     private long mBackPressed;
@@ -30,6 +30,7 @@ public class MainAdminActivity extends CustomCompatActivity {
         btnUpdateUser = findViewById(R.id.btnUpdateUser);
         btnResetUser = findViewById(R.id.btnResetUser);
         btnUpdateContact = findViewById(R.id.btnUpdateContact);
+        btnVerifikasi = findViewById(R.id.btnViewVerifikasiLaporan);
     }
 
     private void createView(){
@@ -58,6 +59,12 @@ public class MainAdminActivity extends CustomCompatActivity {
             @Override
             public void onClick(View v) {
                 simpleIntent(UpdateMenuContactActivity.class);
+            }
+        });
+        btnVerifikasi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                simpleIntent(ViewVerifikasiLaporanActivity.class);
             }
         });
     }

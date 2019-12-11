@@ -13,8 +13,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/_8sdp">
-
+        android:layout_marginTop="@dimen/_8sdp"
+        android:id="@+id/relative_verifikasi">
         <TextView
             android:id="@+id/txtTanggal"
             android:layout_width="@dimen/_160sdp"
@@ -41,17 +41,16 @@
             android:id="@+id/txtSTO"
             android:layout_width="@dimen/_70sdp"
             android:layout_height="@dimen/_42sdp"
-            android:layout_centerInParent="true"
-            android:layout_toEndOf="@id/txtTanggal"
+            android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/_5sdp"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:textColor="@color/blacket"
-            android:textStyle="italic"
+            android:layout_toEndOf="@id/txtTanggal"
             android:background="@drawable/border_grey"
+            android:gravity="center"
+            android:text="@string/sto_simpang"
+            android:textAlignment="center"
+            android:textColor="@color/blacket"
             android:textSize="@dimen/_11ssp"
-            android:text="@string/sto_simpang" />
-
+            android:textStyle="italic" />
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

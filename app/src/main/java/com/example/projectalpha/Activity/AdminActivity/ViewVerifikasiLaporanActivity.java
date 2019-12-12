@@ -97,7 +97,7 @@ public class ViewVerifikasiLaporanActivity extends CustomCompatActivity implemen
     private void filter(String text) {
         List<LaporanData> filteredList = new ArrayList<>();
         for (LaporanData item : itemVerifikasi){
-            if ((item.getSto().toLowerCase().contains(text.toLowerCase()))){
+            if ((Integer.toString(item.getSto()).toLowerCase().contains(text.toLowerCase()))){
                 filteredList.add(item);
             }
         }

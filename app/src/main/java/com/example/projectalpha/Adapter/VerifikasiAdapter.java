@@ -32,7 +32,7 @@ public class VerifikasiAdapter extends RecyclerView.Adapter<VerifikasiAdapter.Ve
 
     public void isiVerifikasi(List<LaporanData> list, String stoid){
         itemVerifikasi = list;
-        this.stoid = stoid
+        this.stoid = stoid;
     }
 
     public void isiVerifikasi(List<LaporanData> list, List<STOData> sto){

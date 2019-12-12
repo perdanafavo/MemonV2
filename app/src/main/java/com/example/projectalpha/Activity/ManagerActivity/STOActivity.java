@@ -20,6 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.example.projectalpha.Activity.AdminActivity.ViewVerifikasiLaporanActivity;
 import com.example.projectalpha.Activity.ValidatorActivity.MainValidatorActivity;
 import com.example.projectalpha.Config.ENVIRONMENT;
 import com.example.projectalpha.Helpers.CekKoneksi;
@@ -63,7 +64,7 @@ public class STOActivity extends CustomCompatActivity
     private ImageView[] imageViews;
     private TextView [] tvKondisiUmum, tvCatuan, tvBBM, tvSentral, tvTransmisi, tvRectifier, tvBatere, tvAkses, tvGenset;
     private TextView tvSTO, tvTanggal, tvNote, txHome, tvClose, tvPeringatan;
-    private Button btnContact, btnApprove, btnPIC;
+    private Button btnContact, btnApprove, btnPIC, btnValidasi;
     private PhotoView imagephoto;
     private SessionManager sessionManager;
     private ImageButton btnHome;
@@ -147,6 +148,7 @@ public class STOActivity extends CustomCompatActivity
         btnApprove      = findViewById(R.id.btnApprove);
         btnHome         = findViewById(R.id.btnHome);
         txHome          = findViewById(R.id.txHome);
+
 
         imageViews = new ImageView[]{
                 findViewById(R.id.imgKondisi),
@@ -235,6 +237,7 @@ public class STOActivity extends CustomCompatActivity
         tvPeringatan = myDialog.findViewById(R.id.tvPeringatan);
         tvClose = myDialog.findViewById(R.id.tvClose);
         btnPIC = myDialog.findViewById(R.id.btnPIC);
+        btnValidasi = myDialog.findViewById(R.id.btnValidasi);
 
         myDialog.setCanceledOnTouchOutside(false);
         tvPeringatan.setText(message);
@@ -245,8 +248,27 @@ public class STOActivity extends CustomCompatActivity
             }
         });
         btnPIC.setOnClickListener(moveToUsersContact);
+        btnValidasi.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                prosesValidasi();
+            }
+        });
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         myDialog.show();
+    }
+
+    private void prosesValidasi(){
+        applicationPresenter.updateValidator();
+        simpleToast("Validasi berhasil");
+        Intent intent;
+        if (sessionManager.getSpPrivileges()==2) {
+            intent = new Intent(STOActivity.this, MainValidatorActivity.class);
+        }
+        else {
+            intent = new Intent(STOActivity.this, ViewVerifikasiLaporanActivity.class);
+        }
+        startActivity(intent);
     }
 
     View.OnClickListener validasiLaporan= new View.OnClickListener() {
@@ -257,10 +279,7 @@ public class STOActivity extends CustomCompatActivity
                 showPopup(ENVIRONMENT.ON_BAD_NULL_VALIDASI);
             }
             else if(statusFuel&&statusPower&&statusSuhu){
-                applicationPresenter.updateValidator();
-                simpleToast("Validasi berhasil");
-                Intent intent = new Intent(STOActivity.this, MainValidatorActivity.class);
-                startActivity(intent);
+                prosesValidasi();
             }
             else {
                 showPopup(ENVIRONMENT.ON_BAD_REQUEST_VALIDASI);

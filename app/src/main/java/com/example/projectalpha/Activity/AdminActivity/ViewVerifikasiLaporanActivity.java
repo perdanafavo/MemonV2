@@ -1,7 +1,11 @@
 package com.example.projectalpha.Activity.AdminActivity;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.DatePicker;
+import android.widget.ImageButton;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -19,9 +23,12 @@ import com.example.projectalpha.Presenter.ApplicationPresenter;
 import com.example.projectalpha.R;
 import com.example.projectalpha.Views.ApplicationViews;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 public class ViewVerifikasiLaporanActivity extends CustomCompatActivity implements ApplicationViews, ApplicationViews.ReportViews.GetReportValidator, ApplicationViews.ReportViews.GetRequestValidator, ApplicationViews.StoViews.GetRequest{
 
@@ -29,11 +36,14 @@ public class ViewVerifikasiLaporanActivity extends CustomCompatActivity implemen
     private SearchView searchView;
     private RecyclerView mRecyclerview;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private SimpleDateFormat dateFormat;
+    private ImageButton btnCalendar;
 
     private ApplicationPresenter applicationPresenter;
     private VerifikasiAdapter mAdapter;
     private List<LaporanData> itemVerifikasi = null;
     private List<STOData> allSTO;
+    private String DATE = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +62,7 @@ public class ViewVerifikasiLaporanActivity extends CustomCompatActivity implemen
 
 
     private void setVariable(){
+        dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
         mDialog = new ProgressDialog(ViewVerifikasiLaporanActivity.this);
         mDialog.setMessage(ENVIRONMENT.NO_WAITING_MESSAGE);
         mDialog.setCancelable(false);
@@ -60,6 +71,7 @@ public class ViewVerifikasiLaporanActivity extends CustomCompatActivity implemen
         mRecyclerview = findViewById(R.id.recycleViewVerifikasiLaporan);
         swipeRefreshLayout = findViewById(R.id.swlayout);
         searchView = findViewById(R.id.searchViewVerifikasiLaporan);
+        btnCalendar = findViewById(R.id.btnCalendar);
     }
 
     private void createView(){
@@ -92,17 +104,69 @@ public class ViewVerifikasiLaporanActivity extends CustomCompatActivity implemen
                 return true;
             }
         });
+        btnCalendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDatePicker();
+            }
+        });
     }
 
     private void filter(String text) {
+        List<Integer> stoList = new ArrayList<>();
+
         List<LaporanData> filteredList = new ArrayList<>();
-        for (LaporanData item : itemVerifikasi){
-            if ((Integer.toString(item.getSto()).toLowerCase().contains(text.toLowerCase()))){
-                filteredList.add(item);
+        for (STOData item : allSTO){
+            if(item.getNama().toLowerCase().contains(text.toLowerCase())){
+                stoList.add(item.getId());
             }
         }
+        if (!stoList.isEmpty()){
+            for (int a : stoList){
+                for (LaporanData item : itemVerifikasi){
+                    if (a!=0 && item.getSto()==a){
+                        if(item.getStatus_approved() == 0) {
+                            filteredList.add(item);
+                        }
+                    }
+                }
+            }
+        }
+        else {
+            for (LaporanData item : itemVerifikasi){
+                if (item.getTanggal_shift().equals(text)){
+                    if(item.getStatus_approved() == 0) {
+                        filteredList.add(item);
+                    }
+                }
+            }
+        }
+
+        if (text.equals("")){
+            filteredList.clear();
+            for (LaporanData item : itemVerifikasi){
+                if (item.getStatus_approved() == 0){
+                    filteredList.add(item);
+                }
+            }
+        }
+
         mAdapter.isiVerifikasi(filteredList, allSTO);
         mAdapter.notifyDataSetChanged();
+    }
+
+    private void showDatePicker(){
+        Calendar newCalendar = Calendar.getInstance();
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                Calendar newDate = Calendar.getInstance();
+                newDate.set(year, monthOfYear, dayOfMonth);
+                DATE = dateFormat.format(newDate.getTime());
+                searchView.setQuery(DATE,true);
+            }
+        }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
     }
 
     private void getRequest(){
@@ -146,7 +210,11 @@ public class ViewVerifikasiLaporanActivity extends CustomCompatActivity implemen
     @Override
     public void SuccessRequestGetValidator(List<LaporanData> dataVerifikasi) {
         itemVerifikasi = new ArrayList<>();
-        itemVerifikasi.addAll(dataVerifikasi);
+        for (LaporanData item : dataVerifikasi){
+            if (item.getStatus_approved() == 0){
+                itemVerifikasi.add(item);
+            }
+        }
         Collections.reverse(itemVerifikasi);
         mAdapter.isiVerifikasi(itemVerifikasi, allSTO);
         mAdapter.notifyDataSetChanged();

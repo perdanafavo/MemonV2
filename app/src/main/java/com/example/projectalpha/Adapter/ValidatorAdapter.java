@@ -43,9 +43,9 @@ public class ValidatorAdapter extends RecyclerView.Adapter<ValidatorAdapter.Vali
 
     @Override
     public void onBindViewHolder(@NonNull ValidatorHolder holder, final int position) {
-        String tanggalUpload = itemLaporan.get(position).getTanggal_upload();
+        String tanggalShift = itemLaporan.get(position).getTanggal_shift();
         String waktuUpload = itemLaporan.get(position).getJam_upload();
-        holder.tvItemTanggal.setText(tanggalUpload);
+        holder.tvItemTanggal.setText(tanggalShift);
         holder.tvItemWaktu.setText(waktuUpload);
         holder.relativeVerifikasiLaporan.setOnClickListener(new View.OnClickListener() {
             @Override

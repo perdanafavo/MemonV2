@@ -40,16 +40,17 @@
                 android:background="@drawable/border"
                 android:focusable="false"
                 android:iconifiedByDefault="false"
-                android:queryHint="Cari Nama STO">
+                android:queryHint="Nama STO / Tanggal">
 
             </SearchView>
 
             <ImageButton
                 android:id="@+id/btnCalendar"
+                android:layout_marginStart="5dp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/ic_date_range_black_24dp"
+                android:background="@drawable/ic_calender"
                 android:contentDescription="@string/tanggal"/>
 
         </LinearLayout>

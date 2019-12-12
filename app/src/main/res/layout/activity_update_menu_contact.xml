@@ -39,7 +39,7 @@
                 android:background="@drawable/border"
                 android:focusable="false"
                 android:iconifiedByDefault="false"
-                android:queryHint="Cari nama atau witel" />
+                android:queryHint="Nama atau Witel" />
         </LinearLayout>
 
     </LinearLayout>

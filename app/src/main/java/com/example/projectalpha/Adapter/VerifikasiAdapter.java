@@ -50,8 +50,8 @@ public class VerifikasiAdapter extends RecyclerView.Adapter<VerifikasiAdapter.Ve
     @Override
     public void onBindViewHolder(@NonNull VerifikasiHolder holder, final int position) {
         String waktuUpload = itemVerifikasi.get(position).getJam_upload();
-        String tanggalUpload = itemVerifikasi.get(position).getTanggal_upload();
-        holder.txtTanggal.setText(tanggalUpload);
+        String tanggalShift = itemVerifikasi.get(position).getTanggal_shift();
+        holder.txtTanggal.setText(tanggalShift);
         holder.txtSTO.setText(allSTO.get(itemVerifikasi.get(position).getSto()-1).getNama());
         holder.txtWaktu.setText(waktuUpload);
         holder.rlViewVerifikasi.setOnClickListener(new View.OnClickListener() {

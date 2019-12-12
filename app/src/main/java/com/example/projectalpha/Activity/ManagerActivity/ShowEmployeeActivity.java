@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.example.projectalpha.Activity.AdminActivity.MainAdminActivity;
 import com.example.projectalpha.Activity.ValidatorActivity.MainValidatorActivity;
 import com.example.projectalpha.Config.ENVIRONMENT;
 import com.example.projectalpha.Helpers.CekKoneksi;
@@ -103,9 +104,15 @@ public class ShowEmployeeActivity extends CustomCompatActivity
 
     private void setBtnFooter() {
         backClick();
-        if (sessionManager.getSpPrivileges()==2){
-        homeClick(MainManagerActivity.class);}
-        else{
+        if (sessionManager.getSpPrivileges()==1)
+        {
+            homeClick(MainAdminActivity.class);
+        }
+        else if (sessionManager.getSpPrivileges()==2)
+        {
+            homeClick(MainManagerActivity.class);
+        }
+        else {
             homeClick(MainValidatorActivity.class);
         }
         outClick();

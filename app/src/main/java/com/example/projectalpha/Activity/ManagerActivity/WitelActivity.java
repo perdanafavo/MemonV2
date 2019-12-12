@@ -226,7 +226,7 @@ public class WitelActivity extends CustomCompatActivity
         String txtWaktu, txtHari, txtTanggal;
         txtHari = dataResponse.getHari();
         txtTanggal = dataResponse.getBulan();
-        txtWaktu                = txtHari+", "+ txtTanggal;
+        txtWaktu = txtHari+", "+ txtTanggal;
 
         tvWitel.setText(getIntent().getStringExtra(ENVIRONMENT.NAMA_WITEL));
         tvTanggal.setText(txtWaktu);

@@ -111,6 +111,7 @@ public class MainValidatorActivity extends CustomCompatActivity implements Appli
         }
 
     }
+
     private void getRequest(){
         applicationPresenter.requestLaporanBySTO();
     }
@@ -119,6 +120,7 @@ public class MainValidatorActivity extends CustomCompatActivity implements Appli
     protected void onResume() {
         super.onResume();
         createView();
+        mAdapter.isiValidator(itemLaporan, sessionManager.getSpNamaSTO());
         mAdapter.notifyDataSetChanged();
     }
     @Override

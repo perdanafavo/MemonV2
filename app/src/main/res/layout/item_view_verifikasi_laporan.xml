@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/colorGreyLight"
@@ -14,7 +15,8 @@
         android:id="@+id/relativeViewVerifikasiLaporan"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/_8sdp">
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_5sdp">
 
         <TextView
             android:id="@+id/txtTanggal"
@@ -40,14 +42,14 @@
 
         <TextView
             android:id="@+id/txtSTO"
-            android:layout_width="@dimen/_70sdp"
+            android:layout_width="@dimen/_75sdp"
             android:layout_height="@dimen/_42sdp"
             android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/_5sdp"
             android:layout_toEndOf="@id/txtTanggal"
             android:background="@drawable/border_grey"
             android:gravity="center"
-            android:text="@string/sto_simpang"
+            tools:text="@string/sto_simpang"
             android:textAlignment="center"
             android:textColor="@color/blacket"
             android:textSize="@dimen/_11ssp"

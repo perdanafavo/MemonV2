@@ -40,7 +40,7 @@
                 android:background="@drawable/border"
                 android:focusable="false"
                 android:iconifiedByDefault="false"
-                android:queryHint="Cari hari atau nama STO">
+                android:queryHint="Cari Nama STO">
 
             </SearchView>
 

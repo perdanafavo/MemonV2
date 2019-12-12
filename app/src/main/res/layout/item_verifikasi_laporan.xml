@@ -16,12 +16,21 @@
         android:padding="10dp">
 
         <TextView
-            android:id="@+id/tvItemName"
+            android:id="@+id/tvItemTanggal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/_18ssp"
+            android:gravity="start"
+            android:textSize="@dimen/_16ssp"
             android:textStyle="bold"
-            tools:text="25 Nov 2019 - 20:15" />
+            tools:text="25 Nov 2019" />
+
+        <TextView
+            android:id="@+id/tvItemWaktu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:textSize="@dimen/_14ssp"
+            tools:text="08:12:59" />
 
     </RelativeLayout>
 

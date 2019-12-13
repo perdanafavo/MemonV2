@@ -262,7 +262,7 @@ public class STOActivity extends CustomCompatActivity
         applicationPresenter.updateValidator();
         simpleToast("Validasi berhasil");
         Intent intent;
-        if (sessionManager.getSpPrivileges()==2) {
+        if (sessionManager.getSpPrivileges()==4) {
             intent = new Intent(STOActivity.this, MainValidatorActivity.class);
         }
         else {

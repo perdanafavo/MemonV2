@@ -54,25 +54,25 @@ public class MainManagerAdapter extends RecyclerView.Adapter<MainManagerAdapter.
         if (dataStatus != null) {
             for (LaporanData data:dataStatus){
                 if (data.getWitel() == Place.get(position).getId()){
-                    if(data.getId()!=0 && data.isStatus()){
-                        if (status == 0 || status ==1){
-                            status = 1;
-                            holder.linearLayout.setBackgroundResource(R.drawable.rectangle2);
-                        } else {
+                        if(data.getId()!=0 && data.isStatus() && data.getStatus_approved()==1){
+                            if (status == 0 || status ==1){
+                                status = 1;
+                                holder.linearLayout.setBackgroundResource(R.drawable.rectangle2);
+                            } else {
+                                holder.linearLayout.setBackgroundResource(R.drawable.rectangle);
+                                break;
+                            }
+                        } else if (data.getId()!=0 && !data.isStatus() && data.getStatus_approved()==1){
                             holder.linearLayout.setBackgroundResource(R.drawable.rectangle);
                             break;
-                        }
-                    } else if (data.getId()!=0 && !data.isStatus()){
-                        holder.linearLayout.setBackgroundResource(R.drawable.rectangle);
-                        break;
-                    } else if (data.getId() == 0){
-                        if (status == 0 || status == 2){
-                            status =2;
-                            holder.linearLayout.setBackgroundResource(R.drawable.rectangle3);
-                        }else {
-                            holder.linearLayout.setBackgroundResource(R.drawable.rectangle);
-                            break;
-                        }
+                        } else if (data.getId() == 0){
+                            if (status == 0 || status == 2){
+                                status =2;
+                                holder.linearLayout.setBackgroundResource(R.drawable.rectangle3);
+                            }else {
+                                holder.linearLayout.setBackgroundResource(R.drawable.rectangle);
+                                break;
+                            }
                     }
                 }
             }

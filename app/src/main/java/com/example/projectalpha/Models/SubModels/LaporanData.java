@@ -42,9 +42,6 @@ public class LaporanData{
     public byte getStatus_approved() {
         return this.status_approved;
     }
-    public boolean isStatusApproved(){
-        return this.status_approved == 0;
-    }
 
     public void setId(int id){
         this.id= id;

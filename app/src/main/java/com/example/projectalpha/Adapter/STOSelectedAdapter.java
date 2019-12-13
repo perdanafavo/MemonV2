@@ -70,7 +70,7 @@ public class STOSelectedAdapter extends RecyclerView.Adapter<STOSelectedAdapter.
         if (dataTemperature != null){
             for (BIRData data:dataTemperature){
                 if (data.getSto() == place.get(position).getId()){
-                    if (data.getSuhu() > 23){
+                    if (data.getSuhu() > 23 && data.getStatus_approved()==1){
                         LAPORAN = data.getLaporan();
                         switch (data.getRuangan()){
                             case 1:
@@ -108,14 +108,14 @@ public class STOSelectedAdapter extends RecyclerView.Adapter<STOSelectedAdapter.
             for (PowerData data:dataPower){
                 if (data.getSto() == place.get(position).getId()){
                     if (data.getPln() != null && data.getPln().equals(ENVIRONMENT.POWER_SELECTED_ON)
-                            && data.getGenset() != null && data.getGenset().equals(ENVIRONMENT.POWER_SELECTED_ON)) {
+                            && data.getGenset() != null && data.getGenset().equals(ENVIRONMENT.POWER_SELECTED_ON ) && data.getStatus_approved()==1) {
                         LAPORAN = data.getLaporan();
                         count++;
                         value.add("PLN : "+data.getPln());
                         value.add("GENSET : "+data.getGenset());
                         break;
                     } else if (data.getPln() != null && data.getPln().equals(ENVIRONMENT.POWER_SELECTED_OFF)
-                            && data.getGenset() != null && data.getGenset().equals(ENVIRONMENT.POWER_SELECTED_OFF)) {
+                            && data.getGenset() != null && data.getGenset().equals(ENVIRONMENT.POWER_SELECTED_OFF) && data.getStatus_approved()==1) {
                         LAPORAN = data.getLaporan();
                         count++;
                         value.add("PLN : "+data.getPln());
@@ -128,7 +128,7 @@ public class STOSelectedAdapter extends RecyclerView.Adapter<STOSelectedAdapter.
             for (FuelData data:dataFuel){
                 if (data.getSto() == place.get(position).getId()){
                     if (data.getTanggal_shift() != null){
-                        if (data.getTanki_bulanan() <= data.getKapasitas_rendah()){
+                        if (data.getTanki_bulanan() <= data.getKapasitas_rendah() && data.getStatus_approved()==1){
                             count++;
                             LAPORAN = data.getLaporan();
                             value.add("Kapasitas : "+data.getKapasitas()+" Liter");

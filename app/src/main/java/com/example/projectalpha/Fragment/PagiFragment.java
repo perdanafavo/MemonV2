@@ -78,7 +78,7 @@ public class PagiFragment extends Fragment{
         int count = 0;
         if (temperature != null) {
             for (BIRData data:temperature){
-                if (data.getSuhu() > 23) count++;
+                if (data.getSuhu() > 23 && data.getStatus_approved()==1) count++;
             }
         }
         btnSuhu.setText(String.valueOf(count));
@@ -99,7 +99,7 @@ public class PagiFragment extends Fragment{
         int count = 0;
         if (fuel != null) {
             for (FuelData data:fuel){
-                if (data.getTanggal_shift() != null){
+                if (data.getTanggal_shift() != null && data.getStatus_approved()==1){
                     if (data.getTanki_bulanan() <= data.getKapasitas_rendah()) count++;
                 }
             }
@@ -123,10 +123,10 @@ public class PagiFragment extends Fragment{
         if (power != null) {
             for (PowerData data:power){
                 if (data.getPln() != null && data.getPln().equals(ENVIRONMENT.POWER_SELECTED_ON)
-                        && data.getGenset() != null && data.getGenset().equals(ENVIRONMENT.POWER_SELECTED_ON)) {
+                        && data.getGenset() != null && data.getGenset().equals(ENVIRONMENT.POWER_SELECTED_ON) && data.getStatus_approved()==1) {
                     count++;
                 } else if (data.getPln() != null && data.getPln().equals(ENVIRONMENT.POWER_SELECTED_OFF)
-                        && data.getGenset() != null && data.getGenset().equals(ENVIRONMENT.POWER_SELECTED_OFF)) {
+                        && data.getGenset() != null && data.getGenset().equals(ENVIRONMENT.POWER_SELECTED_OFF) && data.getStatus_approved()==1) {
                     count++;
                 }
             }

@@ -64,9 +64,9 @@ public class WitelManagerAdapter extends RecyclerView.Adapter<WitelManagerAdapte
         if (dataStatus != null){
             for (LaporanData data:dataStatus){
                 if (data.getSto() == Place.get(position).getId()){
-                    if(data.getId()!=0 && data.isStatus()){
+                    if(data.getId()!=0 && data.isStatus() && data.getStatus_approved()==1){
                         holder.linearLayout.setBackgroundResource(R.drawable.rectangle2);
-                    } else if (data.getId()!=0 && !data.isStatus()){
+                    } else if (data.getId()!=0 && !data.isStatus() && data.getStatus_approved()==1){
                         holder.linearLayout.setBackgroundResource(R.drawable.rectangle);
                     }else if (data.getId() == 0){
                         holder.linearLayout.setBackgroundResource(R.drawable.rectangle3);
@@ -85,7 +85,9 @@ public class WitelManagerAdapter extends RecyclerView.Adapter<WitelManagerAdapte
             public void onClick(View v) {
                 Intent intent = new Intent(context.getApplicationContext(), STOActivity.class);
                 if (dataStatus != null && dataStatus.size()>finalIndex){
-                    intent.putExtra(ENVIRONMENT.ID_LAPORAN, dataStatus.get(finalIndex).getId());
+                    if (dataStatus.get(finalIndex).getStatus_approved()==1){
+                        intent.putExtra(ENVIRONMENT.ID_LAPORAN, dataStatus.get(finalIndex).getId());
+                    }
                     intent.putExtra(ENVIRONMENT.TANGGAL_LAPORAN, dataStatus.get(finalIndex).getTanggal_shift());
                 } else if (tanggal != null){
                     intent.putExtra(ENVIRONMENT.TANGGAL_LAPORAN, tanggal);

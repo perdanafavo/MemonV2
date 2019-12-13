@@ -55,7 +55,7 @@ public class WitelSelectedAdapter extends RecyclerView.Adapter<WitelSelectedAdap
             TITLE = ENVIRONMENT.TEPERATURE_TITLE;
             for (BIRData data:dataTemperature){
                 if (data.getWitel() == place.get(position).getId()){
-                    if (data.getSuhu() > 23){
+                    if (data.getSuhu() > 23 && data.getStatus_approved()==1){
                         count++;
                     }
                 }
@@ -65,10 +65,10 @@ public class WitelSelectedAdapter extends RecyclerView.Adapter<WitelSelectedAdap
             for (PowerData data:dataPower){
                 if (data.getWitel() == place.get(position).getId()){
                     if (data.getPln() != null && data.getPln().equals(ENVIRONMENT.POWER_SELECTED_ON)
-                            && data.getGenset() != null && data.getGenset().equals(ENVIRONMENT.POWER_SELECTED_ON)) {
+                            && data.getGenset() != null && data.getGenset().equals(ENVIRONMENT.POWER_SELECTED_ON) && data.getStatus_approved()==1) {
                         count++;
                     } else if (data.getPln() != null && data.getPln().equals(ENVIRONMENT.POWER_SELECTED_OFF)
-                            && data.getGenset() != null && data.getGenset().equals(ENVIRONMENT.POWER_SELECTED_OFF)) {
+                            && data.getGenset() != null && data.getGenset().equals(ENVIRONMENT.POWER_SELECTED_OFF) && data.getStatus_approved()==1) {
                         count++;
                     }
                 }
@@ -77,7 +77,7 @@ public class WitelSelectedAdapter extends RecyclerView.Adapter<WitelSelectedAdap
             TITLE = ENVIRONMENT.FUEL_TITLE;
             for (FuelData data:dataFuel){
                 if (data.getWitel() == place.get(position).getId()){
-                    if (data.getTanggal_shift() != null){
+                    if (data.getTanggal_shift() != null && data.getStatus_approved()==1){
                         if (data.getTanki_bulanan() <= data.getKapasitas_rendah()) count++;
                     }
                 }

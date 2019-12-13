@@ -36,6 +36,19 @@ public class BIRData {
     @SerializedName("foto_suhu")
     private String foto_suhu;
 
+    @SerializedName("status_approved")
+    private byte status_approved;
+
+
+    public void setStatus_approved(byte status_approved) {
+        this.status_approved = status_approved;
+    }
+    public byte getStatus_approved() {
+        return this.status_approved;
+    }
+    public boolean isStatusApproved(){
+        return this.status_approved == 0;
+    }
 
     public int getRuangan() {
         return ruangan;

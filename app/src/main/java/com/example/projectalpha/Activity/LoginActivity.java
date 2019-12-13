@@ -153,6 +153,7 @@ public class LoginActivity extends AppCompatActivity implements LoginViews {
             case 3:
                 sessionManager.saveSPString(SessionManager.SP_IDUSER, getResponse.getId());
                 sessionManager.saveSPString(SessionManager.SP_FULLNAME, getResponse.getNama());
+                sessionManager.saveSPString(SessionManager.SP_USERNAME, getResponse.getUsername());
                 sessionManager.saveSPInt(SessionManager.SP_WITEL, getResponse.getWitel());
                 sessionManager.saveSPInt(SessionManager.SP_STO, getResponse.getSto());
                 sessionManager.saveSPString(SessionManager.SP_NAMASTO, getResponse.getNama_sto());

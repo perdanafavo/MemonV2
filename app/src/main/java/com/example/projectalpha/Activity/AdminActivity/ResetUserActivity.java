@@ -9,8 +9,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.projectalpha.Activity.UsersActivity.MainUserActivity;
 import com.example.projectalpha.Config.ENVIRONMENT;
 import com.example.projectalpha.Helpers.CustomCompatActivity;
+import com.example.projectalpha.Helpers.SessionManager;
 import com.example.projectalpha.Presenter.ApplicationPresenter;
 import com.example.projectalpha.R;
 import com.example.projectalpha.Views.ApplicationViews;
@@ -28,6 +30,7 @@ public class ResetUserActivity extends CustomCompatActivity
     private Button btnReset;
 
     private ApplicationPresenter applicationPresenter;
+    private SessionManager sessionManager;
 
     private Map<String, String> requestBodyMap = new HashMap<>();
 
@@ -48,6 +51,7 @@ public class ResetUserActivity extends CustomCompatActivity
         mDialog.setIndeterminate(true);
 
         applicationPresenter = new ApplicationPresenter(ResetUserActivity.this);
+        sessionManager = new SessionManager(getApplicationContext());
 
         txtUserName = findViewById(R.id.txtUsernameReset);
         editNewPassword = findViewById(R.id.editNewPassword);
@@ -59,7 +63,12 @@ public class ResetUserActivity extends CustomCompatActivity
     }
 
     private void createView() {
-        txtUserName.setText(Username);
+        if (sessionManager.getSpPrivileges()==3){
+            txtUserName.setText(sessionManager.getSpUsername());
+        } else {
+            txtUserName.setText(Username);
+        }
+
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,9 +93,16 @@ public class ResetUserActivity extends CustomCompatActivity
     }
 
     private void setBtnFooter(){
-        backClick(ResetMenuUserActivity.class);
+        backClick();
+        if (sessionManager.getSpPrivileges()==1)
+        {
+            homeClick(MainAdminActivity.class);
+        }
+        else if (sessionManager.getSpPrivileges()==3)
+        {
+            homeClick(MainUserActivity.class);
+        }
         outClick();
-        homeClick(MainAdminActivity.class);
     }
 
     @Override
@@ -103,7 +119,7 @@ public class ResetUserActivity extends CustomCompatActivity
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        simpleIntent(ResetMenuUserActivity.class);
+                        simpleIntent();
                     }
                 }).create().show();
     }
@@ -112,10 +128,16 @@ public class ResetUserActivity extends CustomCompatActivity
     public int getStoArea() {
         return 0;
     }
+
     @Override
     public String getEmployee() {
-        return IDPETUGAS;
+        if(sessionManager.getSpPrivileges()==3){
+            return sessionManager.getSpIduser();
+        }else {
+            return IDPETUGAS;
+        }
     }
+
     @Override
     public Map<String, String> getRequestMapBody() {
         return requestBodyMap;

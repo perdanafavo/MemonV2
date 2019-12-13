@@ -11,6 +11,7 @@ public class SessionManager {
 
     public static final String SP_IDUSER= "spIdUser";
     public static final String SP_FULLNAME = "spFullname";
+    public static final String SP_USERNAME = "spUsername";
     public static final String SP_STO = "spSTO";
     public static final String SP_NAMASTO = "spNamaSTO";
     public static final String SP_WITEL = "spWitel";
@@ -97,6 +98,10 @@ public class SessionManager {
 
     public String getSpFullname() {
         return sp.getString(SP_FULLNAME, "");
+    }
+
+    public String getSpUsername() {
+        return sp.getString(SP_USERNAME, "");
     }
 
     public Boolean getSpAlreadyLoginAdmin() { return sp.getBoolean(SP_ALREADY_LOGINADMIN, false);}

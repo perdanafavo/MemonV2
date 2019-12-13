@@ -138,7 +138,7 @@
     <string name="peringatan_tanki">Peringatan Tanki</string>
     <string name="memon">MEMON</string>
     <string name="mechanical_electronical_monitoring">Mechanical Electronical Monitoring</string>
-    <string name="editpetugas">Edit Profile</string>
+    <string name="edit_petugas">Edit Profile</string>
     <string name="validasi_laporan">Validasi Laporan</string>
     <string name="verifikasi_laporan">Verifikasi Laporan</string>
     <string name="tidak_ada_laporan_terbaru">TIDAK ADA LAPORAN TERBARU!</string>
@@ -150,4 +150,5 @@
     <string name="view_verifikasi_laporan">View Verifikasi Laporan</string>
     <string name="waktu">08:25:58</string>
     <string name="view">View</string>
+    <string name="edit_password">Edit Password</string>
 </resources>

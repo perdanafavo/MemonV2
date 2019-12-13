@@ -7,11 +7,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.projectalpha.Activity.AdminActivity.ResetUserActivity;
+import com.example.projectalpha.Activity.AdminActivity.UpdateUserActivity;
 import com.example.projectalpha.Config.ENVIRONMENT;
 import com.example.projectalpha.Helpers.CekKoneksi;
 import com.example.projectalpha.Helpers.CustomCompatActivity;
@@ -31,6 +34,7 @@ public class MainUserActivity extends CustomCompatActivity implements TimeView {
     private ProgressDialog mDialog;
 
     private ImageButton btnPagi, btnMalam;
+    private Button btnEditPassword, btnEditProfile;
     private TextView tvNama, tvHandphone, tvSTO, tvAlamat;
     private ImageView ivProfile;
 
@@ -52,7 +56,21 @@ public class MainUserActivity extends CustomCompatActivity implements TimeView {
     @Override
     protected void onResume() {
         super.onResume();
+        refreshView();
         timePresenter.requestTimer();
+    }
+
+    private void refreshView(){
+        String Handphone = "0" + sessionManager.getSpHandphone();
+        tvNama.setText(sessionManager.getSpFullname());
+        tvHandphone.setText(Handphone);
+        tvSTO.setText(sessionManager.getSpNamaSTO());
+        tvAlamat.setText(sessionManager.getSpAlamat());
+        Picasso.get().load(ENVIRONMENT.PROFILE_IMAGE+sessionManager.getSpFoto())
+                .resize(340, 510)
+                .networkPolicy(NetworkPolicy.NO_CACHE, NetworkPolicy.NO_STORE)
+                .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
+                .into(ivProfile);
     }
 
     private void setBtnFooter() {
@@ -109,6 +127,8 @@ public class MainUserActivity extends CustomCompatActivity implements TimeView {
 
         btnPagi = findViewById(R.id.btnPagi);
         btnMalam = findViewById(R.id.btnMalam);
+        btnEditPassword = findViewById(R.id.btnEditPassword);
+        btnEditProfile = findViewById(R.id.btnEditProfile);
 
         tvNama      = findViewById(R.id.txtNama);
         tvHandphone = findViewById(R.id.txtHandphone);
@@ -145,6 +165,20 @@ public class MainUserActivity extends CustomCompatActivity implements TimeView {
             mDialog.dismiss();
             simpleToast(ENVIRONMENT.NO_INTERNET_CONNECTION, Toast.LENGTH_LONG);
         }
+
+        btnEditPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                simpleIntent(ResetUserActivity.class);
+            }
+        });
+
+        btnEditProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                simpleIntent(UpdateUserActivity.class);
+            }
+        });
     }
 
     @Override

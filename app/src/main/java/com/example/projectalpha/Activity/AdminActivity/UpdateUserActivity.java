@@ -16,9 +16,11 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.projectalpha.Activity.UsersActivity.MainUserActivity;
 import com.example.projectalpha.Config.ENVIRONMENT;
 import com.example.projectalpha.Helpers.CustomCompatActivity;
 import com.example.projectalpha.Helpers.ImageHandle;
+import com.example.projectalpha.Helpers.SessionManager;
 import com.example.projectalpha.Models.SubModels.STOData;
 import com.example.projectalpha.Models.SubModels.UsersData;
 import com.example.projectalpha.Models.SubModels.WitelData;
@@ -50,6 +52,7 @@ public class UpdateUserActivity extends CustomCompatActivity
     private ImageButton btnFoto;
 
     private ApplicationPresenter applicationPresenter;
+    private SessionManager sessionManager;
 
     private UsersData usersData;
     private List<WitelData> dataWitel;
@@ -101,6 +104,7 @@ public class UpdateUserActivity extends CustomCompatActivity
     private void setVariable(){
         imageHandle = new ImageHandle(UpdateUserActivity.this);
         applicationPresenter = new ApplicationPresenter(UpdateUserActivity.this);
+        sessionManager = new SessionManager(getApplicationContext());
 
         editNama = findViewById(R.id.editNama);
         editNoHP = findViewById(R.id.editNoHP);
@@ -114,6 +118,7 @@ public class UpdateUserActivity extends CustomCompatActivity
         Picasso.get().setLoggingEnabled(false);
         Picasso.get().setIndicatorsEnabled(false);
     }
+
     private void createView(){
         mDialog = new ProgressDialog(UpdateUserActivity.this);
         mDialog.setMessage(ENVIRONMENT.NO_WAITING_MESSAGE);
@@ -125,6 +130,7 @@ public class UpdateUserActivity extends CustomCompatActivity
 
         setBtnUpdate();
     }
+
     private void setSpinnerWitel(){List<String> itemWitel = new ArrayList<>();
         itemWitel.add(0, "PILIH WITEL");
         for (WitelData data:dataWitel){
@@ -133,6 +139,10 @@ public class UpdateUserActivity extends CustomCompatActivity
 
         ArrayAdapter<String> arrayAdapterWitel = new ArrayAdapter<>(UpdateUserActivity.this, R.layout.spinner_item, itemWitel);
         arrayAdapterWitel.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        if (sessionManager.getSpPrivileges()==3){
+            spinnerWitel.setEnabled(false);
+            spinnerWitel.setClickable(false);
+        }
         spinnerWitel.setAdapter(arrayAdapterWitel);
         spinnerWitel.setSelection(usersData.getWitel());
         spinnerWitel.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -147,6 +157,7 @@ public class UpdateUserActivity extends CustomCompatActivity
             }
         });
     }
+
     private void setSpinnerSTO(){
         List<String> itemSTO = new ArrayList<>();
         final List<Integer> idSTO = new ArrayList<>();
@@ -160,6 +171,10 @@ public class UpdateUserActivity extends CustomCompatActivity
         }
         ArrayAdapter<String> arrayAdapterSto = new ArrayAdapter<>(UpdateUserActivity.this, R.layout.spinner_item, itemSTO);
         arrayAdapterSto.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        if (sessionManager.getSpPrivileges()==3){
+            spinnerSTO.setEnabled(false);
+            spinnerSTO.setClickable(false);
+        }
         spinnerSTO.setAdapter(arrayAdapterSto);
         spinnerSTO.setSelection(arrayAdapterSto.getPosition(usersData.getNama_sto()));
         spinnerSTO.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -174,6 +189,7 @@ public class UpdateUserActivity extends CustomCompatActivity
         });
         mDialog.dismiss();
     }
+
     private void selectedImage(){
         if (compress != null){
             Bitmap bitmap = Bitmap.createScaledBitmap(compress, 400, 600, true);
@@ -187,6 +203,7 @@ public class UpdateUserActivity extends CustomCompatActivity
             }
         });
     }
+
     private void setBtnUpdate(){
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -213,6 +230,7 @@ public class UpdateUserActivity extends CustomCompatActivity
             }
         });
     }
+
     private void updateUsers(){
         mDialog.show();
         requestBodyMap.clear();
@@ -233,11 +251,25 @@ public class UpdateUserActivity extends CustomCompatActivity
                 simpleToast("Tidak ada data yang diubah");
             }
         }
+        if (sessionManager.getSpPrivileges()==3) {
+            sessionManager.saveSPString(SessionManager.SP_FULLNAME, editNama.getText().toString());
+            sessionManager.saveSPLong(SessionManager.SP_HANDPHONE, Long.parseLong(editNoHP.getText().toString()));
+            sessionManager.saveSPString(SessionManager.SP_ALAMAT, editAlamat.getText().toString());
+            sessionManager.saveSPString(SessionManager.SP_FOTO, sessionManager.getSpIduser() + "_profile.jpeg");
+        }
     }
+
     private void setBtnFooter() {
-        backClick(UpdateMenuUserActivity.class);
+        backClick();
+        if (sessionManager.getSpPrivileges()==1)
+        {
+            homeClick(MainAdminActivity.class);
+        }
+        else if (sessionManager.getSpPrivileges()==3)
+        {
+            homeClick(MainUserActivity.class);
+        }
         outClick();
-        homeClick(MainAdminActivity.class);
     }
 
     @Override
@@ -255,10 +287,7 @@ public class UpdateUserActivity extends CustomCompatActivity
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        startActivity(
-                                new Intent(UpdateUserActivity.this, UpdateMenuUserActivity.class)
-                                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK)
-                        );
+                        simpleIntent();
                     }
                 }).create().show();
     }
@@ -270,7 +299,11 @@ public class UpdateUserActivity extends CustomCompatActivity
 
     @Override
     public String getEmployee() {
-        return IDPETUGAS;
+        if(sessionManager.getSpPrivileges()==3){
+            return sessionManager.getSpIduser();
+        }else {
+            return IDPETUGAS;
+        }
     }
 
     @Override
@@ -306,10 +339,7 @@ public class UpdateUserActivity extends CustomCompatActivity
                     .setCancelable(false)
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            startActivity(
-                                    new Intent(UpdateUserActivity.this, UpdateMenuUserActivity.class)
-                                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK)
-                            );
+                            simpleIntent();
                         }
                     }).create().show();
         }
@@ -318,7 +348,12 @@ public class UpdateUserActivity extends CustomCompatActivity
     @Override
     public Map<String, RequestBody> GetRequestBody() {
         Map<String, RequestBody> MapRequstBody = new HashMap<>();
-        MapRequstBody.put("id", RequestBody.create(IDPETUGAS, okhttp3.MultipartBody.FORM));
+        if(sessionManager.getSpPrivileges()==3){
+            MapRequstBody.put("id", RequestBody.create(sessionManager.getSpIduser(), okhttp3.MultipartBody.FORM));
+        }else {
+            MapRequstBody.put("id", RequestBody.create(IDPETUGAS, okhttp3.MultipartBody.FORM));
+        }
+
         return MapRequstBody;
     }
 

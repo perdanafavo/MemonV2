@@ -1,14 +1,10 @@
 package com.example.projectalpha.Activity;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.projectalpha.Activity.AdminActivity.MainAdminActivity;
 import com.example.projectalpha.Activity.ManagerActivity.MainManagerActivity;
@@ -16,6 +12,7 @@ import com.example.projectalpha.Activity.UsersActivity.MainUserActivity;
 import com.example.projectalpha.Activity.ValidatorActivity.MainValidatorActivity;
 import com.example.projectalpha.Config.ENVIRONMENT;
 import com.example.projectalpha.Helpers.CekKoneksi;
+import com.example.projectalpha.Helpers.CustomCompatActivity;
 import com.example.projectalpha.Helpers.LoginDialog;
 import com.example.projectalpha.Helpers.SessionManager;
 import com.example.projectalpha.Models.SubModels.UsersData;
@@ -25,7 +22,7 @@ import com.example.projectalpha.Views.LoginViews;
 
 import java.util.List;
 
-public class LoginActivity extends AppCompatActivity implements LoginViews {
+public class LoginActivity extends CustomCompatActivity implements LoginViews {
 
     private Button btnLogin;
     private ProgressDialog mDialog;
@@ -66,17 +63,13 @@ public class LoginActivity extends AppCompatActivity implements LoginViews {
 
     private void cekLogin(){
         if (sessionManager.getSpAlreadyLoginManager()) {
-            startActivity(new Intent(getApplicationContext(), MainManagerActivity.class)
-                    .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+            simpleIntent(MainManagerActivity.class);
         } else if (sessionManager.getSpAlreadyLoginPetugas()) {
-            startActivity(new Intent(getApplicationContext(), MainUserActivity.class)
-                    .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+            simpleIntent(MainUserActivity.class);
         } else if (sessionManager.getSpAlreadyLoginAdmin()) {
-            startActivity(new Intent(getApplicationContext(), MainAdminActivity.class)
-                    .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+            simpleIntent(MainAdminActivity.class);
         } else if (sessionManager.getSpAlreadyLoginValidator()) {
-            startActivity(new Intent(getApplicationContext(), MainValidatorActivity.class)
-                    .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+            simpleIntent(MainValidatorActivity.class);
         }  else {
             Login();
         }
@@ -104,7 +97,7 @@ public class LoginActivity extends AppCompatActivity implements LoginViews {
                         loginPresenter.getUsersLogin();
                     }
                 } else {
-                    Toast.makeText(LoginActivity.this, ENVIRONMENT.NO_INTERNET_CONNECTION, Toast.LENGTH_SHORT).show();
+                    simpleToast(ENVIRONMENT.NO_INTERNET_CONNECTION);
                 }
             }
         });
@@ -137,8 +130,7 @@ public class LoginActivity extends AppCompatActivity implements LoginViews {
                 sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINMANAGER, false);
                 sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINPETUGAS, false);
                 sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINVALIDATOR, false);
-                startActivity(new Intent(getApplicationContext(), MainAdminActivity.class)
-                        .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                simpleIntent(MainAdminActivity.class);
                 break;
             case 2:
                 sessionManager.saveSPString(SessionManager.SP_IDUSER, getResponse.getId());
@@ -147,8 +139,7 @@ public class LoginActivity extends AppCompatActivity implements LoginViews {
                 sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINMANAGER, true);
                 sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINPETUGAS, false);
                 sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINVALIDATOR, false);
-                startActivity(new Intent(getApplicationContext(), MainManagerActivity.class)
-                        .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                simpleIntent(MainManagerActivity.class);
                 break;
             case 3:
                 sessionManager.saveSPString(SessionManager.SP_IDUSER, getResponse.getId());
@@ -165,8 +156,7 @@ public class LoginActivity extends AppCompatActivity implements LoginViews {
                 sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINMANAGER, false);
                 sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINPETUGAS, true);
                 sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINVALIDATOR, false);
-                startActivity(new Intent(getApplicationContext(), MainUserActivity.class)
-                        .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                simpleIntent(MainUserActivity.class);
                 break;
             case 4:
                 sessionManager.saveSPString(SessionManager.SP_IDUSER, getResponse.getId());
@@ -182,11 +172,10 @@ public class LoginActivity extends AppCompatActivity implements LoginViews {
                 sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINMANAGER, false);
                 sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINPETUGAS, false);
                 sessionManager.saveSPBoolean(SessionManager.SP_ALREADY_LOGINVALIDATOR, true);
-                startActivity(new Intent(getApplicationContext(), MainValidatorActivity.class)
-                        .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                simpleIntent(MainValidatorActivity.class);
                 break;
             default:
-                Toast.makeText(LoginActivity.this, "Akses tidak diketahui", Toast.LENGTH_SHORT).show();
+                simpleToast("Akses tidak diketahui");
                 break;
         }
     }
@@ -194,7 +183,7 @@ public class LoginActivity extends AppCompatActivity implements LoginViews {
     @Override
     public void failedLogin(String message) {
         mDialog.dismiss();
-        Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
+        simpleToast(message);
     }
 
     @Override
@@ -205,7 +194,7 @@ public class LoginActivity extends AppCompatActivity implements LoginViews {
             finishAffinity();
         }
         else {
-            Toast.makeText(getBaseContext(), ENVIRONMENT.BACKPRESSED_MESSAGE, Toast.LENGTH_SHORT).show();
+            simpleToast(ENVIRONMENT.BACKPRESSED_MESSAGE);
         }
         mBackPressed = System.currentTimeMillis();
     }

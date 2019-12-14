@@ -109,7 +109,7 @@ public class STOActivity extends CustomCompatActivity
             @Override
             public boolean onLongClick(View v) {
                 if (ActivityCompat.checkSelfPermission(STOActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(STOActivity.this, "You should grant permission", Toast.LENGTH_SHORT).show();
+                    simpleToast("You should grant permission");
                     ActivityCompat.requestPermissions(STOActivity.this, new String[]{}, PERMISSION_REQUEST_CODE);
 
                 } else {
@@ -261,14 +261,13 @@ public class STOActivity extends CustomCompatActivity
     private void prosesValidasi(){
         applicationPresenter.updateValidator();
         simpleToast("Validasi berhasil");
-        Intent intent;
+
         if (sessionManager.getSpPrivileges()==4) {
-            intent = new Intent(STOActivity.this, MainValidatorActivity.class);
+            simpleIntent(MainValidatorActivity.class);
         }
         else {
-            intent = new Intent(STOActivity.this, ViewVerifikasiLaporanActivity.class);
+            simpleIntent(ViewVerifikasiLaporanActivity.class);
         }
-        startActivity(intent);
     }
 
     View.OnClickListener validasiLaporan= new View.OnClickListener() {
@@ -473,9 +472,9 @@ public class STOActivity extends CustomCompatActivity
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == PERMISSION_REQUEST_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-                Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show();
+                simpleToast("Permission Granted");
             else
-                Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
+                simpleToast("Permission Denied");
         }
     }
 

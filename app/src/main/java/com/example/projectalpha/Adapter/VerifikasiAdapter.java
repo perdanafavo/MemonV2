@@ -24,15 +24,9 @@ public class VerifikasiAdapter extends RecyclerView.Adapter<VerifikasiAdapter.Ve
     private Context context;
     private List<LaporanData> itemVerifikasi;
     private List<STOData> allSTO;
-    private String stoid;
 
     public VerifikasiAdapter(List<LaporanData> itemVerifikasi) {
         this.itemVerifikasi = itemVerifikasi;
-    }
-
-    public void isiVerifikasi(List<LaporanData> list, String stoid){
-        itemVerifikasi = list;
-        this.stoid = stoid;
     }
 
     public void isiVerifikasi(List<LaporanData> list, List<STOData> sto){

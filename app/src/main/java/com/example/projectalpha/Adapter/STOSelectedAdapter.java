@@ -171,7 +171,6 @@ public class STOSelectedAdapter extends RecyclerView.Adapter<STOSelectedAdapter.
         holder.btnCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println(place.get(finalPosition).getId());
                 stoSelectedActivity.startActivity(
                         new Intent(stoSelectedActivity, ShowEmployeeActivity.class)
                             .putExtra(ENVIRONMENT.ID_LAPORAN, finalLAPORAN)

@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.example.projectalpha.Activity.UsersActivity.MainUserActivity;
 import com.example.projectalpha.Config.ENVIRONMENT;
@@ -209,7 +208,7 @@ public class UpdateUserActivity extends CustomCompatActivity
             @Override
             public void onClick(View v) {
                 if (editNama.getText().toString().matches("")||editNoHP.getText().toString().matches("")){
-                    Toast.makeText(getApplicationContext(), "Data masih ada yang kosong", Toast.LENGTH_SHORT).show();
+                    simpleToast("Data masih ada yang kosong");
                 }
                 else {
                     new AlertDialog.Builder(UpdateUserActivity.this)
@@ -275,7 +274,7 @@ public class UpdateUserActivity extends CustomCompatActivity
     @Override
     public void requestFailled(String message) {
         mDialog.dismiss();
-        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+        simpleToast(message);
     }
 
     @Override

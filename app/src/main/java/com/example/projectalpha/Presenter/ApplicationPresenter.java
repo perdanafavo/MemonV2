@@ -154,7 +154,7 @@ public class ApplicationPresenter {
 
     public void getUsersBySTO() {
         RetrofitConnect.getInstance()
-                .getUsersBySTO(usersViews.getStoArea())
+                .getUsersBySTO(usersViews.getStoArea(),3)
                 .enqueue(new Callback<UsersModels>() {
                     @Override
                     public void onResponse(@NotNull Call<UsersModels> call, @NotNull Response<UsersModels> response) {
@@ -171,6 +171,7 @@ public class ApplicationPresenter {
                 }
         });
     }
+
 
     public void updateUsers() {
         RetrofitConnect.getInstance()

@@ -74,7 +74,8 @@ public interface ApiConnection {
     @Headers("TELKOM-API-KEY: Nu2xhCePUtRoZWiJAWtS2WkInIptC2IKN5XzYIZT")
     @GET("Users")
     Call<UsersModels> getUsersBySTO(
-            @Query("sto") int sto
+            @Query("sto") int sto,
+            @Query("privileges") int privileges
     );
 
     //Reset Password

@@ -18,6 +18,10 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
@@ -95,11 +99,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_common_1_3_50_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_common_1_3_50_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Activity/AdminActivity/UpdateUserActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Activity/AdminActivity/UpdateUserActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Activity/ManagerActivity/STOActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Activity/ManagerActivity/STOActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Adapter/STOSelectedAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Adapter/STOSelectedAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Adapter/VerifikasiAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Adapter/VerifikasiAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Helpers/Time.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Helpers/Time.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Network/ApiConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Network/ApiConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Presenter/ApplicationPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Presenter/ApplicationPresenter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -111,7 +112,7 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_5X_API_28_x86" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_2_API_27" />
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
@@ -122,29 +123,67 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Adapter/MainManagerAdapter.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Activity/AdminActivity/UpdateUserActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="89" column="20" selection-start-line="89" selection-start-column="16" selection-end-line="89" selection-end-column="20" />
+            <state relative-caret-position="333">
+              <caret line="231" selection-start-line="231" selection-end-line="231" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Activity/ManagerActivity/STOActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="197">
+              <caret line="291" column="66" selection-start-line="291" selection-start-column="66" selection-end-line="291" selection-end-column="66" />
+              <folding>
+                <element signature="e#12377#12813#0" expanded="true" />
+                <element signature="e#12812#12813#0" expanded="true" />
+                <element signature="e#13296#13297#0" expanded="true" />
+                <element signature="e#13326#13327#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Activity/ManagerActivity/ShowEmployeeActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="97" column="53" selection-start-line="97" selection-start-column="53" selection-end-line="97" selection-end-column="53" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Adapter/ItemUpdateAdapter.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Presenter/ApplicationPresenter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="68" column="18" lean-forward="true" selection-start-line="68" selection-start-column="18" selection-end-line="68" selection-end-column="18" />
+            <state relative-caret-position="304">
+              <caret line="159" column="71" selection-start-line="159" selection-start-column="71" selection-end-line="159" selection-end-column="71" />
               <folding>
-                <element signature="e#2286#2602#0" expanded="true" />
-                <element signature="e#2601#2602#0" expanded="true" />
-                <element signature="e#3037#3359#0" expanded="true" />
-                <element signature="e#3358#3359#0" expanded="true" />
-                <element signature="e#3410#3636#0" expanded="true" />
-                <element signature="e#3635#3636#0" expanded="true" />
-                <element signature="e#3726#4075#0" expanded="true" />
-                <element signature="e#4074#4075#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Network/ApiConnection.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-4168">
+              <caret line="78" column="6" selection-start-line="78" selection-start-column="6" selection-end-line="78" selection-end-column="6" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Activity/LoginActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="383">
+              <caret line="154" selection-start-line="154" selection-end-line="154" selection-end-column="90" />
             </state>
           </provider>
         </entry>
@@ -213,7 +252,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Views/ApplicationViews.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/item_view_verifikasi_laporan.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/item_verifikasi_laporan.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Activity/ManagerActivity/ShowEmployeeActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Activity/ValidatorActivity/MainValidatorActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Adapter/ValidatorAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Activity/AdminActivity/ViewVerifikasiLaporanActivity.java" />
@@ -228,8 +266,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Models/SubModels/PowerData.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Models/StatusModels.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Models/LaporanModels.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Network/ApiConnection.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Presenter/ApplicationPresenter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Models/SubModels/LaporanData.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Adapter/MainManagerAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Fragment/PagiFragment.java" />
@@ -252,6 +288,9 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Adapter/VerifikasiAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Adapter/STOSelectedAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Adapter/ItemUpdateAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Activity/ManagerActivity/ShowEmployeeActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Network/ApiConnection.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Presenter/ApplicationPresenter.java" />
       </list>
     </option>
   </component>
@@ -268,7 +307,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Course" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
+      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -299,7 +340,8 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="projectalpha" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="Adapter" type="462c0819:PsiDirectoryNode" />
+              <item name="Activity" type="462c0819:PsiDirectoryNode" />
+              <item name="AdminActivity" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MemonV2" type="1abcf292:AndroidViewProjectNode" />
@@ -309,9 +351,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane" />
-      <pane id="Scope" />
+      <pane id="Course" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -476,11 +516,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.22867803" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.22919819" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Build Variants" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
@@ -491,13 +531,13 @@
       <window_info anchor="bottom" id="Run" order="0" sideWeight="0.4989339" weight="0.25" />
       <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49840087" weight="0.3537415" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.3265306" />
-      <window_info anchor="bottom" id="Android Profiler" order="3" show_stripe_button="false" weight="0.32936078" />
+      <window_info anchor="bottom" id="Android Profiler" order="3" weight="0.32936078" />
       <window_info anchor="bottom" id="Find" order="4" weight="0.32719395" />
       <window_info anchor="bottom" id="Educational.CheckDetails" order="5" />
       <window_info anchor="bottom" id="Terminal" order="6" sideWeight="0.49546143" weight="0.23726977" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5045386" side_tool="true" weight="0.1904762" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32936078" />
-      <window_info anchor="bottom" id="Build" order="9" sideWeight="0.49546143" visible="true" weight="0.17334779" />
+      <window_info active="true" anchor="bottom" id="Build" order="9" sideWeight="0.49546143" visible="true" weight="0.17176871" />
       <window_info anchor="bottom" id="Debug" order="10" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
@@ -548,20 +588,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Activity/ManagerActivity/ShowEmployeeActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Models/UsersModels.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="15" column="28" lean-forward="true" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Models/SubModels/UsersData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -581,8 +607,8 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_reset_user.xml">
-      <provider editor-type-id="text-editor" />
       <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Activity/AdminActivity/ResetMenuUserActivity.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -592,6 +618,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main_user.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
           <caret line="143" column="41" selection-start-line="143" selection-start-column="41" selection-end-line="143" selection-end-column="41" />
@@ -603,7 +630,6 @@
           </folding>
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Activity/AdminActivity/UpdateContactActivity.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -645,13 +671,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Activity/LoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2159">
-          <caret line="154" selection-start-line="154" selection-end-line="154" selection-end-column="95" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Activity/UsersActivity/MainUserActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -660,8 +679,8 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_bir_suhu_select.xml">
-      <provider selected="true" editor-type-id="text-editor" />
       <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Activity/UsersActivity/FormActivity/BIRActivity.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -671,20 +690,20 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_bir.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
           <caret line="147" column="35" selection-start-line="147" selection-start-column="35" selection-end-line="147" selection-end-column="35" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_update_user.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="93" column="29" selection-start-line="93" selection-start-column="29" selection-end-line="93" selection-end-column="29" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Activity/ValidatorActivity/MainValidatorActivity.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -731,30 +750,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Presenter/ApplicationPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-108">
-          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Network/RetrofitConnect.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Network/ApiConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -909,29 +908,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Activity/ManagerActivity/STOActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="476" column="26" selection-start-line="476" selection-start-column="22" selection-end-line="476" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4591#5672#0" expanded="true" />
-            <element signature="e#5671#5672#0" expanded="true" />
-            <element signature="e#12045#12480#0" expanded="true" />
-            <element signature="e#12479#12480#0" expanded="true" />
-            <element signature="e#25765#25766#0" expanded="true" />
-            <element signature="e#25813#25814#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Activity/AdminActivity/UpdateUserActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4190">
-          <caret line="16" column="27" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Adapter/ResetUserAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
@@ -979,6 +955,67 @@
             <element signature="e#3635#3636#0" expanded="true" />
             <element signature="e#3726#4075#0" expanded="true" />
             <element signature="e#4074#4075#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Activity/LoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="154" selection-start-line="154" selection-end-line="154" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-28/android/app/AlertDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="634" column="23" selection-start-line="634" selection-start-column="23" selection-end-line="634" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Activity/AdminActivity/UpdateUserActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="231" selection-start-line="231" selection-end-line="231" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Activity/ManagerActivity/STOActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="291" column="66" selection-start-line="291" selection-start-column="66" selection-end-line="291" selection-end-column="66" />
+          <folding>
+            <element signature="e#12377#12813#0" expanded="true" />
+            <element signature="e#12812#12813#0" expanded="true" />
+            <element signature="e#13296#13297#0" expanded="true" />
+            <element signature="e#13326#13327#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Activity/ManagerActivity/ShowEmployeeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="97" column="53" selection-start-line="97" selection-start-column="53" selection-end-line="97" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Network/ApiConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4168">
+          <caret line="78" column="6" selection-start-line="78" selection-start-column="6" selection-end-line="78" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/projectalpha/Presenter/ApplicationPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="159" column="71" selection-start-line="159" selection-start-column="71" selection-end-line="159" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

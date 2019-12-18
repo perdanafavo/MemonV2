@@ -22,8 +22,8 @@ public class BirSuhuSelectActivity extends CustomCompatActivity
 
     private ProgressDialog mDialog;
 
-    private Button btnSentral, btnTransmisi, btnRectifier, btnBatere, btnAkses, btnGenset;
-    private ImageView sentralStatus,transmisiStatus, rectifierStatus, batereStatus, aksesStatus, gensetStatus;
+    private Button btnSentral, btnTransmisi, btnRectifier, btnBatere, btnAkses, btnGenset, btnOlo;
+    private ImageView sentralStatus,transmisiStatus, rectifierStatus, batereStatus, aksesStatus, gensetStatus, oloStatus;
 
     private int IDLaporan;
 
@@ -58,6 +58,7 @@ public class BirSuhuSelectActivity extends CustomCompatActivity
         btnBatere = findViewById(R.id.btnBatere);
         btnAkses = findViewById(R.id.btnAkses);
         btnGenset = findViewById(R.id.btnGenset);
+        btnOlo = findViewById(R.id.btnOlo);
 
         sentralStatus = findViewById(R.id.sentralStatus);
         batereStatus = findViewById(R.id.batereStatus);
@@ -65,6 +66,7 @@ public class BirSuhuSelectActivity extends CustomCompatActivity
         aksesStatus = findViewById(R.id.aksesStatus);
         transmisiStatus = findViewById(R.id.transmisiStatus);
         gensetStatus = findViewById(R.id.gensetStatus);
+        oloStatus = findViewById(R.id.oloStatus);
 
         IDLaporan = getIntent().getIntExtra(ENVIRONMENT.ID_LAPORAN, 0);
     }

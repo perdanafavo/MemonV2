@@ -13,14 +13,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout11"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="@string/welcome_text"
             android:textAlignment="center"
             android:textSize="@dimen/_24ssp"
@@ -30,15 +32,15 @@
     <LinearLayout
         android:id="@+id/linearLayout11"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_165sdp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/border"
         android:baselineAligned="false"
+        app:layout_constraintBottom_toTopOf="@+id/llEdit"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout41">
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:layout_width="@dimen/_110sdp"
@@ -123,14 +125,15 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/llEdit"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_17sdp"
-        android:layout_marginEnd="@dimen/_17sdp"
-        android:layout_marginTop="8dp"
+        android:layout_height="@dimen/_37sdp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout12"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout11">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/btnEditPassword"
@@ -159,9 +162,9 @@
     <LinearLayout
         android:id="@+id/linearLayout12"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_17sdp"
-        android:layout_marginEnd="@dimen/_17sdp"
+        android:layout_height="@dimen/_160sdp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/border"
         android:gravity="top|center_horizontal"

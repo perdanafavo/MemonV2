@@ -30,14 +30,13 @@
             android:textSize="@dimen/_21sdp" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayoutBIR"
+    <ScrollView
+        android:id="@+id/svBIR"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_350sdp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
-        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout31">
@@ -45,183 +44,235 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_4sdp"
-            android:baselineAligned="false">
+            android:baselineAligned="false"
+            android:orientation="vertical"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp">
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_4sdp"
+                android:baselineAligned="false">
 
-                <Button
-                    android:id="@+id/btnSentral"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/background_blue"
-                    android:text="@string/sentral"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="@dimen/_15ssp" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/sentralStatus"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="-15dp"
-                    android:contentDescription="@string/kondisi_umum"
-                    app:srcCompat="@drawable/ic_warning" />
+                    <Button
+                        android:id="@+id/btnSentral"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/background_blue"
+                        android:text="@string/sentral"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/_15ssp" />
 
+                    <ImageView
+                        android:id="@+id/sentralStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="-15dp"
+                        android:contentDescription="@string/kondisi_umum"
+                        app:srcCompat="@drawable/ic_warning" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnTransmisi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/background_orange"
+                        android:text="@string/transmisi"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/_15ssp" />
+
+                    <ImageView
+                        android:id="@+id/transmisiStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="-15dp"
+                        android:contentDescription="@string/kondisi_umum"
+                        app:srcCompat="@drawable/ic_warning" />
+
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginBottom="@dimen/_4sdp"
+                android:baselineAligned="false">
 
-                <Button
-                    android:id="@+id/btnTransmisi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/background_orange"
-                    android:text="@string/transmisi"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="@dimen/_15ssp" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/transmisiStatus"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="-15dp"
-                    android:contentDescription="@string/kondisi_umum"
-                    app:srcCompat="@drawable/ic_warning" />
+                    <Button
+                        android:id="@+id/btnRectifier"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/background_red"
+                        android:text="@string/rectifier"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/_15ssp" />
 
+                    <ImageView
+                        android:id="@+id/rectifierStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="-15dp"
+                        android:contentDescription="@string/kondisi_umum"
+                        app:srcCompat="@drawable/ic_warning" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnBatere"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/background_green"
+                        android:text="@string/batere"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/_15ssp" />
+
+                    <ImageView
+                        android:id="@+id/batereStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="-15dp"
+                        android:contentDescription="@string/kondisi_umum"
+                        app:srcCompat="@drawable/ic_warning" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginBottom="@dimen/_4sdp"
+                android:baselineAligned="false">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnAkses"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/background_darkblue"
+                        android:text="@string/akses_gpon"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/_15ssp" />
+
+                    <ImageView
+                        android:id="@+id/aksesStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="-15dp"
+                        android:contentDescription="@string/kondisi_umum"
+                        app:srcCompat="@drawable/ic_warning" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnGenset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/background_violet"
+                        android:text="@string/genset"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/_15ssp" />
+
+                    <ImageView
+                        android:id="@+id/gensetStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="-15dp"
+                        android:contentDescription="@string/kondisi_umum"
+                        app:srcCompat="@drawable/ic_warning" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginBottom="@dimen/_4sdp"
+                android:baselineAligned="false">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnOlo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/background_royalblue"
+                        android:text="@string/olo"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/_15ssp" />
+
+                    <ImageView
+                        android:id="@+id/oloStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="-15dp"
+                        android:contentDescription="@string/kondisi_umum"
+                        app:srcCompat="@drawable/ic_warning" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:layout_marginBottom="@dimen/_4sdp"
-            android:baselineAligned="false">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btnRectifier"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/background_red"
-                    android:text="@string/rectifier"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="@dimen/_15ssp" />
-
-                <ImageView
-                    android:id="@+id/rectifierStatus"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="-15dp"
-                    android:contentDescription="@string/kondisi_umum"
-                    app:srcCompat="@drawable/ic_warning" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btnBatere"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/background_green"
-                    android:text="@string/batere"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="@dimen/_15ssp" />
-
-                <ImageView
-                    android:id="@+id/batereStatus"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="-15dp"
-                    android:contentDescription="@string/kondisi_umum"
-                    app:srcCompat="@drawable/ic_warning" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:layout_marginBottom="@dimen/_4sdp"
-            android:baselineAligned="false">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btnAkses"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/background_darkblue"
-                    android:text="@string/akses_gpon"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="@dimen/_15ssp" />
-
-                <ImageView
-                    android:id="@+id/aksesStatus"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="-15dp"
-                    android:contentDescription="@string/kondisi_umum"
-                    app:srcCompat="@drawable/ic_warning" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btnGenset"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/background_violet"
-                    android:text="@string/genset"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="@dimen/_15ssp" />
-
-                <ImageView
-                    android:id="@+id/gensetStatus"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="-15dp"
-                    android:contentDescription="@string/kondisi_umum"
-                    app:srcCompat="@drawable/ic_warning" />
-
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 
     <LinearLayout
+        android:id="@+id/linearLayout28"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -240,8 +291,8 @@
                 android:id="@+id/btnBack"
                 android:layout_width="@dimen/_33sdp"
                 android:layout_height="@dimen/_33sdp"
-                android:layout_marginStart="@dimen/_8sdp"
                 android:layout_gravity="start"
+                android:layout_marginStart="@dimen/_8sdp"
                 android:background="@drawable/ic_arrow_back"
                 android:contentDescription="@string/back" />
 
@@ -262,8 +313,8 @@
                 android:id="@+id/btnHome"
                 android:layout_width="@dimen/_33sdp"
                 android:layout_height="@dimen/_33sdp"
-                android:layout_marginEnd="@dimen/_8sdp"
                 android:layout_gravity="end"
+                android:layout_marginEnd="@dimen/_8sdp"
                 android:background="@drawable/ic_home"
                 android:contentDescription="@string/home" />
 

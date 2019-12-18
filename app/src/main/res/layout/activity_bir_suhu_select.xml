@@ -31,7 +31,6 @@
     </LinearLayout>
 
     <ScrollView
-        android:id="@+id/svBIR"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_350sdp"
         android:layout_marginStart="24dp"

@@ -62,7 +62,7 @@ public class STOActivity extends CustomCompatActivity
 
     private SwipeRefreshLayout swipeRefreshLayout;
     private ImageView[] imageViews;
-    private TextView [] tvKondisiUmum, tvCatuan, tvBBM, tvSentral, tvTransmisi, tvRectifier, tvBatere, tvAkses, tvGenset;
+    private TextView [] tvKondisiUmum, tvCatuan, tvBBM, tvSentral, tvTransmisi, tvRectifier, tvBatere, tvAkses, tvGenset, tvOlo;
     private TextView tvSTO, tvTanggal, tvNote, txHome, tvClose, tvPeringatan;
     private Button btnContact, btnApprove, btnPIC, btnValidasi;
     private PhotoView imagephoto;
@@ -164,7 +164,9 @@ public class STOActivity extends CustomCompatActivity
                 findViewById(R.id.imgAkses),
                 findViewById(R.id.imgSuhuAkses),
                 findViewById(R.id.imgGenset),
-                findViewById(R.id.imgSuhuGenset)
+                findViewById(R.id.imgSuhuGenset),
+                findViewById(R.id.imgOlo),
+                findViewById(R.id.imgSuhuOlo)
         };
 
         tvKondisiUmum = new TextView[]{findViewById(R.id.txtCuaca), findViewById(R.id.txtPompa), findViewById(R.id.txtGenangan)};
@@ -176,6 +178,7 @@ public class STOActivity extends CustomCompatActivity
         tvBatere      = new TextView[]{findViewById(R.id.txtSuhuBatere), findViewById(R.id.txtBatereBMT), findViewById(R.id.txtBatereSB)};
         tvAkses       = new TextView[]{findViewById(R.id.txtSuhuAkses), findViewById(R.id.txtAksesBMT), findViewById(R.id.txtAksesSB)};
         tvGenset      = new TextView[]{findViewById(R.id.txtSuhuGenset), findViewById(R.id.txtGensetBMT), findViewById(R.id.txtGensetSB), findViewById(R.id.txtGensetCO)};
+        tvOlo         = new TextView[]{findViewById(R.id.txtSuhuOlo), findViewById(R.id.txtOloBMT), findViewById(R.id.txtOloSB)};
         tvNote        = findViewById(R.id.txtCatatan);
 
         swipeRefreshLayout = findViewById(R.id.swlayout);

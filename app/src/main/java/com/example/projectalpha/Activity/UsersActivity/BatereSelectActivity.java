@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.projectalpha.Activity.UsersActivity.FormActivity.BIRActivity;
-import com.example.projectalpha.Activity.UsersActivity.FormActivity.KontakPentingActivity;
 import com.example.projectalpha.Config.ENVIRONMENT;
 import com.example.projectalpha.Helpers.CustomCompatActivity;
 import com.example.projectalpha.Models.SubModels.ReportStatusData;
@@ -28,6 +27,7 @@ public class BatereSelectActivity extends CustomCompatActivity implements Applic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_batere_select);
+
         setVariable();
         createSelectBatere();
         setBtnFooter();
@@ -42,6 +42,7 @@ public class BatereSelectActivity extends CustomCompatActivity implements Applic
 
     private void setVariable(){
         applicationPresenter = new ApplicationPresenter(BatereSelectActivity.this);
+
         mDialog = new ProgressDialog(BatereSelectActivity.this);
         mDialog.setMessage(ENVIRONMENT.NO_WAITING_MESSAGE);
         mDialog.setCancelable(false);

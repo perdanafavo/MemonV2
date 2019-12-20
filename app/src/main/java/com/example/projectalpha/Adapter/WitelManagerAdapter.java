@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.projectalpha.Activity.ManagerActivity.HistoryActivity;
 import com.example.projectalpha.Activity.ManagerActivity.STOActivity;
 import com.example.projectalpha.Config.ENVIRONMENT;
 import com.example.projectalpha.Models.SubModels.LaporanData;

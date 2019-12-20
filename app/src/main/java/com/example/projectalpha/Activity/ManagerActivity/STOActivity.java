@@ -22,7 +22,6 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.projectalpha.Activity.AdminActivity.ViewVerifikasiLaporanActivity;
 import com.example.projectalpha.Activity.UsersActivity.FormActivity.CatatanActivity;
-import com.example.projectalpha.Activity.UsersActivity.SelectFormActivity;
 import com.example.projectalpha.Activity.ValidatorActivity.MainValidatorActivity;
 import com.example.projectalpha.Config.ENVIRONMENT;
 import com.example.projectalpha.Helpers.CekKoneksi;
@@ -58,7 +57,7 @@ public class STOActivity extends CustomCompatActivity
 
     private ApplicationPresenter applicationPresenter;
 
-    private int LAPORAN, STO, STATUS;
+    private int LAPORAN, STO;
     private String Tanggal;
     private Boolean statusSuhu, statusFuel, statusPower, statusUmum;
 
@@ -147,7 +146,6 @@ public class STOActivity extends CustomCompatActivity
         LAPORAN = getIntent().getIntExtra(ENVIRONMENT.ID_LAPORAN, 0);
         STO = getIntent().getIntExtra(ENVIRONMENT.ID_STO, 0);
         Tanggal = getIntent().getStringExtra(ENVIRONMENT.TANGGAL_LAPORAN);
-        STATUS = getIntent().getIntExtra(ENVIRONMENT.STATUS,1);
         applicationPresenter = new ApplicationPresenter(STOActivity.this);
 
         tvSTO           = findViewById(R.id.txtNamaSTO);

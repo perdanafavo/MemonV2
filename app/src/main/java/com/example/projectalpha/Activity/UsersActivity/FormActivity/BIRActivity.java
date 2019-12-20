@@ -77,6 +77,7 @@ public class BIRActivity extends CustomCompatActivity
             Bundle extras = data.getExtras();
             if (extras != null){
                 Bitmap imageBitmap = (Bitmap) extras.get("data");
+                assert imageBitmap != null;
                 Bitmap compress = imageHandle.bipmapCompress(imageBitmap);
                 file = imageHandle.fileCreate(compress, ENVIRONMENT.RUANGAN);
                 btnRuangan.setImageBitmap(compress);
@@ -86,6 +87,7 @@ public class BIRActivity extends CustomCompatActivity
             Bundle extras = data.getExtras();
             if (extras != null){
                 Bitmap imageBitmap = (Bitmap) extras.get("data");
+                assert imageBitmap != null;
                 Bitmap compress = imageHandle.bipmapCompress(imageBitmap);
                 file2 = imageHandle.fileCreate(compress, ENVIRONMENT.SUHU);
                 btnSuhu.setImageBitmap(compress);

@@ -166,7 +166,7 @@
                 android:background="@drawable/custom_button"
                 android:text="@string/update"
                 android:textColor="@color/colorWhite"
-                android:textSize="@dimen/_13ssp" />
+                android:textSize="@dimen/_14ssp" />
 
         </LinearLayout>
     </LinearLayout>

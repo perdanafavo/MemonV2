@@ -156,4 +156,9 @@
     <string name="batere_basah">Batere\nBasah</string>
     <string name="bir_ruang_olo">BIR-Ruang OLO</string>
     <string name="ruang_olo">Ruang OLO</string>
+    <string name="tambah_catatan">Tambah Catatan</string>
+    <string name="catatan_kosong">Catatan Kosong</string>
+    <string name="catatan_petugas">Catatan Petugas</string>
+    <string name="catatan_validator">Catatan Validator</string>
+    <string name="catatan_manager">Catatan Manager</string>
 </resources>

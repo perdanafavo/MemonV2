@@ -143,7 +143,7 @@
             android:background="@drawable/custom_button"
             android:text="@string/edit_password"
             android:textColor="@color/colorWhite"
-            android:textSize="@dimen/_13ssp"
+            android:textSize="@dimen/_14ssp"
             tools:ignore="ButtonStyle" />
 
         <Button
@@ -154,7 +154,7 @@
             android:background="@drawable/custom_button"
             android:text="@string/edit_petugas"
             android:textColor="@color/colorWhite"
-            android:textSize="@dimen/_13ssp"
+            android:textSize="@dimen/_14ssp"
             tools:ignore="ButtonStyle" />
 
     </LinearLayout>

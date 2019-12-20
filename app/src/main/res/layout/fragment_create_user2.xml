@@ -139,7 +139,7 @@
             android:background="@drawable/custom_button"
             android:text="@string/create"
             android:textColor="@color/colorWhite"
-            android:textSize="@dimen/_13ssp" />
+            android:textSize="@dimen/_14ssp" />
 
     </LinearLayout>
 

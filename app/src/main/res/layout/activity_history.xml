@@ -160,7 +160,7 @@
             android:shadowColor="#00A7A7A7"
             android:text="@string/lihat"
             android:textColor="@color/colorWhite"
-            android:textSize="@dimen/_13ssp" />
+            android:textSize="@dimen/_14ssp" />
     </LinearLayout>
 
 

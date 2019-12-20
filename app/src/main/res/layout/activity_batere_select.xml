@@ -63,7 +63,7 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/btnBatereKering"
+                        android:id="@+id/btnBatereBasah"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/background_royaldarkblue"
@@ -72,7 +72,7 @@
                         android:textSize="@dimen/_15ssp" />
 
                     <ImageView
-                        android:id="@+id/sentralStatus"
+                        android:id="@+id/batereBasahStatus"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="-15dp"
@@ -89,7 +89,7 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/btnTransmisi"
+                        android:id="@+id/btnBatereKering"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/background_yellow"
@@ -98,7 +98,7 @@
                         android:textSize="@dimen/_15ssp" />
 
                     <ImageView
-                        android:id="@+id/transmisiStatus"
+                        android:id="@+id/batereKeringStatus"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="-15dp"

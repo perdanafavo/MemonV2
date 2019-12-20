@@ -104,7 +104,8 @@
     <string name="bir_ruang_sentral">BIR-Ruang Sentral</string>
     <string name="bir_ruang_transmisi">BIR-Ruang Transmisi</string>
     <string name="bir_ruang_rectifier">BIR-Ruang Rectifier</string>
-    <string name="bir_ruang_batere">BIR-Ruang Batere</string>
+    <string name="bir_ruang_batere_kering">BIR-Ruang Batere Kering</string>
+    <string name="bir_ruang_batere_basah">BIR-Ruang Batere Basah</string>
     <string name="bir_ruang_akses_gpon">BIR-Ruang Akses/GPON</string>
     <string name="bir_ruang_genset">BIR-Ruang Genset</string>
     <string name="history_laporan_sto">Riwayat Laporan STO</string>

@@ -136,7 +136,7 @@ public class BIRActivity extends CustomCompatActivity
                 title = "Ruang Rectifier";
                 break;
             case 4:
-                title = "Ruang Batere";
+                title = "Ruang Batere Kering";
                 break;
             case 5:
                 title = "Ruang Akses / GPON";
@@ -146,6 +146,9 @@ public class BIRActivity extends CustomCompatActivity
                 break;
             case 7:
                 title = "Ruang OLO";
+                break;
+            case 8:
+                title = "Ruang Batere Basah";
                 break;
             default:
                 title = "Ruang Sentral";

@@ -87,7 +87,7 @@ public class STOSelectedAdapter extends RecyclerView.Adapter<STOSelectedAdapter.
                                 break;
                             case 4:
                                 count++;
-                                value.add("Batere : "+data.getSuhu()+" °C");
+                                value.add("Batere Kering : "+data.getSuhu()+" °C");
                                 break;
                             case 5:
                                 count++;
@@ -96,6 +96,11 @@ public class STOSelectedAdapter extends RecyclerView.Adapter<STOSelectedAdapter.
                             case 6:
                                 count++;
                                 value.add("Genset : "+data.getSuhu()+" °C");
+                                break;
+                            case 7:
+                                count++;
+                                value.add("OLO : "+data.getSuhu()+" °C");
+                            case 8:
                                 break;
                             default:
                                 value.add("Terjadi Kesalahan");

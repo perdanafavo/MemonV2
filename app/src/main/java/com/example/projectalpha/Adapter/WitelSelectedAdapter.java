@@ -54,7 +54,7 @@ public class WitelSelectedAdapter extends RecyclerView.Adapter<WitelSelectedAdap
         if (dataTemperature != null){
             TITLE = ENVIRONMENT.TEPERATURE_TITLE;
             for (BIRData data:dataTemperature){
-                if (data.getWitel() == place.get(position).getId()){
+                if (data.getWitel() == place.get(position).getId() && data.getRuangan()!=8){
                     if (data.getSuhu() > 23 && data.getStatus_approved()==1){
                         count++;
                     }

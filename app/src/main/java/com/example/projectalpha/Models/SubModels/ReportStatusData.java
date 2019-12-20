@@ -37,6 +37,9 @@ public class ReportStatusData {
     @SerializedName("status_olo")
     private byte status_olo;
 
+    @SerializedName("status_batere_basah")
+    private byte status_batere_basah;
+
     public int getLaporan_id() {
         return laporan_id;
     }
@@ -123,5 +126,13 @@ public class ReportStatusData {
 
     public void setStatus_olo(byte status_olo) {
         this.status_olo = status_olo;
+    }
+
+    public byte getStatus_batere_basah() {
+        return status_batere_basah;
+    }
+
+    public void setStatus_batere_basah(byte status_batere_basah) {
+        this.status_batere_basah = status_batere_basah;
     }
 }

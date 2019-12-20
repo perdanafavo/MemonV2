@@ -64,7 +64,7 @@ public class STOActivity extends CustomCompatActivity
 
     private SwipeRefreshLayout swipeRefreshLayout;
     private ImageView[] imageViews;
-    private TextView [] tvKondisiUmum, tvCatuan, tvBBM, tvSentral, tvTransmisi, tvRectifier, tvBatere, tvAkses, tvGenset, tvOlo;
+    private TextView [] tvKondisiUmum, tvCatuan, tvBBM, tvSentral, tvTransmisi, tvRectifier, tvBatere, tvAkses, tvGenset, tvOlo, tvBatereBasah;
     private TextView tvSTO, tvTanggal, txHome, tvClose, tvPeringatan, tvCatatanPetugas, tvCatatanValidator, tvCatatanManager;
     private Button btnContact, btnApprove, btnPIC, btnValidasi, btnCatatan;
     private PhotoView imagephoto;
@@ -175,7 +175,9 @@ public class STOActivity extends CustomCompatActivity
                 findViewById(R.id.imgGenset),
                 findViewById(R.id.imgSuhuGenset),
                 findViewById(R.id.imgOlo),
-                findViewById(R.id.imgSuhuOlo)
+                findViewById(R.id.imgSuhuOlo),
+                findViewById(R.id.imgBatereBasah),
+                findViewById(R.id.imgSuhuBatereBasah)
         };
 
         tvKondisiUmum = new TextView[]{findViewById(R.id.txtCuaca), findViewById(R.id.txtPompa), findViewById(R.id.txtGenangan)};
@@ -188,6 +190,7 @@ public class STOActivity extends CustomCompatActivity
         tvAkses       = new TextView[]{findViewById(R.id.txtSuhuAkses), findViewById(R.id.txtAksesBMT), findViewById(R.id.txtAksesSB)};
         tvGenset      = new TextView[]{findViewById(R.id.txtSuhuGenset), findViewById(R.id.txtGensetBMT), findViewById(R.id.txtGensetSB), findViewById(R.id.txtGensetCO)};
         tvOlo         = new TextView[]{findViewById(R.id.txtSuhuOlo), findViewById(R.id.txtOloBMT), findViewById(R.id.txtOloSB)};
+        tvBatereBasah = new TextView[]{findViewById(R.id.txtSuhuBatereBasah), findViewById(R.id.txtBatereBasahBMT), findViewById(R.id.txtBatereBasahSB)};
         tvCatatanPetugas        = findViewById(R.id.txtCatatan);
         tvCatatanManager        = findViewById(R.id.txtCatatanManager);
         tvCatatanValidator      = findViewById(R.id.txtCatatanValidator);
@@ -505,6 +508,19 @@ public class STOActivity extends CustomCompatActivity
                     if (data.get(i).getSuhu() > 23){
                         statusSuhu = false;
                     }
+                    break;
+                case 8:
+                    String suhuBatereBasah = data.get(i).getSuhu()+" °C";
+                    tvBatereBasah[0].setText(suhuBatereBasah);
+                    if (data.get(i).getBenda_terbakar() != null) tvBatereBasah[1].setText(data.get(i).getBenda_terbakar()); else statusUmum = false;
+                    if (data.get(i).getSteker_bertumpuk() != null) tvBatereBasah[2].setText(data.get(i).getSteker_bertumpuk()); else statusUmum = false;
+                    if (data.get(i).getFoto_ruangan() != null) Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(i).getFoto_ruangan()).into(imageViews[16]); else statusUmum = false;
+                    if (data.get(i).getFoto_suhu() != null) Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(i).getFoto_suhu()).into(imageViews[17]); else statusUmum = false;
+                    if (data.get(i).getFoto_ruangan() != null && data.get(i).getFoto_suhu() != null){
+                        zoomImage(imageViews[16], data.get(i).getFoto_ruangan());
+                        zoomImage(imageViews[17], data.get(i).getFoto_suhu());
+                        downloadImage(imageViews[16], data.get(i).getFoto_ruangan());
+                        downloadImage(imageViews[17], data.get(i).getFoto_suhu());}
                     break;
                 default:
                     break;

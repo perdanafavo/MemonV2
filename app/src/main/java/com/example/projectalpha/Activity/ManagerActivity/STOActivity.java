@@ -21,6 +21,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.projectalpha.Activity.AdminActivity.ViewVerifikasiLaporanActivity;
+import com.example.projectalpha.Activity.UsersActivity.FormActivity.CatatanActivity;
+import com.example.projectalpha.Activity.UsersActivity.SelectFormActivity;
 import com.example.projectalpha.Activity.ValidatorActivity.MainValidatorActivity;
 import com.example.projectalpha.Config.ENVIRONMENT;
 import com.example.projectalpha.Helpers.CekKoneksi;
@@ -63,8 +65,8 @@ public class STOActivity extends CustomCompatActivity
     private SwipeRefreshLayout swipeRefreshLayout;
     private ImageView[] imageViews;
     private TextView [] tvKondisiUmum, tvCatuan, tvBBM, tvSentral, tvTransmisi, tvRectifier, tvBatere, tvAkses, tvGenset, tvOlo;
-    private TextView tvSTO, tvTanggal, tvNote, txHome, tvClose, tvPeringatan;
-    private Button btnContact, btnApprove, btnPIC, btnValidasi;
+    private TextView tvSTO, tvTanggal, txHome, tvClose, tvPeringatan, tvCatatanPetugas, tvCatatanValidator, tvCatatanManager;
+    private Button btnContact, btnApprove, btnPIC, btnValidasi, btnCatatan;
     private PhotoView imagephoto;
     private SessionManager sessionManager;
     private ImageButton btnHome;
@@ -79,6 +81,12 @@ public class STOActivity extends CustomCompatActivity
         createView();
         setBtnFooter();
         checkPermission();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        createView();
     }
 
     private void checkPermission(){
@@ -146,6 +154,7 @@ public class STOActivity extends CustomCompatActivity
         tvTanggal       = findViewById(R.id.txtTanggal);
         btnContact      = findViewById(R.id.btnContact);
         btnApprove      = findViewById(R.id.btnApprove);
+        btnCatatan      = findViewById(R.id.btnTambahCatatan);
         btnHome         = findViewById(R.id.btnHome);
         txHome          = findViewById(R.id.txHome);
 
@@ -179,7 +188,10 @@ public class STOActivity extends CustomCompatActivity
         tvAkses       = new TextView[]{findViewById(R.id.txtSuhuAkses), findViewById(R.id.txtAksesBMT), findViewById(R.id.txtAksesSB)};
         tvGenset      = new TextView[]{findViewById(R.id.txtSuhuGenset), findViewById(R.id.txtGensetBMT), findViewById(R.id.txtGensetSB), findViewById(R.id.txtGensetCO)};
         tvOlo         = new TextView[]{findViewById(R.id.txtSuhuOlo), findViewById(R.id.txtOloBMT), findViewById(R.id.txtOloSB)};
-        tvNote        = findViewById(R.id.txtCatatan);
+        tvCatatanPetugas        = findViewById(R.id.txtCatatan);
+        tvCatatanManager        = findViewById(R.id.txtCatatanManager);
+        tvCatatanValidator      = findViewById(R.id.txtCatatanValidator);
+
 
         swipeRefreshLayout = findViewById(R.id.swlayout);
 
@@ -223,12 +235,23 @@ public class STOActivity extends CustomCompatActivity
                 applicationPresenter.getFuel();
                 applicationPresenter.getRoomReport();
                 applicationPresenter.getOthersReport();
+                btnCatatan.setVisibility(View.VISIBLE);
             }
             btnContact.setOnClickListener(moveToUsersContact);
             btnApprove.setOnClickListener(validasiLaporan);
+            btnCatatan.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(STOActivity.this, CatatanActivity.class)
+                            .putExtra(ENVIRONMENT.ID_LAPORAN, LAPORAN));
+                }
+            });
         }
         mDialog.dismiss();
-        if (sessionManager.getSpPrivileges()==2){
+        if (sessionManager.getSpPrivileges()==1){
+            btnCatatan.setVisibility(View.GONE);
+        }
+        else if (sessionManager.getSpPrivileges()==2){
             btnApprove.setVisibility(View.GONE);
         }
         else{
@@ -305,6 +328,9 @@ public class STOActivity extends CustomCompatActivity
         backClick();
         if (sessionManager.getSpPrivileges()==2){
             homeClick(MainManagerActivity.class);
+        }
+        else if (sessionManager.getSpPrivileges()==4){
+            homeClick(MainValidatorActivity.class);
         }
         else{
             txHome.setVisibility(View.GONE);
@@ -499,7 +525,9 @@ public class STOActivity extends CustomCompatActivity
 
     @Override
     public void SuccessRequestOthers(OthersData data) {
-        if (data.getCatatan() != null) tvNote.setText(data.getCatatan());
+        if (data.getCatatan() != null) tvCatatanPetugas.setText(data.getCatatan());
+        if (data.getCatatan_validator() != null) tvCatatanValidator.setText(data.getCatatan_validator());
+        if (data.getCatatan_manager() != null) tvCatatanManager.setText(data.getCatatan_manager());
     }
 
     @Override

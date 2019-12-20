@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.projectalpha.Activity.ManagerActivity.HistoryActivity;
 import com.example.projectalpha.Activity.ManagerActivity.STOActivity;
 import com.example.projectalpha.Config.ENVIRONMENT;
 import com.example.projectalpha.Models.SubModels.LaporanData;
@@ -66,8 +67,10 @@ public class WitelManagerAdapter extends RecyclerView.Adapter<WitelManagerAdapte
                 if (data.getSto() == Place.get(position).getId()){
                     if(data.getId()!=0 && data.isStatus() && data.getStatus_approved()==1){
                         holder.linearLayout.setBackgroundResource(R.drawable.rectangle2);
-                    } else if (data.getId()!=0 && !data.isStatus() && data.getStatus_approved()==1){
+                    }else if (data.getId()!=0 && !data.isStatus() && data.getStatus_approved()==1){
                         holder.linearLayout.setBackgroundResource(R.drawable.rectangle);
+                    }else if (data.getId()!=0 && data.getStatus_approved()==0){
+                        holder.linearLayout.setBackgroundResource(R.drawable.rectangle5);
                     }else if (data.getId() == 0){
                         holder.linearLayout.setBackgroundResource(R.drawable.rectangle3);
                     }

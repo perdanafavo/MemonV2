@@ -11,6 +11,7 @@ import android.widget.EditText;
 import com.example.projectalpha.Activity.UsersActivity.MainUserActivity;
 import com.example.projectalpha.Config.ENVIRONMENT;
 import com.example.projectalpha.Helpers.CustomCompatActivity;
+import com.example.projectalpha.Helpers.SessionManager;
 import com.example.projectalpha.Models.SubModels.LaporanData;
 import com.example.projectalpha.Models.SubModels.OthersData;
 import com.example.projectalpha.Presenter.ApplicationPresenter;
@@ -34,6 +35,7 @@ public class CatatanActivity extends CustomCompatActivity
 
     private EditText edCatatan;
     private Button btnSimpan;
+    private SessionManager sessionManager;
 
 
     @Override
@@ -52,7 +54,7 @@ public class CatatanActivity extends CustomCompatActivity
 
         edCatatan = findViewById(R.id.editCatatan);
         btnSimpan = findViewById(R.id.btnSimpan);
-
+        sessionManager = new SessionManager(getApplicationContext());
         mDialog = new ProgressDialog(CatatanActivity.this);
         mDialog.setMessage(ENVIRONMENT.NO_WAITING_MESSAGE);
         mDialog.setCancelable(false);
@@ -84,8 +86,15 @@ public class CatatanActivity extends CustomCompatActivity
 
         String catatan = "";
         if (!edCatatan.getText().toString().matches("")) catatan = edCatatan.getText().toString();
-        if (othersData.getCatatan() == null || !othersData.getCatatan().equals(catatan))mapRequest.put("catatan", catatan);
-
+        if (sessionManager.getSpPrivileges()==3){
+            if (othersData.getCatatan() == null || !othersData.getCatatan().equals(catatan))mapRequest.put("catatan", catatan);
+        }
+        else if(sessionManager.getSpPrivileges()==4){
+            if (othersData.getCatatan_validator() == null || !othersData.getCatatan_validator().equals(catatan))mapRequest.put("catatan_validator", catatan);
+        }
+        else if(sessionManager.getSpPrivileges()==2){
+            if (othersData.getCatatan_manager() == null || !othersData.getCatatan_manager().equals(catatan))mapRequest.put("catatan_manager", catatan);
+        }
         applicationPresenter.putOthers();
     }
 
@@ -99,7 +108,15 @@ public class CatatanActivity extends CustomCompatActivity
     public void SuccessRequestOthers(OthersData data) {
         mDialog.dismiss();
         othersData = data;
-        if (data.getCatatan()!=null) edCatatan.setText(data.getCatatan());
+        if (sessionManager.getSpPrivileges()==3){
+            if (data.getCatatan()!=null) edCatatan.setText(data.getCatatan());
+        }
+        else if(sessionManager.getSpPrivileges()==4){
+            if (data.getCatatan_validator()!=null) edCatatan.setText(data.getCatatan_validator());
+        }
+        else if(sessionManager.getSpPrivileges()==2){
+            if (data.getCatatan_manager()!=null) edCatatan.setText(data.getCatatan_manager());
+        }
     }
 
     @Override

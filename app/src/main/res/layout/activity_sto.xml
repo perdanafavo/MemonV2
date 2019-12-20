@@ -97,7 +97,8 @@
                     android:background="@drawable/button_red_rounded"
                     android:text="@string/tambah_catatan"
                     android:textSize="@dimen/_14ssp"
-                    android:textColor="@color/colorWhite" />
+                    android:textColor="@color/colorWhite"
+                    android:visibility="gone"/>
 
                 <Button
                     android:id="@+id/btnContact"

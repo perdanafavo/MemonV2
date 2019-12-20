@@ -34,6 +34,9 @@ public class ReportStatusData {
     @SerializedName("status_transmisi")
     private byte status_transmisi;
 
+    @SerializedName("status_olo")
+    private byte status_olo;
+
     public int getLaporan_id() {
         return laporan_id;
     }
@@ -112,5 +115,13 @@ public class ReportStatusData {
 
     public void setStatus_transmisi(byte status_transmisi) {
         this.status_transmisi = status_transmisi;
+    }
+
+    public byte getStatus_olo() {
+        return status_olo;
+    }
+
+    public void setStatus_olo(byte status_olo) {
+        this.status_olo = status_olo;
     }
 }

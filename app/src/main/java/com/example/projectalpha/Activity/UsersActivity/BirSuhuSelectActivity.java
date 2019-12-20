@@ -131,6 +131,16 @@ public class BirSuhuSelectActivity extends CustomCompatActivity
                 );
             }
         });
+
+        btnOlo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(BirSuhuSelectActivity.this, BIRActivity.class)
+                        .putExtra(ENVIRONMENT.ID_LAPORAN, IDLaporan)
+                        .putExtra(ENVIRONMENT.RUANGAN, 7)
+                );
+            }
+        });
     }
 
     private void SetBtnFooter(){
@@ -168,6 +178,9 @@ public class BirSuhuSelectActivity extends CustomCompatActivity
 
         if (dataResponse.getStatus_genset() == 1) gensetStatus.setImageResource(R.drawable.ic_ok);
         else gensetStatus.setImageResource(R.drawable.ic_warning);
+
+        if (dataResponse.getStatus_olo() == 1) oloStatus.setImageResource(R.drawable.ic_ok);
+        else oloStatus.setImageResource(R.drawable.ic_warning);
     }
 
     @Override

@@ -464,6 +464,22 @@ public class STOActivity extends CustomCompatActivity
                         statusSuhu = false;
                     }
                     break;
+                case 7:
+                    String suhuOlo = data.get(i).getSuhu()+" °C";
+                    tvOlo[0].setText(suhuOlo);
+                    if (data.get(i).getBenda_terbakar() != null) tvOlo[1].setText(data.get(i).getBenda_terbakar()); else statusUmum = false;
+                    if (data.get(i).getSteker_bertumpuk() != null) tvOlo[2].setText(data.get(i).getSteker_bertumpuk()); else statusUmum = false;
+                    if (data.get(i).getFoto_ruangan() != null) Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(i).getFoto_ruangan()).into(imageViews[14]); else statusUmum = false;
+                    if (data.get(i).getFoto_suhu() != null) Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(i).getFoto_suhu()).into(imageViews[15]); else statusUmum = false;
+                    if (data.get(i).getFoto_ruangan() != null && data.get(i).getFoto_suhu() != null){
+                        zoomImage(imageViews[14], data.get(i).getFoto_ruangan());
+                        zoomImage(imageViews[15], data.get(i).getFoto_suhu());
+                        downloadImage(imageViews[14], data.get(i).getFoto_ruangan());
+                        downloadImage(imageViews[15], data.get(i).getFoto_suhu());}
+                    if (data.get(i).getSuhu() > 23){
+                        statusSuhu = false;
+                    }
+                    break;
                 default:
                     break;
             }

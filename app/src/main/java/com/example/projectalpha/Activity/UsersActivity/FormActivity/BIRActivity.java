@@ -144,6 +144,9 @@ public class BIRActivity extends CustomCompatActivity
             case 6:
                 title = "Ruang Genset";
                 break;
+            case 7:
+                title = "Ruang OLO";
+                break;
             default:
                 title = "Ruang Sentral";
                 break;

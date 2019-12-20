@@ -154,6 +154,6 @@
     <string name="olo">OLO</string>
     <string name="batere_kering">Batere\nKering</string>
     <string name="batere_basah">Batere\nBasah</string>
-    <string name="bir_ruang_olo">BIR-Ruang Olo</string>
-    <string name="ruang_olo">Ruang Olo</string>
+    <string name="bir_ruang_olo">BIR-Ruang OLO</string>
+    <string name="ruang_olo">Ruang OLO</string>
 </resources>

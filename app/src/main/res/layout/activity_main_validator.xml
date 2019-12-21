@@ -11,7 +11,7 @@
         android:id="@+id/linearLayout41"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/border"
         android:baselineAligned="false"
@@ -115,7 +115,7 @@
         android:id="@+id/linearLayout27"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -126,55 +126,49 @@
             android:layout_height="wrap_content"
             android:text="@string/verifikasi_laporan"
             android:textAlignment="center"
-            android:textSize="@dimen/_24ssp"
+            android:textSize="@dimen/_20ssp"
             android:textStyle="bold" />
     </LinearLayout>
 
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabValidator"
+        android:layout_width="0dp"
+        app:tabTextAppearance="@style/CustomTabText"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout27"
+        tools:ignore="MissingConstraints">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabBelumValidasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/belum_validasi" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabSudahValidasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sudah_validasi" />
+    </com.google.android.material.tabs.TabLayout>
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipeValidator"
+        android:id="@+id/llValidator"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
-        android:orientation="vertical"
-        android:background="@drawable/border_rectangle"
+        android:addStatesFromChildren="true"
         app:layout_constraintBottom_toTopOf="@+id/llWrap"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout27">
+        app:layout_constraintTop_toBottomOf="@+id/tabValidator">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listValidator"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:nestedScrollingEnabled="false"
-            tools:listitem="@layout/item_verifikasi_laporan"/>
-
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/emptyswipeValidator"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:orientation="vertical"
-        android:background="@drawable/border_rectangle"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/llWrap"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout27">
-
-        <TextView
-            android:id="@+id/emptyView"
-            android:text="@string/tidak_ada_laporan_terbaru"
-            android:gravity="center"
-            android:visibility="gone"
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPagerValidator"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 

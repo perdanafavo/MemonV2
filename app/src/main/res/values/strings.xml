@@ -162,4 +162,6 @@
     <string name="catatan_petugas">Catatan Petugas</string>
     <string name="catatan_validator">Catatan Validator</string>
     <string name="catatan_manager">Catatan Manager</string>
+    <string name="belum_validasi">Belum Validasi</string>
+    <string name="sudah_validasi">Sudah Validasi</string>
 </resources>

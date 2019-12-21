@@ -32,6 +32,7 @@ import com.example.projectalpha.Helpers.Time;
 import com.example.projectalpha.Models.SubModels.BIRData;
 import com.example.projectalpha.Models.SubModels.FuelData;
 import com.example.projectalpha.Models.SubModels.KondisiUmumData;
+import com.example.projectalpha.Models.SubModels.LaporanData;
 import com.example.projectalpha.Models.SubModels.OthersData;
 import com.example.projectalpha.Models.SubModels.PowerData;
 import com.example.projectalpha.Models.TimeModels;
@@ -40,6 +41,7 @@ import com.example.projectalpha.Presenter.TimePresenter;
 import com.example.projectalpha.R;
 import com.example.projectalpha.Views.ApplicationViews;
 import com.example.projectalpha.Views.TimeView;
+import com.example.projectalpha.Views.ValidatorViews;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.squareup.picasso.Picasso;
 
@@ -57,7 +59,11 @@ public class STOActivity extends CustomCompatActivity
 
     private ApplicationPresenter applicationPresenter;
 
-    private int LAPORAN, STO;
+    private List<LaporanData> dataLaporan = null;
+    private ValidatorViews validatorViews;
+
+    private int LAPORAN, STO, STATUS_APPROVED;
+
     private String Tanggal;
     private Boolean statusSuhu, statusFuel, statusPower, statusUmum;
 
@@ -145,6 +151,7 @@ public class STOActivity extends CustomCompatActivity
         sessionManager = new SessionManager(getApplicationContext());
         LAPORAN = getIntent().getIntExtra(ENVIRONMENT.ID_LAPORAN, 0);
         STO = getIntent().getIntExtra(ENVIRONMENT.ID_STO, 0);
+        STATUS_APPROVED = getIntent().getIntExtra(ENVIRONMENT.STATUS_APPROVED, 2);
         Tanggal = getIntent().getStringExtra(ENVIRONMENT.TANGGAL_LAPORAN);
         applicationPresenter = new ApplicationPresenter(STOActivity.this);
 
@@ -192,7 +199,6 @@ public class STOActivity extends CustomCompatActivity
         tvCatatanPetugas        = findViewById(R.id.txtCatatan);
         tvCatatanManager        = findViewById(R.id.txtCatatanManager);
         tvCatatanValidator      = findViewById(R.id.txtCatatanValidator);
-
 
         swipeRefreshLayout = findViewById(R.id.swlayout);
 
@@ -257,6 +263,9 @@ public class STOActivity extends CustomCompatActivity
         }
         else{
             btnContact.setVisibility(View.GONE);
+            if (STATUS_APPROVED==1) {
+                btnApprove.setVisibility(View.GONE);
+            }
         }
     }
 

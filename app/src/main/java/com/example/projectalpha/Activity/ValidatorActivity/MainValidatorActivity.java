@@ -2,17 +2,17 @@ package com.example.projectalpha.Activity.ValidatorActivity;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.ViewPager;
 
-import com.example.projectalpha.Adapter.ValidatorAdapter;
+import com.example.projectalpha.Adapter.PagerFragmentAdapter;
 import com.example.projectalpha.Config.ENVIRONMENT;
+import com.example.projectalpha.Fragment.BelumValidasiFragment;
+import com.example.projectalpha.Fragment.SudahValidasiFragment;
 import com.example.projectalpha.Helpers.CekKoneksi;
 import com.example.projectalpha.Helpers.CustomCompatActivity;
 import com.example.projectalpha.Helpers.SessionManager;
@@ -20,24 +20,24 @@ import com.example.projectalpha.Models.SubModels.LaporanData;
 import com.example.projectalpha.Presenter.ApplicationPresenter;
 import com.example.projectalpha.R;
 import com.example.projectalpha.Views.ApplicationViews;
+import com.example.projectalpha.Views.ValidatorViews;
+import com.google.android.material.tabs.TabLayout;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-public class MainValidatorActivity extends CustomCompatActivity implements ApplicationViews, ApplicationViews.ReportViews, ApplicationViews.ReportViews.GetReportValidator, ApplicationViews.ReportViews.GetRequestValidator {
+public class MainValidatorActivity extends CustomCompatActivity implements ApplicationViews, ApplicationViews.ReportViews, ApplicationViews.ReportViews.GetReportValidator, ApplicationViews.ReportViews.GetRequestValidator, ValidatorViews {
     private SessionManager sessionManager;
     private ApplicationPresenter applicationPresenter;
-    private RecyclerView mRecyclerview;
-    private SwipeRefreshLayout swipeRefreshLayout, emptyRefreshLayout;
-    private ValidatorAdapter mAdapter;
-    private List<LaporanData> itemLaporan = null;
+    private ViewPager viewPager;
     private ProgressDialog mDialog = null;
     private ImageView ivUser;
-    private TextView tvNama, tvHandphone, tvSTO, emptyView;
+    private TextView tvNama, tvHandphone, tvSTO;
+    private int pageIndex =0;
+    private TabLayout tabLayout;
+    private List<LaporanData> mapLaporanValidator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,17 +58,16 @@ public class MainValidatorActivity extends CustomCompatActivity implements Appli
         mDialog.setMessage(ENVIRONMENT.NO_WAITING_MESSAGE);
         mDialog.setCancelable(false);
         mDialog.setIndeterminate(true);
+
         sessionManager = new SessionManager(getApplicationContext());
+        viewPager = findViewById(R.id.viewPagerValidator);
         applicationPresenter = new ApplicationPresenter(MainValidatorActivity.this);
 
-        mRecyclerview = findViewById(R.id.listValidator);
-        swipeRefreshLayout = findViewById(R.id.swipeValidator);
         tvNama = findViewById(R.id.txtNama);
         tvHandphone = findViewById(R.id.txtHandphone);
         tvSTO = findViewById(R.id.txtSTO);
         ivUser = findViewById(R.id.ivUser);
-        emptyView = findViewById(R.id.emptyView);
-        emptyRefreshLayout = findViewById(R.id.emptyswipeValidator);
+        tabLayout = findViewById(R.id.tabValidator);
 
         Picasso.get().setLoggingEnabled(false);
         Picasso.get().setIndicatorsEnabled(false);
@@ -86,22 +85,6 @@ public class MainValidatorActivity extends CustomCompatActivity implements Appli
                 .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
                 .into(ivUser);
 
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                swipeRefreshLayout.setRefreshing(false);
-                onResume();
-            }
-        });
-
-        emptyRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                emptyRefreshLayout.setRefreshing(false);
-                onResume();
-            }
-        });
-
         mDialog.show();
         if (!CekKoneksi.isConnectedToInternet(getBaseContext())) {
             mDialog.dismiss();
@@ -109,7 +92,13 @@ public class MainValidatorActivity extends CustomCompatActivity implements Appli
         } else {
             getRequest();
         }
+    }
 
+    private void configViewPager(@NonNull ViewPager viewPager){
+        PagerFragmentAdapter pagerFragmentAdapter = new PagerFragmentAdapter(getSupportFragmentManager());
+        pagerFragmentAdapter.addFragment(new BelumValidasiFragment(), getString(R.string.belum_validasi));
+        pagerFragmentAdapter.addFragment(new SudahValidasiFragment(), getString(R.string.sudah_validasi));
+        viewPager.setAdapter(pagerFragmentAdapter);
     }
 
     private void getRequest(){
@@ -120,15 +109,12 @@ public class MainValidatorActivity extends CustomCompatActivity implements Appli
     protected void onResume() {
         super.onResume();
         createView();
-        mAdapter.isiValidator(itemLaporan, sessionManager.getSpNamaSTO());
-        mAdapter.notifyDataSetChanged();
+        pageIndex = tabLayout.getSelectedTabPosition();
     }
+
     @Override
     protected void onStart() {
         super.onStart();
-        mAdapter = new ValidatorAdapter(itemLaporan);
-        mRecyclerview.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerview.setAdapter(mAdapter);
     }
 
     @Override
@@ -154,29 +140,28 @@ public class MainValidatorActivity extends CustomCompatActivity implements Appli
 
     @Override
     public void SuccessRequestGetValidator(List<LaporanData> dataValidator) {
-        itemLaporan = new ArrayList<>();
-        if (dataValidator != null){
-            for (LaporanData data:dataValidator){
-             if (data.getStatus_approved() == 0){
-                itemLaporan.add(data);
-             }
-             if (itemLaporan.isEmpty()) {
-                 mRecyclerview.setVisibility(View.GONE);
-                 swipeRefreshLayout.setVisibility(View.GONE);
-                 emptyView.setVisibility(View.VISIBLE);
-                 emptyRefreshLayout.setVisibility(View.VISIBLE);
-             } else {
-                 mRecyclerview.setVisibility(View.VISIBLE);
-                 swipeRefreshLayout.setVisibility(View.VISIBLE);
-                 emptyView.setVisibility(View.GONE);
-                 emptyRefreshLayout.setVisibility(View.GONE);
-             }
-            }
-        }
-        Collections.reverse(itemLaporan);
-        mAdapter.isiValidator(itemLaporan, sessionManager.getSpNamaSTO());
-        mAdapter.notifyDataSetChanged();
+        mapLaporanValidator = dataValidator;
+        configViewPager(viewPager);
+        viewPager.setCurrentItem(pageIndex);
+
+        tabLayout.setupWithViewPager(viewPager);
+        tabLayout.setScrollPosition(pageIndex, 0f, true);
         mDialog.dismiss();
     }
 
+    @Override
+    public List<LaporanData> getValidasiStatus() {
+        return this.mapLaporanValidator;
+    }
+
+    @Override
+    public String getNamaSTO() {
+        return sessionManager.getSpNamaSTO();
+    }
+
+    @Override
+    public void refreshValidator() {
+        mDialog.show();
+        onResume();
+    }
 }

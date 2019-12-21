@@ -22,6 +22,7 @@ public class ENVIRONMENT {
     public static final String SUHU = "SUHU.jpeg";
     public static final String TANGGAL_LAPORAN = "TANGGAL LAPORAN";
     public static final String STATUS = "STATUS";
+    public static final String STATUS_APPROVED = "STATUS APPROVED";
 
     //SHIFT SELECTED MESSAGE
     public static final String SHIFT_MALAM_MESSAGE = "Shift malam mulai dari jam 20:00:00 sampai jam 07:59:59";
@@ -33,6 +34,8 @@ public class ENVIRONMENT {
     public static final String CREATE_USER_FORM_KEDUA = "CREATE USER FORM KEDUA";
 
     //Status Title
+    public static final String VALIDASI_STATUS = "VALIDASI STATUS";
+
     public static final String MORNING_STATUS = "MORNING STATUS";
     public static final String NIGHT_STATUS = "NIGHT STATUS";
 

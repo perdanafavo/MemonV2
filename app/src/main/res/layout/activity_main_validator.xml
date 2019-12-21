@@ -153,8 +153,7 @@
             android:text="@string/sudah_validasi" />
     </com.google.android.material.tabs.TabLayout>
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/llValidator"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -170,9 +169,9 @@
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPagerValidator"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="wrap_content"/>
 
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/llWrap"

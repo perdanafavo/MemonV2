@@ -24,14 +24,15 @@ public class ValidatorAdapter extends RecyclerView.Adapter<ValidatorAdapter.Vali
     private Context context;
     private List<LaporanData> itemLaporan;
     private String namaSTO;
+    private int statusApproved;
 
-    public ValidatorAdapter(List<LaporanData> itemLaporan) {
-        this.itemLaporan = itemLaporan;
+    public ValidatorAdapter() {
     }
 
-    public void isiValidator(List<LaporanData> list, String namaSTO){
+    public void isiValidator(List<LaporanData> list, String namaSTO, int statusApproved){
         itemLaporan = list;
         this.namaSTO = namaSTO;
+        this.statusApproved = statusApproved;
     }
 
     @NotNull
@@ -56,6 +57,7 @@ public class ValidatorAdapter extends RecyclerView.Adapter<ValidatorAdapter.Vali
                         .putExtra(ENVIRONMENT.TANGGAL_LAPORAN, itemLaporan.get(position).getTanggal_shift())
                         .putExtra(ENVIRONMENT.NAMA_STO, namaSTO)
                         .putExtra(ENVIRONMENT.ID_STO, itemLaporan.get(position).getSto())
+                        .putExtra(ENVIRONMENT.STATUS_APPROVED, statusApproved)
                 );
             }
         });

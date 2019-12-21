@@ -47,8 +47,6 @@ public class WitelSelectedActivity extends CustomCompatActivity
     private TextView tvKondisi, tvTanggal;
     private RecyclerView rvWitel;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.projectalpha.Adapter.ManagerFragmentAdapter;
+import com.example.projectalpha.Adapter.PagerFragmentAdapter;
 import com.example.projectalpha.Config.ENVIRONMENT;
 import com.example.projectalpha.Fragment.MalamFragment;
 import com.example.projectalpha.Fragment.PagiFragment;
@@ -81,12 +81,26 @@ public class MainManagerActivity extends CustomCompatActivity
         mDialog.setMessage(ENVIRONMENT.NO_WAITING_MESSAGE);
         mDialog.setCancelable(false);
         mDialog.setIndeterminate(true);
+
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout){
+        @Override
+        public void onPageScrollStateChanged(int state) {
+            toggleRefreshing(state == ViewPager.SCROLL_STATE_IDLE);
+            }
+        });
     }
+
+    public void toggleRefreshing(boolean enabled) {
+        if (swipeRefreshLayout != null) {
+            swipeRefreshLayout.setEnabled(enabled);
+        }
+    }
+    
     private void configViewPager(@NonNull ViewPager viewPager){
-        ManagerFragmentAdapter managerFragmentAdapter = new ManagerFragmentAdapter(getSupportFragmentManager());
-        managerFragmentAdapter.addFragment(new PagiFragment(), getString(R.string.pagi));
-        managerFragmentAdapter.addFragment(new MalamFragment(), getString(R.string.malam));
-        viewPager.setAdapter(managerFragmentAdapter);
+        PagerFragmentAdapter pagerFragmentAdapter = new PagerFragmentAdapter(getSupportFragmentManager());
+        pagerFragmentAdapter.addFragment(new PagiFragment(), getString(R.string.pagi));
+        pagerFragmentAdapter.addFragment(new MalamFragment(), getString(R.string.malam));
+        viewPager.setAdapter(pagerFragmentAdapter);
     }
     private void setBtnFooter() {
         outClick();

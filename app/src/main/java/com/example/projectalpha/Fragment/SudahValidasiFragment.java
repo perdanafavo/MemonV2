@@ -26,7 +26,7 @@ import java.util.List;
 
 public class SudahValidasiFragment extends Fragment {
 
-    List<LaporanData> dataValidator;
+    private List<LaporanData> dataValidator;
     private ValidatorAdapter mAdapter;
     private ValidatorViews validatorViews;
     private Context context;
@@ -69,7 +69,7 @@ public class SudahValidasiFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ArrayList itemLaporan = new ArrayList<>();
+        ArrayList<LaporanData> itemLaporan = new ArrayList<>();
         if (dataValidator != null){
             for (LaporanData data:dataValidator){
                 if (data.getStatus_approved() == 1){

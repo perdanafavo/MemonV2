@@ -32,7 +32,6 @@ import com.example.projectalpha.Helpers.Time;
 import com.example.projectalpha.Models.SubModels.BIRData;
 import com.example.projectalpha.Models.SubModels.FuelData;
 import com.example.projectalpha.Models.SubModels.KondisiUmumData;
-import com.example.projectalpha.Models.SubModels.LaporanData;
 import com.example.projectalpha.Models.SubModels.OthersData;
 import com.example.projectalpha.Models.SubModels.PowerData;
 import com.example.projectalpha.Models.TimeModels;
@@ -41,7 +40,6 @@ import com.example.projectalpha.Presenter.TimePresenter;
 import com.example.projectalpha.R;
 import com.example.projectalpha.Views.ApplicationViews;
 import com.example.projectalpha.Views.TimeView;
-import com.example.projectalpha.Views.ValidatorViews;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.squareup.picasso.Picasso;
 
@@ -58,9 +56,6 @@ public class STOActivity extends CustomCompatActivity
     private Dialog myDialog;
 
     private ApplicationPresenter applicationPresenter;
-
-    private List<LaporanData> dataLaporan = null;
-    private ValidatorViews validatorViews;
 
     private int LAPORAN, STO, STATUS_APPROVED;
 
@@ -290,7 +285,9 @@ public class STOActivity extends CustomCompatActivity
                 prosesValidasi();
             }
         });
-        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        if (myDialog.getWindow() != null) {
+            myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
         myDialog.show();
     }
 

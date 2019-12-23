@@ -26,7 +26,7 @@ import java.util.List;
 
 public class BelumValidasiFragment extends Fragment {
 
-    List<LaporanData> dataValidator;
+    private List<LaporanData> dataValidator;
     private ValidatorAdapter mAdapter;
     private ValidatorViews validatorViews;
     private Context context;
@@ -70,7 +70,7 @@ public class BelumValidasiFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        ArrayList itemLaporan = new ArrayList<>();
+        ArrayList<LaporanData> itemLaporan = new ArrayList<>();
         if (dataValidator != null){
             for (LaporanData data:dataValidator){
                 if (data.getStatus_approved() == 0){

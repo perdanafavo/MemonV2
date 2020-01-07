@@ -64,6 +64,9 @@ public interface ApplicationViews {
         interface PutValidator {
             int getIndexId();
             int getValidator();
+            interface Notification{
+                Map<String, String> Notification();
+            }
         }
 
         interface GetReportParam{

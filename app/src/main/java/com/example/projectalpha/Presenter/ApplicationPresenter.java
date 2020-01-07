@@ -20,6 +20,7 @@ import com.example.projectalpha.Network.RetrofitConnect;
 import com.example.projectalpha.Views.ApplicationViews;
 
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -53,6 +54,7 @@ public class ApplicationPresenter {
     private ApplicationViews.StatusReport.GetFuelRequest getFuelStatusRequest;
     private ApplicationViews.StatusReport.GetPowerRequest getPowerStatusRequest;
     private ApplicationViews.ReportViews.PutValidator putValidatorInput;
+    private ApplicationViews.ReportViews.PutValidator.Notification Notification;
 
     private ApplicationViews.WitelViews.GetRequest getRequestWitel;
 
@@ -345,6 +347,21 @@ public class ApplicationPresenter {
                         applicationViews.requestFailled(ENVIRONMENT.ON_FAILURE_REQUEST);
                 }
         });
+    }
+
+    public void Notification(){
+        RetrofitConnect.getInstance()
+                .Notification(Notification.Notification())
+                .enqueue(new Callback<JSONObject>() {
+                    @Override
+                    public void onResponse(Call<JSONObject> call, Response<JSONObject> response) {
+
+                    }
+                    @Override
+                    public void onFailure(Call<JSONObject> call, Throwable t) {
+
+                    }
+                });
     }
 
     public void getWitel(){

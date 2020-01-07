@@ -14,6 +14,8 @@ import com.example.projectalpha.Models.TimeModels;
 import com.example.projectalpha.Models.UsersModels;
 import com.example.projectalpha.Models.WitelModels;
 
+import org.json.JSONObject;
+
 import java.util.Map;
 
 import okhttp3.MultipartBody;
@@ -339,5 +341,11 @@ public interface ApiConnection {
     @GET("StatusPower")
     Call<PowerModels> getPower(
             @Query("witel") int witel
+    );
+
+    @Headers("TELKOM-API-KEY: Nu2xhCePUtRoZWiJAWtS2WkInIptC2IKN5XzYIZT")
+    @POST("Notification")
+    Call<JSONObject> Notification(
+            @FieldMap Map<String, String> data
     );
 }

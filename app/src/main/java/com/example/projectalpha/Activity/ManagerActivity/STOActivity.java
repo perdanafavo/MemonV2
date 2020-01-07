@@ -43,13 +43,15 @@ import com.example.projectalpha.Views.TimeView;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.squareup.picasso.Picasso;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import dmax.dialog.SpotsDialog;
 
 public class STOActivity extends CustomCompatActivity
         implements TimeView, ApplicationViews, ApplicationViews.ReportViews, ApplicationViews.ReportViews.GetFuelRequest,
-            ApplicationViews.ReportViews.GetGeneralRequest, ApplicationViews.ReportViews.GetPowerRequest, ApplicationViews.ReportViews.GetRoomRequest, ApplicationViews.ReportViews.GetOthersRequest, ApplicationViews.ReportViews.PutValidator, ApplicationViews.ReportViews.GetReportValidator {
+            ApplicationViews.ReportViews.GetGeneralRequest, ApplicationViews.ReportViews.GetPowerRequest, ApplicationViews.ReportViews.GetRoomRequest, ApplicationViews.ReportViews.GetOthersRequest, ApplicationViews.ReportViews.PutValidator, ApplicationViews.ReportViews.GetReportValidator, ApplicationViews.ReportViews.PutValidator.Notification {
 
     private static final int PERMISSION_REQUEST_CODE = 1000;
     private ProgressDialog mDialog;
@@ -71,6 +73,8 @@ public class STOActivity extends CustomCompatActivity
     private SessionManager sessionManager;
     private ImageButton btnHome;
 
+    private Boolean notificationStatus = false;
+    private String notificationText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -146,6 +150,7 @@ public class STOActivity extends CustomCompatActivity
         sessionManager = new SessionManager(getApplicationContext());
         LAPORAN = getIntent().getIntExtra(ENVIRONMENT.ID_LAPORAN, 0);
         STO = getIntent().getIntExtra(ENVIRONMENT.ID_STO, 0);
+        notificationText = "Status Anomali STO "+STO;
         STATUS_APPROVED = getIntent().getIntExtra(ENVIRONMENT.STATUS_APPROVED, 2);
         Tanggal = getIntent().getStringExtra(ENVIRONMENT.TANGGAL_LAPORAN);
         applicationPresenter = new ApplicationPresenter(STOActivity.this);
@@ -157,7 +162,6 @@ public class STOActivity extends CustomCompatActivity
         btnCatatan      = findViewById(R.id.btnTambahCatatan);
         btnHome         = findViewById(R.id.btnHome);
         txHome          = findViewById(R.id.txHome);
-
 
         imageViews = new ImageView[]{
                 findViewById(R.id.imgKondisi),
@@ -205,7 +209,7 @@ public class STOActivity extends CustomCompatActivity
             }
         });
     }
-//
+
     private void createView() {
         statusFuel=true;
         statusPower=true;
@@ -311,6 +315,7 @@ public class STOActivity extends CustomCompatActivity
                 showPopup(ENVIRONMENT.ON_BAD_NULL_VALIDASI);
             }
             else if(statusFuel&&statusPower&&statusSuhu){
+                if (notificationStatus)applicationPresenter.Notification();
                 prosesValidasi();
             }
             else {
@@ -372,11 +377,16 @@ public class STOActivity extends CustomCompatActivity
     public void SuccessRequestPower(PowerData data) {
         if (data.getPln() != null) tvCatuan[0].setText(data.getPln()); else statusUmum = false;
         if (data.getGenset() != null)tvCatuan[1].setText(data.getGenset()); else statusUmum = false;
+
         if (data.getPln() != null && data.getPln().equals("ON")
                 && data.getGenset() != null && data.getGenset().equals("ON")) {
+            notificationStatus = true;
+            notificationText += "\nCatuan \n PLN : "+data.getPln()+"\n GENSET : "+data.getGenset();
             statusPower = false;
         } else if (data.getPln() != null && data.getPln().equals("OFF")
                 && data.getGenset() != null && data.getGenset().equals("OFF")) {
+            notificationStatus = true;
+            notificationText += "\nCatuan \n PLN : "+data.getPln()+"\n GENSET : "+data.getGenset();
             statusPower = false;
         }
     }
@@ -393,7 +403,11 @@ public class STOActivity extends CustomCompatActivity
             Picasso.get().load(ENVIRONMENT.FOTO_URL+data.getFoto()).into(imageViews[1]);
             zoomImage(imageViews[1], data.getFoto());
             downloadImage(imageViews[1], data.getFoto());} else statusUmum = false;
-        if (data.getTanki_bulanan() <= data.getKapasitas_rendah()) statusFuel=false;
+        if (data.getTanki_bulanan() <= data.getKapasitas_rendah()){
+            notificationStatus = true;
+            notificationText += "\nTanki \n Bulanan : "+data.getTanki_bulanan()+"\n Batas Terendah : "+data.getKapasitas_rendah();
+            statusFuel=false;
+        }
     }
 
     @Override
@@ -413,8 +427,10 @@ public class STOActivity extends CustomCompatActivity
                         downloadImage(imageViews[2], data.get(i).getFoto_ruangan());
                         downloadImage(imageViews[3], data.get(i).getFoto_suhu());}
                     if (data.get(i).getSuhu() > 23){
-                        statusSuhu = false;
-                        }
+                        notificationStatus = true;
+                        notificationText += "\n Ruang Sentra : "+data.get(i).getSuhu();
+                        statusPower = false;
+                    }
                     break;
                 case 2:
                     String suhuTransmisi = data.get(i).getSuhu()+" °C";
@@ -429,6 +445,8 @@ public class STOActivity extends CustomCompatActivity
                         downloadImage(imageViews[4], data.get(i).getFoto_ruangan());
                         downloadImage(imageViews[5], data.get(i).getFoto_suhu());}
                     if (data.get(i).getSuhu() > 23){
+                        notificationStatus = true;
+                        notificationText += "\n Ruang Transmisi : "+data.get(i).getSuhu();
                         statusSuhu = false;
                     }
                     break;
@@ -445,6 +463,8 @@ public class STOActivity extends CustomCompatActivity
                         downloadImage(imageViews[6], data.get(i).getFoto_ruangan());
                         downloadImage(imageViews[7], data.get(i).getFoto_suhu());}
                     if (data.get(i).getSuhu() > 23){
+                        notificationStatus = true;
+                        notificationText += "\n Ruang Rectifier : "+data.get(i).getSuhu();
                         statusSuhu = false;
                     }
                     break;
@@ -461,6 +481,8 @@ public class STOActivity extends CustomCompatActivity
                         downloadImage(imageViews[8], data.get(i).getFoto_ruangan());
                         downloadImage(imageViews[9], data.get(i).getFoto_suhu());}
                     if (data.get(i).getSuhu() > 23){
+                        notificationStatus = true;
+                        notificationText += "\n Ruang Batere : "+data.get(i).getSuhu();
                         statusSuhu = false;
                     }
                     break;
@@ -477,6 +499,8 @@ public class STOActivity extends CustomCompatActivity
                         downloadImage(imageViews[10], data.get(i).getFoto_ruangan());
                         downloadImage(imageViews[11], data.get(i).getFoto_suhu());}
                     if (data.get(i).getSuhu() > 23){
+                        notificationStatus = true;
+                        notificationText += "\n Ruang Akses : "+data.get(i).getSuhu();
                         statusSuhu = false;
                     }
                     break;
@@ -494,6 +518,8 @@ public class STOActivity extends CustomCompatActivity
                         downloadImage(imageViews[12], data.get(i).getFoto_ruangan());
                         downloadImage(imageViews[13], data.get(i).getFoto_suhu());}
                     if (data.get(i).getSuhu() > 23){
+                        notificationStatus = true;
+                        notificationText += "\n Ruang Genset : "+data.get(i).getSuhu();
                         statusSuhu = false;
                     }
                     break;
@@ -510,6 +536,8 @@ public class STOActivity extends CustomCompatActivity
                         downloadImage(imageViews[14], data.get(i).getFoto_ruangan());
                         downloadImage(imageViews[15], data.get(i).getFoto_suhu());}
                     if (data.get(i).getSuhu() > 23){
+                        notificationStatus = true;
+                        notificationText += "\n Ruang Olo : "+data.get(i).getSuhu();
                         statusSuhu = false;
                     }
                     break;
@@ -525,6 +553,10 @@ public class STOActivity extends CustomCompatActivity
                         zoomImage(imageViews[17], data.get(i).getFoto_suhu());
                         downloadImage(imageViews[16], data.get(i).getFoto_ruangan());
                         downloadImage(imageViews[17], data.get(i).getFoto_suhu());}
+                    if (data.get(i).getSuhu() > 23){
+                        notificationStatus = true;
+                        notificationText += "\n Ruang Batere Basah : "+data.get(i).getSuhu();
+                    }
                     break;
                 default:
                     break;
@@ -590,4 +622,10 @@ public class STOActivity extends CustomCompatActivity
         return sessionManager.getSpSTO();
     }
 
+    @Override
+    public Map<String, String> Notification() {
+        Map<String, String> requestBodyMap = new HashMap<>();
+        requestBodyMap.put("pesan", notificationText);
+        return requestBodyMap;
+    }
 }

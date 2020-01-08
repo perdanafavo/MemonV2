@@ -344,6 +344,7 @@ public interface ApiConnection {
     );
 
     @Headers("TELKOM-API-KEY: Nu2xhCePUtRoZWiJAWtS2WkInIptC2IKN5XzYIZT")
+    @FormUrlEncoded
     @POST("Notification")
     Call<JSONObject> Notification(
             @FieldMap Map<String, String> data

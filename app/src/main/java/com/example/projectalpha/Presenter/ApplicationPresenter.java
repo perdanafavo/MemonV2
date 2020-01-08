@@ -97,6 +97,7 @@ public class ApplicationPresenter {
         if (context instanceof ApplicationViews.ReportViews.GetRequestValidator) getRequestValidator = (ApplicationViews.ReportViews.GetRequestValidator) context;
 
         if (context instanceof ApplicationViews.ReportViews.PutValidator) putValidatorInput = (ApplicationViews.ReportViews.PutValidator) context;
+        if (context instanceof ApplicationViews.ReportViews.PutValidator.Notification) Notification = (ApplicationViews.ReportViews.PutValidator.Notification) context;
     }
 
     public void deleteReportMonth(){
@@ -355,11 +356,11 @@ public class ApplicationPresenter {
                 .enqueue(new Callback<JSONObject>() {
                     @Override
                     public void onResponse(Call<JSONObject> call, Response<JSONObject> response) {
-
+                        Log.d("MEMON APLIKASI", "onResponse: Berhasil kirim pesan");
                     }
                     @Override
                     public void onFailure(Call<JSONObject> call, Throwable t) {
-
+                        t.printStackTrace();
                     }
                 });
     }

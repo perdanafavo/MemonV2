@@ -213,7 +213,7 @@ public class STOActivity extends CustomCompatActivity
         statusPower=true;
         statusSuhu=true;
         statusUmum=true;
-        notificationText = "PERINGATAN STATUS\nSTO "+getIntent().getStringExtra(ENVIRONMENT.NAMA_STO)+"\nTanggal : "+Tanggal+"\n";
+        notificationText = "PERINGATAN STATUS\nSTO "+getIntent().getStringExtra(ENVIRONMENT.NAMA_STO)+"\n"+Time.tanggal(Tanggal)+"\n";
         mDialog.show();
 
         if (Tanggal != null){

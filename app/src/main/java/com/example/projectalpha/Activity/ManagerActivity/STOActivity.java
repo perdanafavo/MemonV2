@@ -213,7 +213,7 @@ public class STOActivity extends CustomCompatActivity
         statusPower=true;
         statusSuhu=true;
         statusUmum=true;
-        notificationText = "PERINGATAN STATUS\nSTO "+getIntent().getStringExtra(ENVIRONMENT.NAMA_STO)+"\n"+Time.tanggal(Tanggal)+"\n";
+        notificationText = "PERINGATAN STATUS\nSTO "+getIntent().getStringExtra(ENVIRONMENT.NAMA_STO)+"\n"+Time.tanggal(Tanggal);
         mDialog.show();
 
         if (Tanggal != null){
@@ -380,12 +380,12 @@ public class STOActivity extends CustomCompatActivity
         if (data.getPln() != null && data.getPln().equals("ON")
                 && data.getGenset() != null && data.getGenset().equals("ON")) {
             notificationStatus = true;
-            notificationText += "\nCatuan \nPLN : "+data.getPln()+"\nGENSET : "+data.getGenset();
+            notificationText += "\n\nCatuan\nPLN : "+data.getPln()+"\nGENSET : "+data.getGenset();
             statusPower = false;
         } else if (data.getPln() != null && data.getPln().equals("OFF")
                 && data.getGenset() != null && data.getGenset().equals("OFF")) {
             notificationStatus = true;
-            notificationText += "\nCatuan \nPLN : "+data.getPln()+"\nGENSET : "+data.getGenset();
+            notificationText += "\n\nCatuan\nPLN : "+data.getPln()+"\nGENSET : "+data.getGenset();
             statusPower = false;
         }
     }
@@ -404,7 +404,7 @@ public class STOActivity extends CustomCompatActivity
             downloadImage(imageViews[1], data.getFoto());} else statusUmum = false;
         if (data.getTanki_bulanan() <= data.getKapasitas_rendah()){
             notificationStatus = true;
-            notificationText += "\nTanki Bulanan : "+data.getTanki_bulanan()+" Liter\nBatas Terendah : "+data.getKapasitas_rendah()+" Liter";
+            notificationText += "\n\nTanki BBM\nTanki Bulanan : "+data.getTanki_bulanan()+" Liter\nBatas Terendah : "+data.getKapasitas_rendah()+" Liter";
             statusFuel=false;
         }
     }
@@ -427,6 +427,7 @@ public class STOActivity extends CustomCompatActivity
                         downloadImage(imageViews[3], data.get(i).getFoto_suhu());}
                     if (data.get(i).getSuhu() > 23){
                         notificationStatus = true;
+                        if (statusPower) notificationText += "\n\nSuhu Ruangan";
                         notificationText += "\nRuang Sentra : "+data.get(i).getSuhu()+" °C";
                         statusPower = false;
                     }
@@ -445,6 +446,7 @@ public class STOActivity extends CustomCompatActivity
                         downloadImage(imageViews[5], data.get(i).getFoto_suhu());}
                     if (data.get(i).getSuhu() > 23){
                         notificationStatus = true;
+                        if (statusPower) notificationText += "\n\nSuhu Ruangan";
                         notificationText += "\nRuang Transmisi : "+data.get(i).getSuhu()+" °C";
                         statusSuhu = false;
                     }
@@ -463,6 +465,7 @@ public class STOActivity extends CustomCompatActivity
                         downloadImage(imageViews[7], data.get(i).getFoto_suhu());}
                     if (data.get(i).getSuhu() > 23){
                         notificationStatus = true;
+                        if (statusPower) notificationText += "\n\nSuhu Ruangan";
                         notificationText += "\nRuang Rectifier : "+data.get(i).getSuhu()+" °C";
                         statusSuhu = false;
                     }
@@ -481,6 +484,7 @@ public class STOActivity extends CustomCompatActivity
                         downloadImage(imageViews[9], data.get(i).getFoto_suhu());}
                     if (data.get(i).getSuhu() > 23){
                         notificationStatus = true;
+                        if (statusPower) notificationText += "\n\nSuhu Ruangan";
                         notificationText += "\nRuang Batere : "+data.get(i).getSuhu()+" °C";
                         statusSuhu = false;
                     }
@@ -499,6 +503,7 @@ public class STOActivity extends CustomCompatActivity
                         downloadImage(imageViews[11], data.get(i).getFoto_suhu());}
                     if (data.get(i).getSuhu() > 23){
                         notificationStatus = true;
+                        if (statusPower) notificationText += "\n\nSuhu Ruangan";
                         notificationText += "\nRuang Akses : "+data.get(i).getSuhu()+" °C";
                         statusSuhu = false;
                     }
@@ -518,6 +523,7 @@ public class STOActivity extends CustomCompatActivity
                         downloadImage(imageViews[13], data.get(i).getFoto_suhu());}
                     if (data.get(i).getSuhu() > 23){
                         notificationStatus = true;
+                        if (statusPower) notificationText += "\n\nSuhu Ruangan";
                         notificationText += "\nRuang Genset : "+data.get(i).getSuhu()+" °C";
                         statusSuhu = false;
                     }
@@ -536,6 +542,7 @@ public class STOActivity extends CustomCompatActivity
                         downloadImage(imageViews[15], data.get(i).getFoto_suhu());}
                     if (data.get(i).getSuhu() > 23){
                         notificationStatus = true;
+                        if (statusPower) notificationText += "\n\nSuhu Ruangan";
                         notificationText += "\nRuang Olo : "+data.get(i).getSuhu()+" °C";
                         statusSuhu = false;
                     }
@@ -554,6 +561,7 @@ public class STOActivity extends CustomCompatActivity
                         downloadImage(imageViews[17], data.get(i).getFoto_suhu());}
                     if (data.get(i).getSuhu() > 23){
                         notificationStatus = true;
+                        if (statusPower) notificationText += "\n\nSuhu Ruangan";
                         notificationText += "\nRuang Batere Basah : "+data.get(i).getSuhu()+" °C";
                     }
                     break;

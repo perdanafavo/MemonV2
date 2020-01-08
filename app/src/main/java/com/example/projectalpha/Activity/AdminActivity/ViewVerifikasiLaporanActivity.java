@@ -51,7 +51,6 @@ public class ViewVerifikasiLaporanActivity extends CustomCompatActivity implemen
         setContentView(R.layout.activity_view_verifikasi_laporan);
 
         setVariable();
-        createView();
         setBtnFooter();
     }
 

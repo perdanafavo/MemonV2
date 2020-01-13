@@ -213,14 +213,13 @@ public class STOActivity extends CustomCompatActivity
         statusPower=true;
         statusSuhu=true;
         statusUmum=true;
-        notificationText = "PERINGATAN STATUS\nSTO "+getIntent().getStringExtra(ENVIRONMENT.NAMA_STO)+"\n"+Time.tanggal(Tanggal);
         mDialog.show();
 
         if (Tanggal != null){
+            notificationText = "PERINGATAN STATUS\nSTO "+getIntent().getStringExtra(ENVIRONMENT.NAMA_STO)+"\n"+Time.tanggal(Tanggal);
             tvTanggal.setText(Time.tanggal(Tanggal));
             tvSTO.setText(getIntent().getStringExtra(ENVIRONMENT.NAMA_STO));
-        }
-        else {
+        } else {
             TimePresenter timePresenter = new TimePresenter(STOActivity.this);
             timePresenter.requestTimer();
         }

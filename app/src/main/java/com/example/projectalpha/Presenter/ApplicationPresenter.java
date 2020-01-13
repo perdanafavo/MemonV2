@@ -355,11 +355,11 @@ public class ApplicationPresenter {
                 .Notification(Notification.Notification())
                 .enqueue(new Callback<JSONObject>() {
                     @Override
-                    public void onResponse(Call<JSONObject> call, Response<JSONObject> response) {
+                    public void onResponse(@NotNull Call<JSONObject> call, @NotNull Response<JSONObject> response) {
                         Log.d("MEMON APLIKASI", "onResponse: Berhasil kirim pesan");
                     }
                     @Override
-                    public void onFailure(Call<JSONObject> call, Throwable t) {
+                    public void onFailure(@NotNull Call<JSONObject> call, @NotNull Throwable t) {
                         t.printStackTrace();
                     }
                 });

@@ -164,4 +164,5 @@
     <string name="catatan_manager">Catatan Manager</string>
     <string name="belum_validasi">Belum Validasi</string>
     <string name="sudah_validasi">Sudah Validasi</string>
+    <string name="pilih_ruangan">Pilih Ruangan</string>
 </resources>

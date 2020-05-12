@@ -136,7 +136,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:text="@string/home"
-                android:textAlignment="center"
+                android:gravity="center"
                 android:textSize="@dimen/_12ssp" />
 
         </LinearLayout>

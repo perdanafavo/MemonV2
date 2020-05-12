@@ -21,11 +21,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.UsersActivity.BatereSelectActivity"></activity>
+        <activity android:name=".Activity.UsersActivity.BatereSelectActivity" />
         <activity android:name=".Activity.AdminActivity.ViewVerifikasiLaporanActivity" />
         <activity
-            android:name=".Activity.Splashscreen"
-            android:screenOrientation="portrait">
+            android:name=".Activity.Splashscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,86 +32,59 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activity.ValidatorActivity.MainValidatorActivity"
-            android:screenOrientation="portrait" />
+            android:name=".Activity.ValidatorActivity.MainValidatorActivity" />
         <activity
-            android:name=".Activity.AdminActivity.UpdateContactActivity"
-            android:screenOrientation="portrait" />
+            android:name=".Activity.AdminActivity.UpdateContactActivity" />
         <activity
-            android:name=".Activity.AdminActivity.UpdateMenuContactActivity"
-            android:screenOrientation="portrait" />
+            android:name=".Activity.AdminActivity.UpdateMenuContactActivity" />
         <activity
-            android:name=".Activity.ManagerActivity.ShowEmployeeActivity"
-            android:screenOrientation="portrait" />
+            android:name=".Activity.ManagerActivity.ShowEmployeeActivity" />
         <activity
-            android:name=".Activity.ManagerActivity.STOSelectedActivity"
-            android:screenOrientation="portrait" />
+            android:name=".Activity.ManagerActivity.STOSelectedActivity" />
         <activity
-            android:name=".Activity.ManagerActivity.WitelSelectedActivity"
-            android:screenOrientation="portrait" />
+            android:name=".Activity.ManagerActivity.WitelSelectedActivity" />
         <activity
-            android:name=".Activity.ManagerActivity.HistoryActivity"
-            android:screenOrientation="portrait" />
+            android:name=".Activity.ManagerActivity.HistoryActivity" />
         <activity
-            android:name=".Activity.AdminActivity.ResetUserActivity"
-            android:screenOrientation="portrait" />
+            android:name=".Activity.AdminActivity.ResetUserActivity" />
         <activity
-            android:name=".Activity.AdminActivity.ResetMenuUserActivity"
-            android:screenOrientation="portrait" />
+            android:name=".Activity.AdminActivity.ResetMenuUserActivity" />
         <activity
-            android:name=".Activity.AdminActivity.UpdateUserActivity"
-            android:screenOrientation="portrait" />
+            android:name=".Activity.AdminActivity.UpdateUserActivity" />
         <activity
-            android:name=".Activity.AdminActivity.InfoUserActivity"
-            android:screenOrientation="portrait" />
+            android:name=".Activity.AdminActivity.InfoUserActivity" />
         <activity
-            android:name=".Activity.AdminActivity.UpdateMenuUserActivity"
-            android:screenOrientation="portrait" />
+            android:name=".Activity.AdminActivity.UpdateMenuUserActivity" />
         <activity
-            android:name=".Activity.AdminActivity.CreateUserActivity"
-            android:screenOrientation="portrait" />
+            android:name=".Activity.AdminActivity.CreateUserActivity" />
         <activity
-            android:name=".Activity.ManagerActivity.STOActivity"
-            android:screenOrientation="portrait" />
+            android:name=".Activity.ManagerActivity.STOActivity" />
         <activity
-            android:name=".Activity.ManagerActivity.WitelActivity"
-            android:screenOrientation="portrait" />
+            android:name=".Activity.ManagerActivity.WitelActivity" />
         <activity
-            android:name=".Activity.ManagerActivity.MainManagerActivity"
-            android:screenOrientation="portrait" />
+            android:name=".Activity.ManagerActivity.MainManagerActivity" />
         <activity
-            android:name=".Activity.UsersActivity.BirSuhuSelectActivity"
-            android:screenOrientation="portrait" />
+            android:name=".Activity.UsersActivity.BirSuhuSelectActivity" />
         <activity
-            android:name=".Activity.UsersActivity.MainUserActivity"
-            android:screenOrientation="portrait" />
+            android:name=".Activity.UsersActivity.MainUserActivity" />
         <activity
-            android:name=".Activity.UsersActivity.SelectFormActivity"
-            android:screenOrientation="portrait" />
+            android:name=".Activity.UsersActivity.SelectFormActivity" />
         <activity
-            android:name=".Activity.UsersActivity.FormActivity.BbmActivity"
-            android:screenOrientation="portrait" />
+            android:name=".Activity.UsersActivity.FormActivity.BbmActivity" />
         <activity
-            android:name=".Activity.UsersActivity.FormActivity.CatatanActivity"
-            android:screenOrientation="portrait" />
+            android:name=".Activity.UsersActivity.FormActivity.CatatanActivity" />
         <activity
-            android:name=".Activity.UsersActivity.FormActivity.CatuanActivity"
-            android:screenOrientation="portrait" />
+            android:name=".Activity.UsersActivity.FormActivity.CatuanActivity" />
         <activity
-            android:name=".Activity.UsersActivity.FormActivity.KondisiUmumActivity"
-            android:screenOrientation="portrait" />
+            android:name=".Activity.UsersActivity.FormActivity.KondisiUmumActivity" />
         <activity
-            android:name=".Activity.UsersActivity.FormActivity.BIRActivity"
-            android:screenOrientation="portrait" />
+            android:name=".Activity.UsersActivity.FormActivity.BIRActivity" />
         <activity
-            android:name=".Activity.UsersActivity.FormActivity.KontakPentingActivity"
-            android:screenOrientation="portrait" />
+            android:name=".Activity.UsersActivity.FormActivity.KontakPentingActivity" />
         <activity
-            android:name=".Activity.AdminActivity.MainAdminActivity"
-            android:screenOrientation="portrait" />
+            android:name=".Activity.AdminActivity.MainAdminActivity" />
         <activity
-            android:name=".Activity.LoginActivity"
-            android:screenOrientation="portrait" />
+            android:name=".Activity.LoginActivity" />
     </application>
 
 </manifest>

@@ -105,8 +105,9 @@ public class BirSuhuSelectActivity extends CustomCompatActivity
         btnBatere.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(BirSuhuSelectActivity.this, BatereSelectActivity.class)
+                startActivity(new Intent(BirSuhuSelectActivity.this, BIRActivity.class)
                         .putExtra(ENVIRONMENT.ID_LAPORAN, IDLaporan)
+                        .putExtra(ENVIRONMENT.RUANGAN, 4)
                 );
             }
         });
@@ -166,7 +167,7 @@ public class BirSuhuSelectActivity extends CustomCompatActivity
         if (dataResponse.getStatus_rectifier() == 1) rectifierStatus.setImageResource(R.drawable.ic_ok);
         else rectifierStatus.setImageResource(R.drawable.ic_warning);
 
-        if (dataResponse.getStatus_batere() == 1 && dataResponse.getStatus_batere_basah() ==1) batereStatus.setImageResource(R.drawable.ic_ok);
+        if (dataResponse.getStatus_batere() == 1 || dataResponse.getStatus_batere_basah() ==1) batereStatus.setImageResource(R.drawable.ic_ok);
         else batereStatus.setImageResource(R.drawable.ic_warning);
 
         if (dataResponse.getStatus_transmisi() == 1) transmisiStatus.setImageResource(R.drawable.ic_ok);

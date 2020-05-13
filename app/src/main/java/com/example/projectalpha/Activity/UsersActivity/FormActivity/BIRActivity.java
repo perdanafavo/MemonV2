@@ -5,15 +5,19 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.projectalpha.Activity.UsersActivity.MainUserActivity;
@@ -23,6 +27,7 @@ import com.example.projectalpha.Helpers.ImageHandle;
 import com.example.projectalpha.Helpers.SessionManager;
 import com.example.projectalpha.Models.SubModels.BIRData;
 import com.example.projectalpha.Models.SubModels.LaporanData;
+import com.example.projectalpha.Models.SubModels.WitelData;
 import com.example.projectalpha.Presenter.ApplicationPresenter;
 import com.example.projectalpha.R;
 import com.example.projectalpha.Views.ApplicationViews;
@@ -31,6 +36,7 @@ import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,7 +54,8 @@ public class BIRActivity extends CustomCompatActivity
     private Button btnSimpan;
     private TextView tvTitleBIr;
     private ImageButton btnRuangan, btnSuhu;
-    private LinearLayout linearLayout;
+    private LinearLayout linearLayout, layoutRuang;
+    private Spinner spinRuang;
 
     private ApplicationPresenter applicationPresenter;
     private SessionManager sessionManager;
@@ -67,6 +74,7 @@ public class BIRActivity extends CustomCompatActivity
 
         setVariable();
         createView();
+        spinnerRuang();
         setBtnFooter();
     }
 
@@ -112,7 +120,9 @@ public class BIRActivity extends CustomCompatActivity
         btnRuangan  = findViewById(R.id.btnRuangan);
         btnSuhu     = findViewById(R.id.btnSuhu);
         linearLayout = findViewById(R.id.ceceranWrap);
+        layoutRuang = findViewById(R.id.layoutRuangan);
         tvTitleBIr = findViewById(R.id.tvTitleBIR);
+        spinRuang = findViewById(R.id.spinnerRuangan);
 
         mDialog = new ProgressDialog(BIRActivity.this);
         mDialog.setMessage(ENVIRONMENT.NO_WAITING_MESSAGE);
@@ -138,7 +148,7 @@ public class BIRActivity extends CustomCompatActivity
                 title = "Ruang Rectifier";
                 break;
             case 4:
-                title = "Ruang Batere Kering";
+                title = "Ruang Batere";
                 break;
             case 5:
                 title = "Ruang Akses / GPON";
@@ -162,6 +172,9 @@ public class BIRActivity extends CustomCompatActivity
         if (RUANGAN == 6) linearLayout.setVisibility(View.VISIBLE);
         else linearLayout.setVisibility(View.GONE);
 
+        if (RUANGAN == 4 || RUANGAN == 8) layoutRuang.setVisibility(View.VISIBLE);
+        else layoutRuang.setVisibility(View.GONE);
+
         applicationPresenter.getRoomReportByRuangan();
 
         btnRuangan.setOnClickListener(new View.OnClickListener() {
@@ -181,6 +194,33 @@ public class BIRActivity extends CustomCompatActivity
             @Override
             public void onClick(View v) {
                 postReport();
+            }
+        });
+    }
+
+    private void spinnerRuang(){
+        List<String> itemRuang = new ArrayList<>();
+        itemRuang.add(0, "Basah");
+        itemRuang.add(1, "Kering");
+
+        ArrayAdapter<String> arrayAdapterRuang = new ArrayAdapter<>(getApplicationContext(), R.layout.spinner_item, itemRuang);
+        arrayAdapterRuang.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinRuang.setAdapter(arrayAdapterRuang);
+        spinRuang.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position==0){
+                    RUANGAN = 4;
+                }
+                else {
+                    RUANGAN = 8;
+                }
+//                RUANGAN = (int) parent.getItemIdAtPosition(position);
+                applicationPresenter.getRoomReportByRuangan();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
     }
@@ -289,6 +329,9 @@ public class BIRActivity extends CustomCompatActivity
                     .into(btnSuhu);
             btnSuhu.setBackgroundResource(R.color.colorGreyLight);
         }
+        else {
+            btnSuhu.setImageResource(R.drawable.ic_take_picture);
+        }
 
         if (dataReport.getFoto_ruangan() != null) {
             Picasso.get().load(ENVIRONMENT.FOTO_URL+dataReport.getFoto_ruangan())
@@ -297,6 +340,9 @@ public class BIRActivity extends CustomCompatActivity
                     .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
                     .into(btnRuangan);
             btnRuangan.setBackgroundResource(R.color.colorGreyLight);
+        }
+        else {
+            btnRuangan.setImageResource(R.drawable.ic_take_picture);
         }
 
         if ("Tidak Ada".equals(terbakar)) {

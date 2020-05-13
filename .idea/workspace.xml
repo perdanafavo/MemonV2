@@ -157,7 +157,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_2_API_28" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="3c2960060006" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -179,40 +179,6 @@
         <option value="Interface" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>inten</find>
-      <find>toast</find>
-      <find>toas</find>
-      <find>intent</find>
-      <find>system.out</find>
-      <find>inte</find>
-      <find>txtcata</find>
-      <find>catatan</find>
-      <find>tvcata</find>
-      <find>sess</find>
-      <find>simple</find>
-      <find>home</find>
-      <find>hist</find>
-      <find>putex</find>
-      <find>id_l</find>
-      <find>FUel</find>
-      <find>laporan</find>
-      <find>mainManagerAdapter</find>
-      <find>catata</find>
-      <find>Notification</find>
-      <find>getSuhu</find>
-      <find>sto</find>
-      <find>C</find>
-      <find>Tanki Bulanan</find>
-      <find>applicationPresenter.getFuel()</find>
-      <find>ApplicationViews.ReportViews.PutValidator</find>
-      <find>notif</find>
-      <find>notifi</find>
-      <find>.notif</find>
-      <find>&amp;&amp; data.getRuangan()!=8</find>
-    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />

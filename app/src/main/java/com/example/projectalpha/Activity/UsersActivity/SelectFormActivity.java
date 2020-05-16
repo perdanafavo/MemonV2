@@ -206,7 +206,7 @@ public class SelectFormActivity extends CustomCompatActivity
         if (dataResponse.getStatus_bbm() == 1) bbmStatus.setImageResource(R.drawable.ic_ok);
         else bbmStatus.setImageResource(R.drawable.ic_warning);
 
-        if (dataResponse.getStatus_akses() == 1 && dataResponse.getStatus_batere() == 1 && dataResponse.getStatus_genset() == 1
+        if (dataResponse.getStatus_akses() == 1 && (dataResponse.getStatus_batere() == 1||dataResponse.getStatus_batere_basah() == 1) && dataResponse.getStatus_genset() == 1
                 && dataResponse.getStatus_rectifier() == 1 && dataResponse.getStatus_sentral() == 1 && dataResponse.getStatus_transmisi() == 1) BIRStatus.setImageResource(R.drawable.ic_ok);
         else BIRStatus.setImageResource(R.drawable.ic_warning);
     }

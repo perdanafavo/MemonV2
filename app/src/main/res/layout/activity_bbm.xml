@@ -187,6 +187,7 @@
                     android:adjustViewBounds="true"
                     android:contentDescription="@string/foto_meter_bahan_bakar"
                     android:maxHeight="100dp"
+                    android:background="@color/colorGreyLight"
                     app:srcCompat="@drawable/ic_take_picture" />
             </LinearLayout>
 

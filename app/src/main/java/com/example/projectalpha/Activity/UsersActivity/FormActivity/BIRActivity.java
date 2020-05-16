@@ -54,7 +54,7 @@ public class BIRActivity extends CustomCompatActivity
     private Button btnSimpan;
     private TextView tvTitleBIr;
     private ImageButton btnRuangan, btnSuhu;
-    private LinearLayout linearLayout, layoutRuang;
+    private LinearLayout linearLayout, layoutRuang, layoutSuhu, layoutFotoSuhu;
     private Spinner spinRuang;
 
     private ApplicationPresenter applicationPresenter;
@@ -121,6 +121,8 @@ public class BIRActivity extends CustomCompatActivity
         btnSuhu     = findViewById(R.id.btnSuhu);
         linearLayout = findViewById(R.id.ceceranWrap);
         layoutRuang = findViewById(R.id.layoutRuangan);
+        layoutSuhu = findViewById(R.id.layoutSuhu);
+        layoutFotoSuhu = findViewById(R.id.layoutFotoSuhu);
         tvTitleBIr = findViewById(R.id.tvTitleBIR);
         spinRuang = findViewById(R.id.spinnerRuangan);
 
@@ -175,6 +177,12 @@ public class BIRActivity extends CustomCompatActivity
         if (RUANGAN == 4 || RUANGAN == 8) layoutRuang.setVisibility(View.VISIBLE);
         else layoutRuang.setVisibility(View.GONE);
 
+        if (RUANGAN == 6 || RUANGAN == 8) layoutSuhu.setVisibility(View.GONE);
+        else layoutSuhu.setVisibility(View.VISIBLE);
+
+        if (RUANGAN == 6 || RUANGAN == 8) layoutFotoSuhu.setVisibility(View.GONE);
+        else layoutFotoSuhu.setVisibility(View.VISIBLE);
+
         applicationPresenter.getRoomReportByRuangan();
 
         btnRuangan.setOnClickListener(new View.OnClickListener() {
@@ -200,8 +208,8 @@ public class BIRActivity extends CustomCompatActivity
 
     private void spinnerRuang(){
         List<String> itemRuang = new ArrayList<>();
-        itemRuang.add(0, "Basah");
-        itemRuang.add(1, "Kering");
+        itemRuang.add(0, "Kering");
+        itemRuang.add(1, "Basah");
 
         ArrayAdapter<String> arrayAdapterRuang = new ArrayAdapter<>(getApplicationContext(), R.layout.spinner_item, itemRuang);
         arrayAdapterRuang.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
@@ -211,11 +219,20 @@ public class BIRActivity extends CustomCompatActivity
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position==0){
                     RUANGAN = 4;
+                    if (RUANGAN == 6 || RUANGAN == 8) layoutSuhu.setVisibility(View.GONE);
+                    else layoutSuhu.setVisibility(View.VISIBLE);
+
+                    if (RUANGAN == 6 || RUANGAN == 8) layoutFotoSuhu.setVisibility(View.GONE);
+                    else layoutFotoSuhu.setVisibility(View.VISIBLE);
                 }
                 else {
                     RUANGAN = 8;
+                    if (RUANGAN == 6 || RUANGAN == 8) layoutSuhu.setVisibility(View.GONE);
+                    else layoutSuhu.setVisibility(View.VISIBLE);
+
+                    if (RUANGAN == 6 || RUANGAN == 8) layoutFotoSuhu.setVisibility(View.GONE);
+                    else layoutFotoSuhu.setVisibility(View.VISIBLE);
                 }
-//                RUANGAN = (int) parent.getItemIdAtPosition(position);
                 applicationPresenter.getRoomReportByRuangan();
             }
             @Override
@@ -248,7 +265,10 @@ public class BIRActivity extends CustomCompatActivity
         if (dataReport.getSuhu() != Integer.parseInt(suhu))mapRequest.put("suhu", suhu);
 
         if (file != null){
-            if (file2 != null || dataReport.getFoto_suhu() != null){
+            if (file2 == null && (RUANGAN==6||RUANGAN==8)){
+                applicationPresenter.updateImage(false);
+            }
+            else if (file2 != null || dataReport.getFoto_suhu() != null){
                applicationPresenter.updateImage(true);
             } else {
                 mDialog.dismiss();
@@ -264,12 +284,16 @@ public class BIRActivity extends CustomCompatActivity
         } else {
             if (dataReport.getFoto_ruangan() != null && dataReport.getFoto_suhu() != null){
                 applicationPresenter.putRoom();
-            }else {
+            }
+            else if (dataReport.getFoto_ruangan() != null && (RUANGAN==6||RUANGAN==8)) {
+                applicationPresenter.putRoom();
+            }
+            else
+            {
                 mDialog.dismiss();
                 simpleToast("Foto belum ditambahkan");
             }
         }
-
     }
 
 
@@ -390,7 +414,12 @@ public class BIRActivity extends CustomCompatActivity
                 applicationPresenter.putRoom();
             }
         } else {
-            mapRequest.put("foto_suhu", nama);
+            if (RUANGAN==6||RUANGAN==8) {
+                mapRequest.put("foto_ruangan", nama);
+            }
+            else {
+                mapRequest.put("foto_suhu", nama);
+            }
             applicationPresenter.putRoom();
         }
     }
@@ -405,7 +434,16 @@ public class BIRActivity extends CustomCompatActivity
 
     @Override
     public MultipartBody.Part GetMultiPart(boolean index) {
-        if (index) return imageHandle.convertMultiparFile(file);
-        else return imageHandle.convertMultiparFile(file2);
+        if (index) {
+            return imageHandle.convertMultiparFile(file);
+        }
+        else {
+            if (RUANGAN==6||RUANGAN==8){
+                return imageHandle.convertMultiparFile(file);
+            }
+            else{
+                return imageHandle.convertMultiparFile(file2);
+            }
+        }
     }
 }

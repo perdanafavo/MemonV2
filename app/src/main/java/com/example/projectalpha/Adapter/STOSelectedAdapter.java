@@ -93,10 +93,6 @@ public class STOSelectedAdapter extends RecyclerView.Adapter<STOSelectedAdapter.
                                 count++;
                                 value.add("Akses/GPON : "+data.getSuhu()+" °C");
                                 break;
-                            case 6:
-                                count++;
-                                value.add("Genset : "+data.getSuhu()+" °C");
-                                break;
                             case 7:
                                 count++;
                                 value.add("OLO : "+data.getSuhu()+" °C");

@@ -520,12 +520,6 @@ public class STOActivity extends CustomCompatActivity
                         zoomImage(imageViews[13], data.get(i).getFoto_suhu());
                         downloadImage(imageViews[12], data.get(i).getFoto_ruangan());
                         downloadImage(imageViews[13], data.get(i).getFoto_suhu());}
-                    if (data.get(i).getSuhu() > 23){
-                        notificationStatus = true;
-                        if (statusPower) notificationText += "\n\nSuhu Ruangan";
-                        notificationText += "\nRuang Genset : "+data.get(i).getSuhu()+" °C";
-                        statusSuhu = false;
-                    }
                     break;
                 case 7:
                     String suhuOlo = data.get(i).getSuhu()+" °C";
@@ -558,11 +552,6 @@ public class STOActivity extends CustomCompatActivity
                         zoomImage(imageViews[17], data.get(i).getFoto_suhu());
                         downloadImage(imageViews[16], data.get(i).getFoto_ruangan());
                         downloadImage(imageViews[17], data.get(i).getFoto_suhu());}
-                    if (data.get(i).getSuhu() > 23){
-                        notificationStatus = true;
-                        if (statusPower) notificationText += "\n\nSuhu Ruangan";
-                        notificationText += "\nRuang Batere Basah : "+data.get(i).getSuhu()+" °C";
-                    }
                     break;
                 default:
                     break;

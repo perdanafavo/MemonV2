@@ -21,6 +21,7 @@ import com.example.projectalpha.Activity.AdminActivity.UpdateContactActivity;
 import com.example.projectalpha.Activity.AdminActivity.UpdateMenuContactActivity;
 import com.example.projectalpha.Activity.UsersActivity.FormActivity.KontakPentingActivity;
 import com.example.projectalpha.Config.ENVIRONMENT;
+import com.example.projectalpha.Models.SubModels.ContactData;
 import com.example.projectalpha.Models.SubModels.UsersData;
 import com.example.projectalpha.R;
 
@@ -32,14 +33,14 @@ public class KontakAdapter extends RecyclerView.Adapter<KontakAdapter.ViewHolder
 
     private final int REQUEST_CALL = 1;
 
-    private List<UsersData> itemKontak;
+    private List<ContactData> itemKontak;
     private Context context;
 
-    public KontakAdapter(List<UsersData> itemKontak) {
+    public KontakAdapter(List<ContactData> itemKontak) {
         this.itemKontak = itemKontak;
     }
 
-    public void setData(List<UsersData> itemKontak) {
+    public void setData(List<ContactData> itemKontak) {
         this.itemKontak = itemKontak;
     }
 
@@ -55,13 +56,13 @@ public class KontakAdapter extends RecyclerView.Adapter<KontakAdapter.ViewHolder
         final String [] data = {
                 itemKontak.get(position).getNama(),
                 "0"+itemKontak.get(position).getHandphone(),
-                String.valueOf(itemKontak.get(position).getWitel())
+                String.valueOf(itemKontak.get(position).getId_witel())
         };
 
         final String handphone = "0"+itemKontak.get(position).getHandphone();
         holder.tvNama.setText(itemKontak.get(position).getNama());
         holder.tvHandphone.setText(handphone);
-        holder.tvWitel.setText(itemKontak.get(position).getNama_witel());
+        holder.tvWitel.setText(itemKontak.get(position).getWitel());
 
         if (context instanceof KontakPentingActivity){
             holder.btnUpdate.setVisibility(View.GONE);
@@ -86,7 +87,7 @@ public class KontakAdapter extends RecyclerView.Adapter<KontakAdapter.ViewHolder
                 public void onClick(View v) {
                     context.startActivity(
                             new Intent(context, UpdateContactActivity.class)
-                                .putExtra(ENVIRONMENT.ID_PETUGAS, itemKontak.get(finalPosition).getId())
+                                .putExtra(ENVIRONMENT.ID_PETUGAS, Integer.toString(itemKontak.get(finalPosition).getId()))
                                 .putExtra(ENVIRONMENT.DATA_PETUGAS, data)
                     );
                 }

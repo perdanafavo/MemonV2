@@ -1,6 +1,7 @@
 package com.example.projectalpha.Network;
 
 import com.example.projectalpha.Models.BIRModels;
+import com.example.projectalpha.Models.ContactModels;
 import com.example.projectalpha.Models.FuelModels;
 import com.example.projectalpha.Models.ImageModel;
 import com.example.projectalpha.Models.KondisiUmumModels;
@@ -67,6 +68,11 @@ public interface ApiConnection {
     @GET("Users")
     Call<UsersModels> getUsers();
 
+    // Ambil Users untuk Admin
+    @Headers("TELKOM-API-KEY: Nu2xhCePUtRoZWiJAWtS2WkInIptC2IKN5XzYIZT")
+    @GET("Contact")
+    Call<ContactModels> getContact();
+
     @Headers("TELKOM-API-KEY: Nu2xhCePUtRoZWiJAWtS2WkInIptC2IKN5XzYIZT")
     @GET("Users")
     Call<UsersModels> getUsers(
@@ -85,6 +91,14 @@ public interface ApiConnection {
     @PUT("Users")
     @FormUrlEncoded
     Call<ResponseBody> updateUsers(
+            @Field("id") String id,
+            @FieldMap Map<String, String> data
+    );
+
+    @Headers("TELKOM-API-KEY: Nu2xhCePUtRoZWiJAWtS2WkInIptC2IKN5XzYIZT")
+    @PUT("Contact")
+    @FormUrlEncoded
+    Call<ResponseBody> updateContact(
             @Field("id") String id,
             @FieldMap Map<String, String> data
     );

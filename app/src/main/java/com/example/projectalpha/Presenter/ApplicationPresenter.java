@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.example.projectalpha.Config.ENVIRONMENT;
 import com.example.projectalpha.Models.BIRModels;
+import com.example.projectalpha.Models.ContactModels;
 import com.example.projectalpha.Models.FuelModels;
 import com.example.projectalpha.Models.ImageModel;
 import com.example.projectalpha.Models.KondisiUmumModels;
@@ -34,7 +35,9 @@ public class ApplicationPresenter {
     private ApplicationViews.UsersViews usersViews;
 
     private ApplicationViews.UsersViews.GetRequest getRequest;
+    private ApplicationViews.UsersViews.GetRequestContact getRequestContact;
     private ApplicationViews.UsersViews.UpdateRequest updateRequest;
+    private ApplicationViews.UsersViews.UpdateContact updateContact;
 
     private ApplicationViews.ReportViews reportViews;
     private ApplicationViews.ReportViews.GetRequestReport getRequestReport;
@@ -67,7 +70,9 @@ public class ApplicationPresenter {
 
         if (context instanceof ApplicationViews.UsersViews) usersViews = (ApplicationViews.UsersViews) context;
         if (context instanceof ApplicationViews.UsersViews.GetRequest) getRequest = (ApplicationViews.UsersViews.GetRequest) context;
+        if (context instanceof ApplicationViews.UsersViews.GetRequestContact) getRequestContact = (ApplicationViews.UsersViews.GetRequestContact) context;
         if (context instanceof ApplicationViews.UsersViews.UpdateRequest) updateRequest = (ApplicationViews.UsersViews.UpdateRequest) context;
+        if (context instanceof ApplicationViews.UsersViews.UpdateContact) updateContact = (ApplicationViews.UsersViews.UpdateContact) context;
 
         if (context instanceof ApplicationViews.ReportViews) reportViews = (ApplicationViews.ReportViews) context;
         if (context instanceof ApplicationViews.ReportViews.GetRequestReport) getRequestReport = (ApplicationViews.ReportViews.GetRequestReport) context;
@@ -135,6 +140,26 @@ public class ApplicationPresenter {
         });
     }
 
+    public void getContact() {
+        RetrofitConnect.getInstance()
+                .getContact()
+                .enqueue(new Callback<ContactModels>() {
+                    @Override
+                    public void onResponse(@NotNull Call<ContactModels> call, @NotNull Response<ContactModels> response) {
+                        if (response.isSuccessful()){
+                            getRequestContact.SuccessRequestContact(response.body() != null ? response.body().getData() : null);
+                        } else {
+                            applicationViews.requestFailled(ENVIRONMENT.ON_BAD_REQUEST_GET);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(@NotNull Call<ContactModels> call, @NotNull Throwable t) {
+                        applicationViews.requestFailled(ENVIRONMENT.ON_FAILURE_REQUEST);
+                    }
+                });
+    }
+
     public void getUsersByID() {
         RetrofitConnect.getInstance()
                 .getUsers(usersViews.getEmployee())
@@ -193,6 +218,25 @@ public class ApplicationPresenter {
                         applicationViews.requestFailled(ENVIRONMENT.ON_FAILURE_REQUEST);
                 }
         });
+    }
+
+    public void updateContact(String id) {
+        RetrofitConnect.getInstance()
+                .updateContact(id, updateContact.getUpdateMapBody())
+                .enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(@NotNull Call<ResponseBody> call, @NotNull Response<ResponseBody> response) {
+                        if (response.isSuccessful()){
+                            applicationViews.successRequest();
+                        } else {
+                            applicationViews.requestFailled(ENVIRONMENT.ON_BAD_REQUEST_PUT);
+                        }
+                    }
+                    @Override
+                    public void onFailure(@NotNull Call<ResponseBody> call, @NotNull Throwable t) {
+                        applicationViews.requestFailled(ENVIRONMENT.ON_FAILURE_REQUEST);
+                    }
+                });
     }
 
     public void updateValidator() {

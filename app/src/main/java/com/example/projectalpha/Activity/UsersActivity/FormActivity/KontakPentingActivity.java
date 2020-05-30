@@ -11,6 +11,7 @@ import com.example.projectalpha.Activity.UsersActivity.MainUserActivity;
 import com.example.projectalpha.Adapter.KontakAdapter;
 import com.example.projectalpha.Config.ENVIRONMENT;
 import com.example.projectalpha.Helpers.CustomCompatActivity;
+import com.example.projectalpha.Models.SubModels.ContactData;
 import com.example.projectalpha.Models.SubModels.UsersData;
 import com.example.projectalpha.Presenter.ApplicationPresenter;
 import com.example.projectalpha.R;
@@ -19,8 +20,8 @@ import com.example.projectalpha.Views.ApplicationViews;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KontakPentingActivity extends CustomCompatActivity
-        implements ApplicationViews, ApplicationViews.UsersViews.GetRequest {
+public class    KontakPentingActivity extends CustomCompatActivity
+        implements ApplicationViews, ApplicationViews.UsersViews.GetRequestContact {
 
     private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView mRecyclerview;
@@ -29,7 +30,7 @@ public class KontakPentingActivity extends CustomCompatActivity
     private ApplicationPresenter applicationPresenter;
 
     private ProgressDialog mDialog;
-    private List<UsersData> itemKontak = null;
+    private List<ContactData> itemKontak = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +80,7 @@ public class KontakPentingActivity extends CustomCompatActivity
 
     private void createView() {
         mDialog.show();
-        applicationPresenter.getUsers();
+        applicationPresenter.getContact();
     }
 
     private void setBtnFooter() {
@@ -99,12 +100,10 @@ public class KontakPentingActivity extends CustomCompatActivity
     }
 
     @Override
-    public void SuccessRequestGetUsers(ArrayList<UsersData> dataResponse) {
+    public void SuccessRequestContact(ArrayList<ContactData> dataResponse) {
         itemKontak = new ArrayList<>();
-        for (UsersData data:dataResponse){
-            if (data.getPrivileges() == 2){
-                itemKontak.add(data);
-            }
+        for (ContactData data:dataResponse){
+            itemKontak.add(data);
         }
 
         kontakAdapter.setData(itemKontak);

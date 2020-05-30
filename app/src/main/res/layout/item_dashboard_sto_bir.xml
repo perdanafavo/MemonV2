@@ -629,6 +629,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="3dp"
@@ -736,6 +737,7 @@
                 android:contentDescription="@string/ruang_batere" />
 
             <ImageView
+                android:visibility="gone"
                 android:id="@+id/imgSuhuBatereBasah"
                 android:layout_width="match_parent"
                 android:layout_marginTop="10dp"

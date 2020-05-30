@@ -1,6 +1,7 @@
 package com.example.projectalpha.Views;
 
 import com.example.projectalpha.Models.SubModels.BIRData;
+import com.example.projectalpha.Models.SubModels.ContactData;
 import com.example.projectalpha.Models.SubModels.FuelData;
 import com.example.projectalpha.Models.SubModels.KondisiUmumData;
 import com.example.projectalpha.Models.SubModels.LaporanData;
@@ -30,8 +31,16 @@ public interface ApplicationViews {
             void SuccessRequestGetUsers(ArrayList<UsersData> data);
         }
 
+        interface GetRequestContact{
+            void SuccessRequestContact(ArrayList<ContactData> data);
+        }
+
         interface UpdateRequest{
             Map<String, String> getRequestMapBody();
+        }
+
+        interface UpdateContact{
+            Map<String, String> getUpdateMapBody();
         }
 
     }

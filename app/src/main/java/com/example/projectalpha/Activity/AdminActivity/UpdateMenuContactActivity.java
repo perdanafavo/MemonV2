@@ -11,6 +11,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.example.projectalpha.Adapter.KontakAdapter;
 import com.example.projectalpha.Config.ENVIRONMENT;
 import com.example.projectalpha.Helpers.CustomCompatActivity;
+import com.example.projectalpha.Models.SubModels.ContactData;
 import com.example.projectalpha.Models.SubModels.UsersData;
 import com.example.projectalpha.Presenter.ApplicationPresenter;
 import com.example.projectalpha.R;
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UpdateMenuContactActivity extends CustomCompatActivity
-        implements ApplicationViews, ApplicationViews.UsersViews.GetRequest {
+        implements ApplicationViews, ApplicationViews.UsersViews.GetRequestContact {
 
     private ProgressDialog mDialog;
     private SearchView searchView;
@@ -30,7 +31,7 @@ public class UpdateMenuContactActivity extends CustomCompatActivity
 
     private ApplicationPresenter applicationPresenter;
 
-    private List<UsersData> itemUpdate;
+    private List<ContactData> itemUpdate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +84,7 @@ public class UpdateMenuContactActivity extends CustomCompatActivity
     private void createView() {
         mDialog.show();
 
-        applicationPresenter.getUsers();
+        applicationPresenter.getContact();
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -100,10 +101,10 @@ public class UpdateMenuContactActivity extends CustomCompatActivity
     }
 
     private void filter(String text) {
-        List<UsersData> filteredList = new ArrayList<>();
-        for (UsersData item : itemUpdate){
+        List<ContactData> filteredList = new ArrayList<>();
+        for (ContactData item : itemUpdate){
             if ((item.getNama().toLowerCase().contains(text.toLowerCase()))
-                    || (item.getNama_witel().toLowerCase().contains(text.toLowerCase()))){
+                    || (item.getWitel().toLowerCase().contains(text.toLowerCase()))){
                 filteredList.add(item);
             }
         }
@@ -129,14 +130,13 @@ public class UpdateMenuContactActivity extends CustomCompatActivity
 
     }
 
+
     @Override
-    public void SuccessRequestGetUsers(ArrayList<UsersData> dataResponse) {
+    public void SuccessRequestContact(ArrayList<ContactData> dataResponse) {
         itemUpdate = new ArrayList<>();
         if (dataResponse != null){
-            for (UsersData data:dataResponse){
-                if (data.getPrivileges() == 2){
+            for (ContactData data:dataResponse){
                     itemUpdate.add(data);
-                }
             }
         }
 

@@ -151,7 +151,6 @@
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -166,7 +165,12 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <projects_view />
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
       </state>
     </system>
   </component>
@@ -175,8 +179,8 @@
       <list>
         <option value="resourceFile" />
         <option value="layoutResourceFile_vertical" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -186,6 +190,11 @@
   <component name="ProjectId" id="1bkL6fR8d2g6SNvHIp6trVlNbGi" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="6c20ca5c" />
@@ -213,19 +222,13 @@
       <recent name="D:\Newfolder\Kerja\MemonV2\app\src\main\res\drawable" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="RunManager">
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -308,12 +311,6 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="Applet">
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
@@ -374,5 +371,31 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="475" y="135" key="#com.intellij.ide.util.MemberChooser" timestamp="1590833460363">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="475" y="135" key="#com.intellij.ide.util.MemberChooser/0.0.1366.768@0.0.1366.768" timestamp="1590833460363" />
+    <state width="1323" height="32" key="GridCell.Tab.0.bottom" timestamp="1590834787198">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1323" height="32" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1590834787198" />
+    <state width="1323" height="32" key="GridCell.Tab.0.center" timestamp="1590834787198">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1323" height="32" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1590834787198" />
+    <state width="1323" height="32" key="GridCell.Tab.0.left" timestamp="1590834787198">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1323" height="32" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1590834787198" />
+    <state width="1323" height="32" key="GridCell.Tab.0.right" timestamp="1590834787198">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1323" height="32" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1590834787198" />
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1590829201353">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1590829201353" />
   </component>
 </project>

@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Map;
 
 public class UpdateContactActivity extends CustomCompatActivity
-        implements ApplicationViews, ApplicationViews.WitelViews.GetRequest, ApplicationViews.StoViews.GetRequest, ApplicationViews.UsersViews, ApplicationViews.UsersViews.UpdateRequest {
+        implements ApplicationViews, ApplicationViews.WitelViews.GetRequest, ApplicationViews.StoViews.GetRequest, ApplicationViews.UsersViews, ApplicationViews.UsersViews.UpdateRequest, ApplicationViews.UsersViews.UpdateContact {
 
     private String IDPETUGAS;
     private String [] DATAPETUGAS;
@@ -42,7 +42,7 @@ public class UpdateContactActivity extends CustomCompatActivity
     private List<STOData> dataSto;
     private Map<String, String> requestBodyMap = new HashMap<>();
 
-    private int STO = 0;
+    private int WITEL = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,8 +89,9 @@ public class UpdateContactActivity extends CustomCompatActivity
         if (!editNamaKontak.getText().toString().matches("") || !editNoHP.getText().toString().matches("")){
             if (!editNamaKontak.getText().toString().equals(DATAPETUGAS[0]))requestBodyMap.put("nama", editNamaKontak.getText().toString());
             if (!editNoHP.getText().toString().equals(DATAPETUGAS[1]))requestBodyMap.put("handphone", editNoHP.getText().toString());
-            if (STO!=0) requestBodyMap.put("sto", String.valueOf(STO));
-            applicationPresenter.updateUsers();
+            if (WITEL!=0) requestBodyMap.put("witel", String.valueOf(WITEL));
+            System.out.println(requestBodyMap);
+            applicationPresenter.updateContact(IDPETUGAS);
         } else {
             simpleToast("Data masih kosong");
         }
@@ -112,12 +113,13 @@ public class UpdateContactActivity extends CustomCompatActivity
         spinnerWitel.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                for (STOData data:dataSto){
-                    if (data.getWitel() == parent.getItemIdAtPosition(position)){
-                        STO = data.getId();
-                        break;
-                    }
-                }
+                WITEL = (int) parent.getItemIdAtPosition(position);
+//                for (STOData data:dataSto){
+//                    if (data.getWitel() == parent.getItemIdAtPosition(position)){
+//                        WITEL = data.getId();
+//                        break;
+//                    }
+//                }
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -177,6 +179,11 @@ public class UpdateContactActivity extends CustomCompatActivity
 
     @Override
     public Map<String, String> getRequestMapBody() {
+        return requestBodyMap;
+    }
+
+    @Override
+    public Map<String, String> getUpdateMapBody() {
         return requestBodyMap;
     }
 }

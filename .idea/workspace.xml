@@ -197,8 +197,8 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="6c20ca5c" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-01-08T04:32:46.863Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="3c2960060006" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-06-07T06:30:59.026Z" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="J:/Users/Favo Perdana/AppData/Local/Android/Sdk" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -393,6 +393,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1323" height="32" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1590834787198" />
+    <state x="369" y="251" key="com.intellij.ide.util.TipDialog" timestamp="1591510246933">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="369" y="251" key="com.intellij.ide.util.TipDialog/0.0.1366.768@0.0.1366.768" timestamp="1591510246933" />
     <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1590829201353">
       <screen x="0" y="0" width="1366" height="768" />
     </state>

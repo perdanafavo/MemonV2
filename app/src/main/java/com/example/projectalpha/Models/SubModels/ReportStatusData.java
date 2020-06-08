@@ -34,8 +34,8 @@ public class ReportStatusData {
     @SerializedName("status_transmisi")
     private byte status_transmisi;
 
-    @SerializedName("status_olo")
-    private byte status_olo;
+//    @SerializedName("status_olo")
+//    private byte status_olo;
 
     @SerializedName("status_batere_basah")
     private byte status_batere_basah;
@@ -120,13 +120,13 @@ public class ReportStatusData {
         this.status_transmisi = status_transmisi;
     }
 
-    public byte getStatus_olo() {
-        return status_olo;
-    }
-
-    public void setStatus_olo(byte status_olo) {
-        this.status_olo = status_olo;
-    }
+//    public byte getStatus_olo() {
+//        return status_olo;
+//    }
+//
+//    public void setStatus_olo(byte status_olo) {
+//        this.status_olo = status_olo;
+//    }
 
     public byte getStatus_batere_basah() {
         return status_batere_basah;

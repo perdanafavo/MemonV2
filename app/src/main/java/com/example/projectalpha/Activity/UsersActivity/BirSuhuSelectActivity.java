@@ -179,8 +179,8 @@ public class BirSuhuSelectActivity extends CustomCompatActivity
         if (dataResponse.getStatus_genset() == 1) gensetStatus.setImageResource(R.drawable.ic_ok);
         else gensetStatus.setImageResource(R.drawable.ic_warning);
 
-        if (dataResponse.getStatus_olo() == 1) oloStatus.setImageResource(R.drawable.ic_ok);
-        else oloStatus.setImageResource(R.drawable.ic_warning);
+//        if (dataResponse.getStatus_olo() == 1) oloStatus.setImageResource(R.drawable.ic_ok);
+//        else oloStatus.setImageResource(R.drawable.ic_warning);
     }
 
     @Override

@@ -84,7 +84,7 @@ public class MalamFragment extends Fragment {
         int count = 0;
         if (temperature != null) {
             for (BIRData data:temperature){
-                if (data.getSuhu() > 23 && data.getStatus_approved()==1 && data.getRuangan()!=6 && data.getRuangan()!=8) count++;
+                if (data.getSuhu() > 23 && data.getStatus_approved()==1 && data.getRuangan()!=6 && data.getRuangan()!=7) count++;
             }
         }
         btnSuhu.setText(String.valueOf(count));

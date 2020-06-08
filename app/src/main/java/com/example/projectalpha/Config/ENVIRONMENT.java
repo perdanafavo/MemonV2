@@ -2,9 +2,9 @@ package com.example.projectalpha.Config;
 
 public class ENVIRONMENT {
     //RETROFIT URL
-    public static final String BASE_URL = "http://aplikasisto.id/api/";
-    public static final String PROFILE_IMAGE = "http://aplikasisto.id/upload/profile/";
-    public static final String FOTO_URL = "http://aplikasisto.id/upload/laporan/";
+    public static final String BASE_URL = "http://10.81.40.12:9080/memon/api/";
+    public static final String PROFILE_IMAGE = "http://10.81.40.12:9080/memon/upload/profile/";
+    public static final String FOTO_URL = "http://10.81.40.12:9080/memon/upload/laporan/";
 
     // VERSION
     public static final String VERSION = "1.1.0";

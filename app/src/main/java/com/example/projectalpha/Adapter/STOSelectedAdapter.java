@@ -70,7 +70,7 @@ public class STOSelectedAdapter extends RecyclerView.Adapter<STOSelectedAdapter.
         if (dataTemperature != null){
             for (BIRData data:dataTemperature){
                 if (data.getSto() == place.get(position).getId()){
-                    if (data.getSuhu() > 23 && data.getStatus_approved()==1 && data.getRuangan()!=6 && data.getRuangan()!=8){
+                    if (data.getSuhu() > 23 && data.getStatus_approved()==1 && data.getRuangan()!=6 && data.getRuangan()!=7){
                         LAPORAN = data.getLaporan();
                         switch (data.getRuangan()){
                             case 1:
@@ -94,8 +94,7 @@ public class STOSelectedAdapter extends RecyclerView.Adapter<STOSelectedAdapter.
                                 value.add("Akses/GPON : "+data.getSuhu()+" °C");
                                 break;
                             case 7:
-                                count++;
-                                value.add("OLO : "+data.getSuhu()+" °C");
+                                break;
                             case 8:
                                 break;
                             default:

@@ -62,7 +62,7 @@ public class STOActivity extends CustomCompatActivity
     private int LAPORAN, STO, STATUS_APPROVED;
 
     private String Tanggal, notificationText;
-    private Boolean statusSuhu, statusFuel, statusPower, statusUmum, notStat;
+    private Boolean statusSuhu, statusFuel, statusPower, statusUmum, statusBatereK,statusBatereB, notStat;
 
     private SwipeRefreshLayout swipeRefreshLayout;
     private ImageView[] imageViews;
@@ -213,6 +213,8 @@ public class STOActivity extends CustomCompatActivity
         statusPower=true;
         statusSuhu=true;
         statusUmum=true;
+        statusBatereK=true;
+        statusBatereB=true;
         notStat=true;
         mDialog.show();
 
@@ -311,10 +313,10 @@ public class STOActivity extends CustomCompatActivity
         @Override
         public void onClick(View v) {
             //showPopup();
-            if (!statusUmum){
+            if (!(statusUmum&&(statusBatereB||statusBatereK))){
                 showPopup(ENVIRONMENT.ON_BAD_NULL_VALIDASI);
             }
-            else if(statusFuel&&statusPower&&statusSuhu){
+            else if(statusFuel&&statusPower&&statusSuhu&&(statusBatereK||statusBatereB)){
                 prosesValidasi();
             }
             else {
@@ -482,10 +484,10 @@ public class STOActivity extends CustomCompatActivity
                 case 4:
                     String suhuBatere = data.get(i).getSuhu()+" °C";
                     tvBatere[0].setText(suhuBatere);
-                    if (data.get(i).getBenda_terbakar() != null) tvBatere[1].setText(data.get(i).getBenda_terbakar()); else statusUmum = false;
-                    if (data.get(i).getSteker_bertumpuk() != null) tvBatere[2].setText(data.get(i).getSteker_bertumpuk()); else statusUmum = false;
-                    if (data.get(i).getFoto_ruangan() != null) Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(i).getFoto_ruangan()).into(imageViews[8]); else statusUmum = false;
-                    if (data.get(i).getFoto_suhu() != null) Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(i).getFoto_suhu()).into(imageViews[9]); else statusUmum = false;
+                    if (data.get(i).getBenda_terbakar() != null) tvBatere[1].setText(data.get(i).getBenda_terbakar()); else statusBatereK = false;
+                    if (data.get(i).getSteker_bertumpuk() != null) tvBatere[2].setText(data.get(i).getSteker_bertumpuk()); else statusBatereK = false;
+                    if (data.get(i).getFoto_ruangan() != null) Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(i).getFoto_ruangan()).into(imageViews[8]); else statusBatereK = false;
+                    if (data.get(i).getFoto_suhu() != null) Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(i).getFoto_suhu()).into(imageViews[9]); else statusBatereK = false;
                     if (data.get(i).getFoto_ruangan() != null && data.get(i).getFoto_suhu() != null){
                         zoomImage(imageViews[8], data.get(i).getFoto_ruangan());
                         zoomImage(imageViews[9], data.get(i).getFoto_suhu());
@@ -537,34 +539,34 @@ public class STOActivity extends CustomCompatActivity
                         downloadImage(imageViews[12], data.get(i).getFoto_ruangan());
                         downloadImage(imageViews[13], data.get(i).getFoto_suhu());}
                     break;
+//                case 7:
+//                    String suhuOlo = data.get(i).getSuhu()+" °C";
+//                    tvOlo[0].setText(suhuOlo);
+//                    if (data.get(i).getBenda_terbakar() != null) tvOlo[1].setText(data.get(i).getBenda_terbakar()); else statusUmum = false;
+//                    if (data.get(i).getSteker_bertumpuk() != null) tvOlo[2].setText(data.get(i).getSteker_bertumpuk()); else statusUmum = false;
+//                    if (data.get(i).getFoto_ruangan() != null) Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(i).getFoto_ruangan()).into(imageViews[14]); else statusUmum = false;
+//                    if (data.get(i).getFoto_suhu() != null) Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(i).getFoto_suhu()).into(imageViews[15]); else statusUmum = false;
+//                    if (data.get(i).getFoto_ruangan() != null && data.get(i).getFoto_suhu() != null){
+//                        zoomImage(imageViews[14], data.get(i).getFoto_ruangan());
+//                        zoomImage(imageViews[15], data.get(i).getFoto_suhu());
+//                        downloadImage(imageViews[14], data.get(i).getFoto_ruangan());
+//                        downloadImage(imageViews[15], data.get(i).getFoto_suhu());}
+//                    if (data.get(i).getSuhu() > 23){
+//                        notificationStatus = true;
+//                        if (!statusFuel&&notStat) {
+//                            notificationText += "\n\nSuhu Ruangan";
+//                            notStat=false;
+//                        }
+//                        notificationText += "\nRuang Olo : "+data.get(i).getSuhu()+" °C";
+//                        statusSuhu = false;
+//                    }
+//                    break;
                 case 7:
-                    String suhuOlo = data.get(i).getSuhu()+" °C";
-                    tvOlo[0].setText(suhuOlo);
-                    if (data.get(i).getBenda_terbakar() != null) tvOlo[1].setText(data.get(i).getBenda_terbakar()); else statusUmum = false;
-                    if (data.get(i).getSteker_bertumpuk() != null) tvOlo[2].setText(data.get(i).getSteker_bertumpuk()); else statusUmum = false;
-                    if (data.get(i).getFoto_ruangan() != null) Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(i).getFoto_ruangan()).into(imageViews[14]); else statusUmum = false;
-                    if (data.get(i).getFoto_suhu() != null) Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(i).getFoto_suhu()).into(imageViews[15]); else statusUmum = false;
-                    if (data.get(i).getFoto_ruangan() != null && data.get(i).getFoto_suhu() != null){
-                        zoomImage(imageViews[14], data.get(i).getFoto_ruangan());
-                        zoomImage(imageViews[15], data.get(i).getFoto_suhu());
-                        downloadImage(imageViews[14], data.get(i).getFoto_ruangan());
-                        downloadImage(imageViews[15], data.get(i).getFoto_suhu());}
-                    if (data.get(i).getSuhu() > 23){
-                        notificationStatus = true;
-                        if (!statusFuel&&notStat) {
-                            notificationText += "\n\nSuhu Ruangan";
-                            notStat=false;
-                        }
-                        notificationText += "\nRuang Olo : "+data.get(i).getSuhu()+" °C";
-                        statusSuhu = false;
-                    }
-                    break;
-                case 8:
                     String suhuBatereBasah = data.get(i).getSuhu()+" °C";
                     tvBatereBasah[0].setText(suhuBatereBasah);
-                    if (data.get(i).getBenda_terbakar() != null) tvBatereBasah[1].setText(data.get(i).getBenda_terbakar()); else statusUmum = false;
-                    if (data.get(i).getSteker_bertumpuk() != null) tvBatereBasah[2].setText(data.get(i).getSteker_bertumpuk()); else statusUmum = false;
-                    if (data.get(i).getFoto_ruangan() != null) Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(i).getFoto_ruangan()).into(imageViews[16]); else statusUmum = false;
+                    if (data.get(i).getBenda_terbakar() != null) tvBatereBasah[1].setText(data.get(i).getBenda_terbakar()); else statusBatereB = false;
+                    if (data.get(i).getSteker_bertumpuk() != null) tvBatereBasah[2].setText(data.get(i).getSteker_bertumpuk()); else statusBatereB = false;
+                    if (data.get(i).getFoto_ruangan() != null) Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(i).getFoto_ruangan()).into(imageViews[16]); else statusBatereB = false;
                     if (data.get(i).getFoto_suhu() != null) Picasso.get().load(ENVIRONMENT.FOTO_URL+data.get(i).getFoto_suhu()).into(imageViews[17]);
                     if (data.get(i).getFoto_ruangan() != null){
                         zoomImage(imageViews[16], data.get(i).getFoto_ruangan());

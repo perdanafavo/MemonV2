@@ -159,9 +159,6 @@ public class BIRActivity extends CustomCompatActivity
                 title = "Ruang Genset";
                 break;
             case 7:
-                title = "Ruang OLO";
-                break;
-            case 8:
                 title = "Ruang Batere Basah";
                 break;
             default:
@@ -174,13 +171,13 @@ public class BIRActivity extends CustomCompatActivity
         if (RUANGAN == 6) linearLayout.setVisibility(View.VISIBLE);
         else linearLayout.setVisibility(View.GONE);
 
-        if (RUANGAN == 4 || RUANGAN == 8) layoutRuang.setVisibility(View.VISIBLE);
+        if (RUANGAN == 4 || RUANGAN == 7) layoutRuang.setVisibility(View.VISIBLE);
         else layoutRuang.setVisibility(View.GONE);
 
-        if (RUANGAN == 6 || RUANGAN == 8) layoutSuhu.setVisibility(View.GONE);
+        if (RUANGAN == 6 || RUANGAN == 7) layoutSuhu.setVisibility(View.GONE);
         else layoutSuhu.setVisibility(View.VISIBLE);
 
-        if (RUANGAN == 6 || RUANGAN == 8) layoutFotoSuhu.setVisibility(View.GONE);
+        if (RUANGAN == 6 || RUANGAN == 7) layoutFotoSuhu.setVisibility(View.GONE);
         else layoutFotoSuhu.setVisibility(View.VISIBLE);
 
         applicationPresenter.getRoomReportByRuangan();
@@ -219,18 +216,18 @@ public class BIRActivity extends CustomCompatActivity
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position==0){
                     RUANGAN = 4;
-                    if (RUANGAN == 6 || RUANGAN == 8) layoutSuhu.setVisibility(View.GONE);
+                    if (RUANGAN == 6 || RUANGAN == 7) layoutSuhu.setVisibility(View.GONE);
                     else layoutSuhu.setVisibility(View.VISIBLE);
 
-                    if (RUANGAN == 6 || RUANGAN == 8) layoutFotoSuhu.setVisibility(View.GONE);
+                    if (RUANGAN == 6 || RUANGAN == 7) layoutFotoSuhu.setVisibility(View.GONE);
                     else layoutFotoSuhu.setVisibility(View.VISIBLE);
                 }
                 else {
-                    RUANGAN = 8;
-                    if (RUANGAN == 6 || RUANGAN == 8) layoutSuhu.setVisibility(View.GONE);
+                    RUANGAN = 7;
+                    if (RUANGAN == 6 || RUANGAN == 7) layoutSuhu.setVisibility(View.GONE);
                     else layoutSuhu.setVisibility(View.VISIBLE);
 
-                    if (RUANGAN == 6 || RUANGAN == 8) layoutFotoSuhu.setVisibility(View.GONE);
+                    if (RUANGAN == 6 || RUANGAN == 7) layoutFotoSuhu.setVisibility(View.GONE);
                     else layoutFotoSuhu.setVisibility(View.VISIBLE);
                 }
                 applicationPresenter.getRoomReportByRuangan();
@@ -265,7 +262,7 @@ public class BIRActivity extends CustomCompatActivity
         if (dataReport.getSuhu() != Integer.parseInt(suhu))mapRequest.put("suhu", suhu);
 
         if (file != null){
-            if (file2 == null && (RUANGAN==6||RUANGAN==8)){
+            if (file2 == null && (RUANGAN==6||RUANGAN==7)){
                 applicationPresenter.updateImage(false);
             }
             else if (file2 != null || dataReport.getFoto_suhu() != null){
@@ -285,7 +282,7 @@ public class BIRActivity extends CustomCompatActivity
             if (dataReport.getFoto_ruangan() != null && dataReport.getFoto_suhu() != null){
                 applicationPresenter.putRoom();
             }
-            else if (dataReport.getFoto_ruangan() != null && (RUANGAN==6||RUANGAN==8)) {
+            else if (dataReport.getFoto_ruangan() != null && (RUANGAN==6||RUANGAN==7)) {
                 applicationPresenter.putRoom();
             }
             else
@@ -414,7 +411,7 @@ public class BIRActivity extends CustomCompatActivity
                 applicationPresenter.putRoom();
             }
         } else {
-            if (RUANGAN==6||RUANGAN==8) {
+            if (RUANGAN==6||RUANGAN==7) {
                 mapRequest.put("foto_ruangan", nama);
             }
             else {
@@ -438,7 +435,7 @@ public class BIRActivity extends CustomCompatActivity
             return imageHandle.convertMultiparFile(file);
         }
         else {
-            if (RUANGAN==6||RUANGAN==8){
+            if (RUANGAN==6||RUANGAN==7){
                 return imageHandle.convertMultiparFile(file);
             }
             else{
